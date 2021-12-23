@@ -25,8 +25,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			%>
 					<a href="UserServlet" class="btn btn-primary">List all User Details</a>
 					<a href="Addflight.jsp" class="btn btn-primary">Add Flight</a>
-			         <a href="login.jsp" class="btn btn-primary">BACK</a>
-			        <a href="bookinglist.jsp" class="btn btn-primary">BOOKINGDETAILS</a>
+			        
+			        <a href="Bookingdetails" class="btn btn-primary">Booking Details</a>
+			         <a href="FlightSearch.jsp" class="btn btn-primary">Back</a>
 			         
 					
 			

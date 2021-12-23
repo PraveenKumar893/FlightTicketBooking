@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -63,7 +64,35 @@ public class ConfirmDetails extends HttpServlet {
 		//String seat  = request.getParameter("SEAT_NO");
 		//int seat_no = Integer.parseInt(seat);
        String noofpassengers = request.getParameter("numberOfPassengers");
+       System.out.println(noofpassengers);
        int noofpass = Integer.parseInt(noofpassengers);
+       System.out.println(noofpass);
+       String economyseats = request.getParameter("Economyclass");
+       int ecoseats = 0;
+		if 	(economyseats != null && economyseats != "") 
+		{
+			ecoseats = Integer.parseInt(economyseats);
+		System.out.println(ecoseats);
+		}
+
+	     
+			String premiumeconomyseats = request.getParameter("PremiumEconomyclass");
+			int premiumecoseats = 0;
+		if 	(premiumeconomyseats != null && premiumeconomyseats != "") 
+			{
+			 premiumecoseats = Integer.parseInt(premiumeconomyseats);
+			System.out.println(premiumecoseats);
+			}
+		
+	      String businesseats = request.getParameter("Bussinessclass");
+	      
+			int bussseats = 0;
+		if 	(businesseats != null && businesseats != "") 
+			{
+			bussseats = Integer.parseInt(businesseats);
+			System.out.println(bussseats);
+			}
+
 ///       String Price_details = request.getParameter("price");
       
      //  Date Bookingdate =(Date) new SimpleDateFormat("yyyy-mm-dd").parse(date);
@@ -71,7 +100,9 @@ public class ConfirmDetails extends HttpServlet {
       // Date Bookingdate = (Date) sdf.parse(date);
      //int price = Integer.parseInt(Price_details);
        
-     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, noofpass,flightid,local);
+      
+       
+     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,local,ecoseats,premiumecoseats,bussseats,flightid,noofpass);
      System.out.println(passenger);
      request.setAttribute("Passenger_Deatils", passenger);
      
@@ -86,4 +117,6 @@ public class ConfirmDetails extends HttpServlet {
 		}
 	}
 
+	
+	
 }

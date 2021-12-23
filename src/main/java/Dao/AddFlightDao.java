@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,17 +26,18 @@ import Models.Flight_list;
 
 public class AddFlightDao
 {
-	public void      AddFlightDetails(AddFlight fly ) throws ClassNotFoundException
+	public int    AddFlightDetails(AddFlight fly ) throws ClassNotFoundException
 	{
-		 int FlightId = 0;
-
+		 Integer FlightId = 0;
+		 String returnCols[] = { "Flight_Id" };
 	
 	try
 	{
+		 
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-	
-	PreparedStatement stmt = con.prepareStatement("insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+	String sql = "insert into flight_details (Flight_name,Source,Destination,Economy_class,Premium_Economy_class,Bussiness_class,Arrival_Date,Departure_Date,ArrivalTime) values(?,?,?,?,?,?,?,?,?)";
+	PreparedStatement stmt = con.prepareStatement(sql , returnCols);
 	System.out.println(fly.getFlight_name());
 	System.out.println("Pravenn Kumar");
 	 
@@ -51,23 +53,22 @@ public class AddFlightDao
 	stmt.setDate(8, java.sql.Date.valueOf(fly.getDeparture_Date()));
 
 	stmt.setTime(9,java.sql.Time.valueOf( fly.getArrivalTime()));
-	System.out.println("Time ");;
+	System.out.println("Time ");
 
-
-     ResultSet rs;
 	 stmt.executeUpdate();
-	 rs = stmt.getGeneratedKeys();
-	 if(rs.next())
-	 {
-		  FlightId = rs.getInt("FLIGHT_ID");
-			 System.out.println(FlightId);
-	 }
+	 
+	 
+	 
+    // if (stmt.executeUpdate() > 0) { 
+    		System.out.println(returnCols);
+    		
+         java.sql.ResultSet generatedKeys = stmt.getGeneratedKeys();
+         if (generatedKeys.next()) 
+        		System.out.println(generatedKeys);
+          FlightId =  generatedKeys.getInt(1); 
+        //}
 	 
 	
-	
-
-
-	 
 	
 }
 catch(SQLException e)
@@ -76,10 +77,10 @@ catch(SQLException e)
 	System.out.println(e);
 
 }	
-
+    return FlightId;
 
 }
-	public void Addseats(int flightid , String Source, String Destination) throws ClassNotFoundException, SQLException
+	public void Addseats(int flightid , String Source, String Destination, LocalDate Departure_Date ) throws ClassNotFoundException, SQLException
 	{
 		System.out.println("Method Inside");
 		
@@ -89,14 +90,20 @@ catch(SQLException e)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		
-	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id)values(?,?,?)";
+	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,business_seats,premium_economy_seats,flight_departure_date)values(?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt1 =  con.prepareStatement(query);
 		
 		stmt1.setString(1, Source);
 		stmt1.setString(2, Destination);
 		stmt1.setInt(3,flightid);
+		stmt1.setInt(4,30);
+		stmt1.setInt(5,31);
+		stmt1.setInt(6,31);
+		stmt1.setDate(7, java.sql.Date.valueOf(Departure_Date));
+
 		int str = stmt1.executeUpdate();
+		//con.commit();
 		System.out.println("Finished");
 
 		

@@ -72,9 +72,26 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
 				name="flightId" id="flightId" value="<%=passengers.getFlight_id()%>"
 				readonly /> <br /> <br /> 
 				
+				<input type="hidden"
+				name="Economyclass" id="Economyclass" value="<%=passengers.getEconomyseat()%>"
+				readonly /> <br /> <br /> 
+			
+			
+				
+				<input type="hidden"
+				name="PremiumEconomyclass" id="PremiumEconomyclass" value="<%=passengers.getPremiumeconomyseats()%>"
+				readonly  /> <br /> <br /> 
+				
+								
+				
+				<input type="hidden"
+				name="Bussinessclass" id="Bussinessclass" value="<%=passengers.getBusinessseats()%>"
+				readonly /> <br /> <br /> 
 				
 				
 				<button type="submit">Submit</button>
+				
+				
 				
 				
 		</form>		

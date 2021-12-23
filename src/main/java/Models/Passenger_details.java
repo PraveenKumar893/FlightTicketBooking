@@ -15,25 +15,103 @@ public class Passenger_details
 	private String Source;
 	private String Destination ;
 	private LocalDate Arrival_date;
+	private int TicketNo;
 	private int seatno;
+	private int Economyseat;
+	private int premiumeconomyseats;
+	private int businessseats;
+	private String Status;
+
+	public String getStatus() {
+		return Status;
+	}
+	public void setStatus(String status) {
+		Status = status;
+	}
 	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
-			String destination, int seatno, int flight_id,LocalDate bookingdate) {
+			String destination, LocalDate arrival_date, int economyseat, int premiumeconomyseats, int businessseats,
+			int flight_id, int noOfPassengers) {
 		super();
 		Passenger_name = passenger_name;
 		Class_details = class_details;
 		Mobile_number = mobile_number;
 		Source = source;
 		Destination = destination;
+		Arrival_date = arrival_date;
+		Economyseat = economyseat;
+		premiumeconomyseats = premiumeconomyseats;
+		businessseats = businessseats;
+		Flight_id = flight_id;
+		NoOfPassengers = noOfPassengers;
+	}
+	public Passenger_details(String class_details, long mobile_number, String source, String destination,
+			LocalDate arrival_date, int ticketNo, int seatno, int flight_id,String Status) {
+		super();
+		Class_details = class_details;
+		Mobile_number = mobile_number;
+		Source = source;
+		Destination = destination;
+		Arrival_date = arrival_date;
+		TicketNo = ticketNo;
 		this.seatno = seatno;
 		Flight_id = flight_id;
-		Arrival_date = bookingdate;
-
+		 this.Status   =  Status;
+	}
+	public int getEconomyseat() {
+		return Economyseat;
+	}
+	public void setEconomyseat(int economyseat) {
+		Economyseat = economyseat;
+	}
+	public int getPremiumeconomyseats() {
+		return premiumeconomyseats;
+	}
+	public void setPremiumeconomyseats(int premiumeconomyseats) {
+		this.premiumeconomyseats = premiumeconomyseats;
+	}
+	public int getBusinessseats() {
+		return businessseats;
+	}
+	public void setBusinessseats(int businessseats) {
+		this.businessseats = businessseats;
+	}
+	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+			String destination, int ticketNo, int seatno, int flight_id,LocalDate arrival_date) {
+		super();
+		Passenger_name = passenger_name;
+		Class_details = class_details;
+		Mobile_number = mobile_number;
+		Source = source;
+		Destination = destination;
+		Arrival_date = arrival_date;
+		TicketNo = ticketNo;
+		this.seatno = seatno;
+		Flight_id = flight_id;
 	}
 	public int getSeatno() {
 		return seatno;
 	}
 	public void setSeatno(int seatno) {
 		this.seatno = seatno;
+	}
+	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+			String destination, int TicketNo, int flight_id,LocalDate bookingdate) {
+		super();
+		Passenger_name = passenger_name;
+		Class_details = class_details;
+		Mobile_number = mobile_number;
+		Source = source;
+		Destination = destination;
+		TicketNo = TicketNo;
+		Flight_id = flight_id;
+		Arrival_date = bookingdate;
+
+	}
+	public int getTicketNo() {
+		return TicketNo;
+	}
+	public void setTicketNo(int TicketNo) {
+		TicketNo = TicketNo;
 	}
 	public int getNoOfPassengers() {
 		return NoOfPassengers;
@@ -86,7 +164,7 @@ public class Passenger_details
 		Flight_id = flight_id;
 	}
 	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
-			String destination, LocalDate arrival_date, int seatno, int flight_id, int noOfPassengers) {
+			String destination, LocalDate arrival_date, int TicketNo, int flight_id, int noOfPassengers) {
 		super();
 		Passenger_name = passenger_name;
 		Class_details = class_details;
@@ -94,7 +172,7 @@ public class Passenger_details
 		Source = source;
 		Destination = destination;
 		Arrival_date = arrival_date;
-		this.seatno = seatno;
+		TicketNo = TicketNo;
 		Flight_id = flight_id;
 		NoOfPassengers = noOfPassengers;
 	}

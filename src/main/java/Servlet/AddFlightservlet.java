@@ -85,9 +85,10 @@ public class AddFlightservlet extends HttpServlet {
 //  System.out.println(str);
              AddFlightDao adddao = new AddFlightDao();
              AddFlight flight = new AddFlight(flightname, source, Destination, Economyclass, premiumEconomyclass, Bussinessclass,local,loca1,time);             
-
-             adddao.AddFlightDetails(flight);
-             //adddao.Addseats(flyid, source, Destination);
+            
+            int Flight_Id  = adddao.AddFlightDetails(flight);
+            System.out.println(Flight_Id);
+             adddao.Addseats(Flight_Id, source, Destination,loca1);
              
              
 			response.getWriter().print("Data Registered");

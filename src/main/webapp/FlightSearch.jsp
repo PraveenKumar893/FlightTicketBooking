@@ -91,6 +91,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				 <a href="login.jsp" style="position: relative;left:339px;top:-214px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> LogOut </a> <br > <br /> 
  
 				   <p id="loggedin" style="position: relative;left:950px;top:-214px;width: 140px;height: 29px; font-style: italic;  "> Logged in as <%=loggedInAsUser %></p>
+				   
+		 <a href="CancelTicket" style="position: relative;left:339px;top:-214px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> CancelTicket </a> <br > <br /> 
+				   
 				<%
 			}
 				

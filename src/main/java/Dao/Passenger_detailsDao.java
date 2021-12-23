@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -15,14 +16,14 @@ import Models.Passenger_details;
 
 public class Passenger_detailsDao 
 {
-	public void PassengerDetails(Passenger_details obj)
+	public void PassengerDetails(Passenger_details obj,int ticketno,String username)
 	{
 		try
 		{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("inside 11");
-		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,BOOKING_DATE) values(?,?,?,?,?,?,?)";
+		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,BOOKING_DATE,Ticket_no,Status,User_name) values(?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1,obj.getPassenger_name());
 		System.out.println("inside 1");
@@ -39,6 +40,10 @@ public class Passenger_detailsDao
 //		  System.out.println(format);
 //		stmt.setDate(7,  format);
 		stmt.setDate(7,java.sql.Date.valueOf( obj.getArrival_date()));
+		stmt.setInt(8,ticketno);
+		stmt.setString(9, "Booked");
+		stmt.setString(10, username);
+
 		int str2 = stmt.executeUpdate();
 	}
 	catch(Exception e)
@@ -74,15 +79,18 @@ public class Passenger_detailsDao
 				long mobno  = rs.getLong(3);
 				String Source = rs.getString(4);
 				String destination = rs.getString(5);
-				int ticketno = rs.getInt(6);
 
-				LocalDate Bookingdate = rs.getDate(7).toLocalDate();
-				int flightid = rs.getInt(8);
+				LocalDate Bookingdate = rs.getDate(6).toLocalDate();
+				int flightid = rs.getInt(7);
+				int seatno = rs.getInt(8);
+				int ticketno = rs.getInt(9);
+				
+
 
 
 				
 				
-				Passenger_details passenegr = new Passenger_details(name, classdetails, mobno, Source, destination, flightid, ticketno, Bookingdate);
+				Passenger_details passenegr = new Passenger_details(name, classdetails, mobno, Source, destination,ticketno,seatno,flightid,Bookingdate);
 				booklist.add(passenegr);
 
 				
@@ -95,6 +103,155 @@ public class Passenger_detailsDao
 return booklist;
 				   
 	}
+	
+	public  void Updatepassenger(int economyseats , int premiumseats, int businessseats,String Coach, int Flightid) 
+	{
+		 try
+		 {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			System.out.println("inside 11");
+			String sql = "";
+
+			if(Coach.equalsIgnoreCase("Economy"))
+					{
+
+				 sql = "update flight_seats_availabilty set ECOMOMY_SEATS = ?   where FLIGHT_ID = ?";
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1,economyseats);
+					stmt.setInt(2,Flightid);
+					stmt.executeUpdate();
+
+
+
+
+
+					}
+			else if(Coach.equalsIgnoreCase("premium"))
+			{
+				 sql = "update flight_seats_availabilty set PREMIUM_ECONOMY_SEATS = ?   where FLIGHT_ID = ?";
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1,premiumseats);
+					stmt.setInt(2,Flightid);
+					 stmt.executeUpdate();
+
+
+
+
+			}
+			else if(Coach.equalsIgnoreCase("Bussiness"))
+			{
+				 sql = "update flight_seats_availabilty set BUSINESS_SEATS = ?   where FLIGHT_ID = ?";
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1,businessseats);
+					stmt.setInt(2,Flightid);
+					 stmt.executeUpdate();
+
+
+
+			}
+		 }
+		 catch(Exception e)
+		 {
+			 System.out.println(e.getMessage());
+		 }
+
+			
+			
+
+
+
+			
+			
+
+		
+	}
+	
+	public List<Passenger_details> CancelTicket(String Username)
+	{
+		List<Passenger_details> canceldetails = new ArrayList<>();
+		try 
+		{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+		System.out.println("Weleocme to add flight ");
+		String sql = "SELECT * FROM passenger_details WHERE user_name = ? ";
+		
+		PreparedStatement pst = connection.prepareStatement(sql);
+		pst.setString(1, Username);
+		ResultSet rs = pst.executeQuery();
+		if(rs != null)
+		{
+			System.out.println("Valid");
+			while (rs.next()) 
+			{
+				String  Class =  rs.getString(2);
+				long  mobno =  rs.getLong(3);
+				String  source =  rs.getString(4);
+				String  destination =  rs.getString(5);
+				LocalDate  bookingdate =  rs.getDate(6).toLocalDate();
+				int  flightid =  rs.getInt(7);
+				int  seatno =  rs.getInt(8);
+				int  ticketno =  rs.getInt(9);
+				String  status =  rs.getString(10);
+				System.out.println(status);
+				
+				
+				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, bookingdate, ticketno, seatno, flightid,status);
+				canceldetails.add(passenegr);
+				}
+		
+	}
+	
+	
+	
+	}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
+		}
+		return canceldetails;
+}
+	public  void Updatecancelstatus(int seatno) 
+	{
+		 try
+		 {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+			System.out.println("inside 11");
+			String sql = "";
+
+			
+
+				 sql = "update passenger_details set status = ?   where Seat_no = ?";
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setString(1,"Cancelled");
+					stmt.setInt(2,seatno);
+					stmt.executeUpdate();
+
+
+
+
+
+					
+		
+		 }
+		 catch(Exception e)
+		 {
+			 System.out.println(e.getMessage());
+		 }
+
+			
+			
+
+
+
+			
+			
+
+		
+	}
+	
 }
 
 	

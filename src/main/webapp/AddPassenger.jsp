@@ -32,18 +32,35 @@
 				readonly /> <br /> <br /> 
 				<label for="Economy_class">Economy_class:</label> 
 			<input type="number"
-				name="Economyclass" id="Economyclass" value="<%=request.getParameter("Economy_class")%>"
+				name="Economyclass" id="Economy" 
 				readonly /> <br /> <br /> 
 			
-			<label for="Premium_Economy_class">Premium_Economy_class:</label> 
+			<label for="Premium_Economy_class" >Premium_Economy_class:</label> 
 				
 				<input type="number"
-				name="PremiumEconomyclass" id="PremiumEconomyclass" value="<%=request.getParameter("Premium_Economy_class")%>"
-				readonly /> <br /> <br /> 
+				name="PremiumEconomyclass" id="PremiumEconomy" 
+				readonly  /> <br /> <br /> 
 				
 								<label for="Bussiness_class">Bussiness_class:</label> 
 				
 				<input type="number"
+				name="Bussinessclass" id="Bussiness" 
+				readonly /> <br /> <br /> 
+				
+				
+			<input type="hidden"
+				name="Economyclass" id="Economyclass" value="<%=request.getParameter("Economy_class")%>"
+				readonly /> <br /> <br /> 
+			
+			
+				
+				<input type="hidden"
+				name="PremiumEconomyclass" id="PremiumEconomyclass" value="<%=request.getParameter("Premium_Economy_class")%>"
+				readonly  /> <br /> <br /> 
+				
+								
+				
+				<input type="hidden"
 				name="Bussinessclass" id="Bussinessclass" value="<%=request.getParameter("Bussiness_class")%>"
 				readonly /> <br /> <br /> 
 				
@@ -142,15 +159,22 @@
 				price = numberOfPassengers * firstClassPrice;
 				document.getElementById("price").value = price;
 				seats  = premiumseats-numberOfPassengers;
-				document.getElementById("PremiumEconomyclass").value = seats;
+				document.getElementById("PremiumEconomy").value = seats;
+               console.log(seats);
 				
 				break;
 			}
 			case "Economy": {
 				price = numberOfPassengers * economyClassPrice;
 				document.getElementById("price").value = price;
-				seats  = economyseats-numberOfPassengers;
-				document.getElementById("Economyclass").value = seats;
+				
+			
+					  seats = economyseats - numberOfPassengers ;
+					  console.log(seats);
+					 // }
+				document.getElementById("Economy").value = seats;
+
+
 
 
 				break;
@@ -159,11 +183,14 @@
 				price = numberOfPassengers * businessClassPrice;
 				document.getElementById("price").value = price;
 				seats  = Businesseats-numberOfPassengers;
-			document.getElementById("Bussinessclass").value = seats;
+			document.getElementById("Bussiness").value = seats;
 
 				break;
 			}
 			}
+			
+		
+			
 		}	
 		
 		

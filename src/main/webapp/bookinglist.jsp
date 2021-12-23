@@ -14,7 +14,7 @@
 <body>
 
 <%  
-		List<Passenger_details> bookobject = (List<Passenger_details>)request.getAttribute("Bookinglist");
+		List<Passenger_details> objbookinglist = (List<Passenger_details>)request.getAttribute("Bookinglist");
  
 		%>
 		
@@ -28,10 +28,11 @@
 					<th>MobileNumber</th>
 					<th>Source</th>
 					<th>Destination</th>
-										<th>FlightID</th>
-					
+					<th>FlightID</th>
 					<th>BookingDate</th>
-										<th>TicketNo</th>
+					<th>TicketNo</th>
+					<th>SeatNo</th>
+					
 					
 					</tr>
 			</thead>
@@ -41,24 +42,28 @@
 			<tbody>
 				<%
 					int i = 0;
-					for (Passenger_details object : bookobject) {
+					for (Passenger_details objbook : objbookinglist) {
 						i++;
 				%>
 				<tr>
 				
 					
 					<td><%=i%></td>
-					<td><%=object.getPassenger_name()%></td>
-					<td><%=object.getClass_details()%></td>
-					<td><%=object.getMobile_number()%></td>
+					<td><%=objbook.getPassenger_name()%></td>
+					<td><%=objbook.getClass_details()%></td>
+					<td><%=objbook.getMobile_number()%></td>
 					
-					<td><%=object.getSource()%></td>
+					<td><%=objbook.getSource()%></td>
 					
-					<td> <%=object.getDestination()%></td>
-					<td> <%=object.getSeatno()%></td>
-					<td> <%=object.getArrival_date()%></td>
+					<td> <%=objbook.getDestination()%></td>
+										<td> <%=objbook.getFlight_id()%></td>
+															<td> <%=objbook.getArrival_date()%></td>
 					
-					<td> <%=object.getFlight_id()%></td>
+					<td> <%=objbook.getTicketNo()%></td>
+										
+					
+					<td> <%=objbook.getSeatno()%></td>
+					
 					
 			</tr>
 					
