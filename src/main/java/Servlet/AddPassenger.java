@@ -50,8 +50,9 @@ public class AddPassenger extends HttpServlet {
 	{
 		 response.setContentType("text/html");
 	        PrintWriter out=response.getWriter();
+	        out.println("hello");
 //	       String gender = "Female";
-	    		try {
+	    try {
 			  String Flight_Id =request.getParameter("flightId");
 			  int flightid = Integer.parseInt(Flight_Id);
 			  System.out.println(flightid);
@@ -81,20 +82,21 @@ public class AddPassenger extends HttpServlet {
 	       System.out.println(noofpassengers);
 	       int noofpass = Integer.parseInt(noofpassengers);
 	       System.out.println(noofpass);
-//	       String Price_details = request.getParameter("price");
-//	     int price = Integer.parseInt(Price_details);
+	       String ticket_no = request.getParameter("ticketno");
+	     int ticketno = Integer.parseInt(ticket_no);
 
-	       int ticketno = generator();
+	    //   int ticketno = generator();
 	       
 	       System.out.println(ticketno);
 	       HttpSession session = request.getSession();
 	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
      System.out.println(loggedInAsUser);
-	     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, 0,flightid,local);
+	     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, ticketno,flightid,local);
 			Passenger_detailsDao pass = new Passenger_detailsDao();
 			
 			for(int i=0;i<noofpass;i++)
 			{
+				System.out.println("hi");
 				pass.PassengerDetails(passenger,ticketno,loggedInAsUser);
 			}
 			pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
@@ -107,14 +109,14 @@ public class AddPassenger extends HttpServlet {
 			   out.println("</script>");
 			   
 			 
-				   RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+			     RequestDispatcher requestDispatcher = request.getRequestDispatcher("PaymentDetails");
 					requestDispatcher.forward(request, response);
-			  
-			
+
 				
 				
 			//response.sendRedirect("Login.jsp");
 		} catch (Exception e) {
+			System.out.println("Hello error");
 			e.printStackTrace();
 			response.sendRedirect("Register.jsp?errorMessage=" + e.getMessage());
 		}

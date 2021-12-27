@@ -122,4 +122,22 @@ public class LoginDao
 			
 	}
 	
+	public  void updatepassword( String username,String password) throws Exception
+	{
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+		System.out.println("Weleocme to add flight ");
+		 String sql = "update register set password = ?   where user_name = ?";
+		
+
+		PreparedStatement pst = connection.prepareStatement(sql);
+		pst.setString(1, password);
+		pst.setString(2, username);
+	    System.out.println(username);
+	   
+	    pst.executeUpdate();
+		
+	      
+	}
+	
 }

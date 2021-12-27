@@ -11,52 +11,142 @@
 
 	<style>
 body {
-	background-image: url(image/bg7.jpg);
+	background-image: url(image/image_register.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
+form {
+  border: 3px solid #f1f1f1;
+  width:30%;
+  align:"center";
+}
+form {
+  border: 3px solid #f1f1f1;
+  width:30%;
+  align:"center";
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password],input[type=email],input[type=radio],input[type=tel] {
+  width: 63%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+input[type=radio] {
+  width: 18%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 62%;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+  opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/* Center the avatar image inside this container */
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+/* Avatar image */
+img.avatar {
+  width: 23%;
+  border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+  padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+    display: block;
+    float: none;
+  }
+  .cancelbtn {
+    width: 100%;
+  }
+
 </style>
 
-			<h1 style="text-align: center;">
-				<b>New user Registration</b></h1>
+			
+			<main class="container-fluid">
+		<h3 align="center">New User Registration Form </h3>
+		<div align="center">	
 		<form name="RegisterForm" action="FlightRegister" method="post" onsubmit="return validation()" >
+		
+		<div class="container">
 			
 			<br /> <input type="text" name="name" pattern="[A-Za-z]{3,20}" 
 				placeholder="Enter name" required autofocus
-				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
+				/>
 				
 			<br> <input type="email" id="email" name="email" pattern = "[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" 
 				placeholder="Enter email address" required 
-				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" />
+				 />
 			
 			
 			<br> <input type="text" name="username"
 				pattern="[A-Za-z\s]{3,8}"  placeholder="Enter User name" required
 				autofocus  
-				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
+				/>
 				<br>
 				
 				<input type="password" name="password"placeholder="Enter new password" required
-				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" />
+				/>
 				
 			<br> <input type="password" name="password1"
 				placeholder="Confirm Password " required
-				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /><br>
+				 /><br>
 				
 			<input type="radio" id="Male" name="Gender"
-				value="Male" style="position: relative; left: -61px;height: 15px; top: 99px;width: 220px"> 
-				<label for="Male" style="position: relative;left: -159px;height: 36px; top: 99px;width: 230px">MALE</label> 
+				value="Male" > 
+				<label for="Male" >Male</label> 
 				
-				<input type="radio" id="Female" name="Gender" value="Female"style="position: relative; left: -230px;height: 15px; top: 100px;width: 220px"> 
-				<label for="Female" style="position: relative;left: -325px;height: 36px; top: 99px;width: 230px">FEMALE</label> 
+				<input type="radio" id="Female" name="Gender" value="Female"> 
+				<label for="Female" >Female</label> 
 				<input type="radio" id="Others"
-				name="Gender" value="Others" style="position: relative;left: -365px;height: 18px; top: 104px;width: 230px"> <label
-				for="Others" style="position: relative;left: -440px;height: 23px; top: 100px;width: 230px">OTHERS</label>
+				name="Gender" value="Others" > <label
+				for="Others" >Others</label>
 
 
                		 <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
 				 placeholder="Enter Mobile Number" required  
-				style="position: relative; left: -846px; height: 30px; top: 135px; width: 230px" />
+				 />
 				
 				
 			<br> 
@@ -66,10 +156,12 @@ body {
 
 			<div style="text-align: center">
 				<button type="Submit"  required 
-					style="position: relative; left: 40px; height: 30px; top: 110px; width: 230px">
-				SIGNUp	</button>
+					>
+				Register	</button>
+			</div>
 			</div>
 		</form>
+		  </div>
 		   <script>
 		    function validation()
 		    {

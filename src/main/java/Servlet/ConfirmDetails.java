@@ -51,7 +51,7 @@ public class ConfirmDetails extends HttpServlet {
 		  int flightid = Integer.parseInt(Flight_Id);
 		  System.out.println(flightid);
 		String name = request.getParameter("username");
-		String date = request.getParameter("bookingDate");
+		String date = request.getParameter("departuredate");
        LocalDate local = LocalDate.parse(date);
 
 		System.out.println(local);
@@ -93,17 +93,18 @@ public class ConfirmDetails extends HttpServlet {
 			System.out.println(bussseats);
 			}
 
-///       String Price_details = request.getParameter("price");
-      
+      String Price_details = request.getParameter("price");
+      int price = Integer.parseInt(Price_details);
+      System.out.println(price);
      //  Date Bookingdate =(Date) new SimpleDateFormat("yyyy-mm-dd").parse(date);
        
       // Date Bookingdate = (Date) sdf.parse(date);
      //int price = Integer.parseInt(Price_details);
        
-      
-       
-     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,local,ecoseats,premiumecoseats,bussseats,flightid,noofpass);
-     System.out.println(passenger);
+		 int ticketno = generator();
+		 System.out.println(ticketno);
+     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination,local,ecoseats,premiumecoseats,bussseats,flightid,noofpass,ticketno,price);
+     
      request.setAttribute("Passenger_Deatils", passenger);
      
      RequestDispatcher requestDispatcher = request.getRequestDispatcher("ConfirmDetails.jsp");
@@ -117,6 +118,10 @@ public class ConfirmDetails extends HttpServlet {
 		}
 	}
 
-	
+	public int generator()
+	{
+		Random r = new Random(System.currentTimeMillis());
+		return 100 + r.nextInt(1200);
+	}
 	
 }

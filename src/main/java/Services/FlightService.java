@@ -7,6 +7,7 @@ import java.util.List;
 
 //import Dao.FlightSearchDao;
 import Dao.SourceDao;
+import Dao.WalletDao;
 import Models.Flight_list;
 import Models.Source;
 
@@ -21,6 +22,19 @@ public class FlightService {
 		 sourcefilght = objsource.ListSource();
 		
 		return sourcefilght;
+		
+		
+	}
+		
+		public int getclosingbalance(String username) throws Exception
+		{
+		
+		System.out.println(username);
+		int Closing_balance = 0;
+		WalletDao objwallet  = new WalletDao ();
+		Closing_balance  = objwallet.getclosingbalance(username);
+		
+		return Closing_balance;
 		
 		
 	}

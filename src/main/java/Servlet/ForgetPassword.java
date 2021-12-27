@@ -8,19 +8,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import Dao.LoginDao;
 
 /**
- * Servlet implementation class GuestLogin
+ * Servlet implementation class ForgetPassword
  */
-@WebServlet("/GuestLogin")
-public class GuestLogin extends HttpServlet {
+@WebServlet("/ForgetPassword")
+public class ForgetPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuestLogin() {
+    public ForgetPassword() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,16 +37,28 @@ public class GuestLogin extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		String guest = "Guest";
-		String role = "guest";
-		session.setAttribute("LOGGED_IN_USER", guest);
-		session.setAttribute("ROLE", role);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
-		//System.out.println("Userlist1");
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		String Username = request.getParameter("username");
+		String Password = request.getParameter("password");
+     System.out.println("Forget password");
+     
+     LoginDao password = new  LoginDao();
+     try {
+		password.updatepassword(Username, Password);
+		
+		
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+     
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
 		requestDispatcher.forward(request, response);
+
+     
+     
+     
 	}
 
 }

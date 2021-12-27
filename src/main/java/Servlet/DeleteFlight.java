@@ -45,7 +45,7 @@ int Flightid = Integer.parseInt(Flight_id);
 			 delete.DeleteFlight(Flightid);
 			response.getWriter().print("Data Deleted");
 			   
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("Addflight.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 			requestDispatcher.forward(request, response);
 
 		} catch (Exception e) {

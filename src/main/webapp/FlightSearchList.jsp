@@ -20,7 +20,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 %>
 
-
+ <jsp:include page="Header.jsp"></jsp:include>
 
 	<%
 		List<Flight_Seat_Availability> flights = (List<Flight_Seat_Availability>)request.getAttribute("Flight_List");

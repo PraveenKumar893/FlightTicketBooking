@@ -8,19 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class GuestLogin
+ * Servlet implementation class PaymentDetails
  */
-@WebServlet("/GuestLogin")
-public class GuestLogin extends HttpServlet {
+@WebServlet("/PaymentDetails")
+public class PaymentDetails extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GuestLogin() {
+    public PaymentDetails() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,23 +28,36 @@ public class GuestLogin extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		try
+		{
+			String flightid = request.getParameter("flightId");
+			int FlightId = Integer.parseInt(flightid);
+			String ticketno = request.getParameter("ticketno");
+			int TicketNo = Integer.parseInt(ticketno);
+			String Amount = request.getParameter("amount");
+			int Price = Integer.parseInt(Amount);
+			
+		     request.setAttribute("Flight_ID", flightid);
+		     System.out.println(flightid);
+		     request.setAttribute("Ticket_no", ticketno);
+		     request.setAttribute("Amount", Amount);
+
+		     RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
+				requestDispatcher.forward(request, response);
+
+
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		String guest = "Guest";
-		String role = "guest";
-		session.setAttribute("LOGGED_IN_USER", guest);
-		session.setAttribute("ROLE", role);
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
-		//System.out.println("Userlist1");
-		requestDispatcher.forward(request, response);
+		doGet(request, response);
 	}
 
 }

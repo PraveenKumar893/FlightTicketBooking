@@ -1,15 +1,16 @@
+<%@page import="Models.Source"%>
+<%@page import="Services.FlightService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Login Screen</title>
+<title>Payment Page</title>
 </head>
 <body>
-<style>
 
+<style>
 body {
 background-image: url(image/bg9.jpg);
 	background-repeat: no-repeat;
@@ -23,14 +24,22 @@ background-image: url(image/bg9.jpg);
 
 
 form {
-  border: 3px solid #f1f1f1;
-  width:30%;
+  
+  width:50%;
   align:"center";
 }
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
-  width: 63%;
+input[type=text] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+ input[type=radio] {
+  width: 10%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -46,7 +55,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 62%;
+  width: 32%;
 }
 
 /* Add a hover effect for buttons */
@@ -95,80 +104,63 @@ span.psw {
   }
 }
 </style>
-
-     
-		<%
-String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+<%
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+String role = (String)session.getAttribute("ROLE");
+String flightid=  (String)request.getAttribute("Flight_ID");
+String ticketno	=  (String)request.getAttribute("Ticket_no");
+String amount=  (String)request.getAttribute("Amount");
 
-%>		
-<main class="container-fluid">
-		<h3 align="center">Login</h3>
+
+%>
+
+
+
+
+   <main class="container-fluid">
+		<h3 align="center">Payment Details </h3>
 		<div align="center">
-				<form  action="Loginservlet"  method="post" >
+				<form  action="Payment" method="post" >
 				
-				<div class="imgcontainer">
-				<img src="image/images.jpg" alt="Avatar" class="avatar">
-				</div>
+				
 				
 				<div class="container">
-				    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" placeholder="Enter Username" name="username" required>
-<b></b>
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
-
-    <button type="submit">Login</button>
+				    <label for="flightid"><b>Flight Id</b></label>
+    <input type="text" id="flightid" name="flightid" value ="<%=flightid%>" readonly>
+<br></br>
+    <label for="ticketno"><b>Ticket No</b></label>
+    <input type="text"  name="ticketno" value="<%=ticketno%>" readonly>
+<br></br>
+    <label for="amount"><b>Amount</b></label>
+    <input type="text"  name="Amount" value="<%=amount%>" readonly>
+    <br></br>
+    
+      <label for="wallet"><b>Mode</b></label>
+    
+    <input type="radio" id="Creditcard" name="mode"
+				value="Creditcard" > 
+				<label for="Male" >Credit Card</label> 
+				
+				<input type="radio" id="Debitcard" name="mode" value="Debitcard"> 
+				<label for="Female" >Debitcard</label> 
+				<input type="radio" id="Wallet"
+				name="mode" value="Wallet" > <label
+				for="Wallet" >Wallet</label>
+    
+     <br></br>
+    <button type="submit">Pay</button>
    
 				</div>
 				
-				<%
-			
-			String username = request.getParameter("username");
-			
-			
-			%>
-			    
-		<div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-     <a href="ForgetPassword.jsp?username=<%=username %>" class="btn btn-primary" onclick="return validation()">Forget password?</a>
-  </div>
+	
 	
                  	
 	
 				
    </form>
    </div>
-   
-     <script>
-		    function validation()
-		    {
-		    	let username = document.getElementById("username").value;
-		    	
-		    	
-		    if(username == "")
-		    {
-		    	 alert("Please enter the username");  
 
-                 
-		    }
-		    else 	
-		    {
-		    	return true;
-		    }
-		         
-
-		    return false;  
-
-		    }
-		
-		    
-
-
-
-		  
-
-   </script>
    </main>
+
 </body>
 </html>

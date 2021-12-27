@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>GUESTLOGIN</title>
+<title>Login Screen</title>
 </head>
 <body>
-
 <style>
 
 body {
@@ -23,14 +23,14 @@ background-image: url(image/bg9.jpg);
 
 
 form {
- 
-  width:30%;
+  border: 3px solid #f1f1f1;
+  width:43%;
   align:"center";
 }
 
 /* Full-width inputs */
-input[type=tel], input[type=email] {
-  width: 63%;
+input[type=text], input[type=password] {
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -96,42 +96,73 @@ span.psw {
 }
 </style>
 
+     
+		<%
+String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+
+%>		
 <main class="container-fluid">
-		<h3 align="center">Guest Login </h3>
+		<h3 align="center">Forget Password</h3>
 		<div align="center">
-
-
-    		<form name="GuestForm" action="GuestLogin" method="post" >
-    		
-    			<div class="imgcontainer">
+				<form  action="ForgetPassword" name="loginform" method="post" onsubmit = "return passwordvalidation()" >
+				
+				<div class="imgcontainer">
 				<img src="image/images.jpg" alt="Avatar" class="avatar">
 				</div>
 				
-    		      <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
-				 placeholder="Enter Mobile Number" required  
-				 />
+				<div class="container">
+				    <label for="username"><b>Username</b></label>
+    <input type="text" id="username" placeholder="Enter Username" name="username" value ="<%=request.getParameter("username")%>"  required>
+<br></br>
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+<br></br>
+<label for="username"><b>Confirm Password</b></label>
+    <input type="password" id="confirmpassword" placeholder="Enter password" name="confirmpassword" required>
+    <br></br>
+    <button type="submit">Login</button>
+   
+				</div>
 				
+			    
+			    
+		
+	
+                 	
+	
 				
-			<br> 
-			
-			
-			 <input type="email" id="email" name="email" pattern = "[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" 
-				placeholder="Enter email address" required 
-				 />
-			
-						<div style="text-align: center">
-				<button type="Submit"  required 
-					>Submit
-					
-				
-			</div>
-			</form>
-    		
-    </div>
-    </main>
+   </form>
+   </div>
+   
+     <script>
+		    
+		   
+		    function passwordvalidation()
+		    {
+			     var password=document.loginform.password.value 
+				    var password1 = document.loginform.confirmpassword.value
+		    if(password==password1)
+		    {
+                 return true;
+                 
+		    }
+		    else 		    {
+		        alert("password must be same!");  
+
+		    return false;  
+
+		    }
+		}
+		    
 
 
 
 
+
+		  
+
+   </script>
+   </main>
 </body>
 </html>

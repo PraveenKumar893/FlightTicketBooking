@@ -21,6 +21,7 @@ public class Passenger_details
 	private int premiumeconomyseats;
 	private int businessseats;
 	private String Status;
+	private int Amount;
 
 	public String getStatus() {
 		return Status;
@@ -30,7 +31,7 @@ public class Passenger_details
 	}
 	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
 			String destination, LocalDate arrival_date, int economyseat, int premiumeconomyseats, int businessseats,
-			int flight_id, int noOfPassengers) {
+			int flight_id, int noOfPassengers,int TicketNo,int Amount) {
 		super();
 		Passenger_name = passenger_name;
 		Class_details = class_details;
@@ -39,10 +40,12 @@ public class Passenger_details
 		Destination = destination;
 		Arrival_date = arrival_date;
 		Economyseat = economyseat;
-		premiumeconomyseats = premiumeconomyseats;
-		businessseats = businessseats;
+		this.premiumeconomyseats = premiumeconomyseats;
+		this.businessseats = businessseats;
 		Flight_id = flight_id;
 		NoOfPassengers = noOfPassengers;
+		this.TicketNo =TicketNo;
+		this.Amount = Amount;
 	}
 	public Passenger_details(String class_details, long mobile_number, String source, String destination,
 			LocalDate arrival_date, int ticketNo, int seatno, int flight_id,String Status) {
@@ -175,6 +178,12 @@ public class Passenger_details
 		TicketNo = TicketNo;
 		Flight_id = flight_id;
 		NoOfPassengers = noOfPassengers;
+	}
+	public int getAmount() {
+		return Amount;
+	}
+	public void setAmount(int amount) {
+		Amount = amount;
 	}
 				
 }

@@ -4,12 +4,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>GUESTLOGIN</title>
+<title>Insert title here</title>
 </head>
 <body>
-
 <style>
-
 body {
 background-image: url(image/bg9.jpg);
 	background-repeat: no-repeat;
@@ -23,14 +21,22 @@ background-image: url(image/bg9.jpg);
 
 
 form {
- 
-  width:30%;
+  
+  width:50%;
   align:"center";
 }
 
 /* Full-width inputs */
-input[type=tel], input[type=email] {
-  width: 63%;
+input[type=text] {
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+ input[type=radio] {
+  width: 10%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -46,7 +52,7 @@ button {
   margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 62%;
+  width: 32%;
 }
 
 /* Add a hover effect for buttons */
@@ -96,41 +102,53 @@ span.psw {
 }
 </style>
 
-<main class="container-fluid">
-		<h3 align="center">Guest Login </h3>
+ <main class="container-fluid">
+		<h3 align="center">Card Details </h3>
 		<div align="center">
-
-
-    		<form name="GuestForm" action="GuestLogin" method="post" >
-    		
-    			<div class="imgcontainer">
-				<img src="image/images.jpg" alt="Avatar" class="avatar">
+				<form  action="Loginservlet" method="post" >
+				
+				
+				
+				<div class="container">
+				   
+<br></br>
+    <label for="ticketno"><b>Ticket No</b></label>
+    <input type="text"  name="ticketno" readonly>
+<br></br>
+    <label for="cardno"><b>Card No</b></label>
+    <input type="text"  name="cardno" readonly>
+    <br></br>
+    
+  
+    <label for="cardtype"><b>Card Type</b></label>
+    <input type="text"  name="cardtype" readonly>
+<br></br>
+    <label for="holdername"><b>Holder Name</b></label>
+    <input type="text"  name="holdername" readonly>
+    <br></br>
+    
+    <label for="bankname"><b>Bank Name</b></label>
+    <input type="text"  name="bankname" readonly>
+    <br></br>
+    
+      <label for="expirydate"><b>Expiry Date</b></label>
+    <input type="date"  name="expirydate" readonly>
+    <br></br>
+    
+     <br></br>
+    <button type="submit">Pay</button>
+   
 				</div>
-				
-    		      <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
-				 placeholder="Enter Mobile Number" required  
-				 />
-				
-				
-			<br> 
-			
-			
-			 <input type="email" id="email" name="email" pattern = "[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" 
-				placeholder="Enter email address" required 
-				 />
-			
-						<div style="text-align: center">
-				<button type="Submit"  required 
-					>Submit
 					
-				
-			</div>
-			</form>
-    		
-    </div>
-    </main>
-
-
+   </form>
+   </div>
+   
+   <script>
+   setTimeout(function(){
+       window.location.href = 'FlightSearch.jsp';
+    }, 30000);
+</script>
+   </main>
 
 
 </body>

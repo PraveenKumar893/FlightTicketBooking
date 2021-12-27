@@ -108,6 +108,7 @@ return booklist;
 	{
 		 try
 		 {
+			 System.out.println("hi");
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 			System.out.println("inside 11");
@@ -115,7 +116,7 @@ return booklist;
 
 			if(Coach.equalsIgnoreCase("Economy"))
 					{
-
+				System.out.println(economyseats);
 				 sql = "update flight_seats_availabilty set ECOMOMY_SEATS = ?   where FLIGHT_ID = ?";
 					PreparedStatement stmt = con.prepareStatement(sql);
 					stmt.setInt(1,economyseats);
