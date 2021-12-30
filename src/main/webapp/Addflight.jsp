@@ -47,6 +47,23 @@
 				
 				<input type="time" name="Arrivaltime" placeholder = "ArrivalTime" required
 				style="position: relative; left: 382px; height: 30px; top: -54px; width: 230px" />
+				<br>
+				
+				
+				
+				<input type="number" name="ecomomy_seats" placeholder = "ecomomy_seats" required
+				style="position: relative; left: 384px; height: 30px; top: -33px; width: 230px" />
+				<br>
+				
+				
+				<input type="number" name="premium_economy_seats" placeholder = "premium_economy_seats" required
+				style="position: relative; left: 384px; height: 30px; top: -7px; width: 230px" />
+				<br>
+				
+								<input type="number" name="business_seats" placeholder = "business_seats" required
+				style="position: relative; left: 384px; height: 30px; top: 15px; width: 230px" />
+				<br>
+				
 			
                
 

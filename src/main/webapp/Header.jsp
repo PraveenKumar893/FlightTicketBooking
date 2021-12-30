@@ -38,14 +38,14 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				%>
 				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAsAdmin%></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
+				<li class="nav-item"><a class="nav-link" href="login.jsp">Logout</a>
 				</li>
 				<%
 				} else {
 				%>
 				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAsUser%></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
+				<li class="nav-item"><a class="nav-link" href="login.jsp">Logout</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="Mywallet.jsp">My Wallet</a>
 				</li>

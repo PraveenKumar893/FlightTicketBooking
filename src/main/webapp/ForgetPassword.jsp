@@ -111,7 +111,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				<img src="image/images.jpg" alt="Avatar" class="avatar">
 				</div>
 				
-				<div class="container">
+				<div class="container"> 
 				    <label for="username"><b>Username</b></label>
     <input type="text" id="username" placeholder="Enter Username" name="username" value ="<%=request.getParameter("username")%>"  required>
 <br></br>

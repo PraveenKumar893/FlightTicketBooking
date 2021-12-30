@@ -51,7 +51,7 @@
 					<td><%=i%></td>
 					<td><%=objbook.getPassenger_name()%></td>
 					<td><%=objbook.getClass_details()%></td>
-					<td><%=objbook.getMobile_number()%></td>
+			  	<td><%=objbook.getMobile_number()%></td> 
 					
 					<td><%=objbook.getSource()%></td>
 					

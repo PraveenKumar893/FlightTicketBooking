@@ -83,18 +83,30 @@ public class AddFlightservlet extends HttpServlet {
    System.out.println(time);
 //  String str = time.toString();
 //  System.out.println(str);
+   
+  String economyseats = request.getParameter("ecomomy_seats");
+  int ecoseats = Integer.parseInt(economyseats);
+  
+
+  String premiumseats = request.getParameter("premium_economy_seats");
+  int preseats = Integer.parseInt(premiumseats);
+
+  String businessseats = request.getParameter("business_seats");
+  int busseats = Integer.parseInt(businessseats);
+
+  
+  
              AddFlightDao adddao = new AddFlightDao();
              AddFlight flight = new AddFlight(flightname, source, Destination, Economyclass, premiumEconomyclass, Bussinessclass,local,loca1,time);             
             
             int Flight_Id  = adddao.AddFlightDetails(flight);
             System.out.println(Flight_Id);
-             adddao.Addseats(Flight_Id, source, Destination,loca1);
+             adddao.Addseats(Flight_Id, source, Destination,ecoseats,preseats,busseats,loca1);
              
              
 			response.getWriter().print("Data Registered");
-			   			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-				requestDispatcher.forward(request, response);
-			
+			   			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+				requestDispatcher.forward(request, response);		
 				
 			//response.sendRedirect("Login.jsp");
 		} catch (Exception e) {

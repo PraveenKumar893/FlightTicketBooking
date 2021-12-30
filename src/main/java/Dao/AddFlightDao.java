@@ -80,7 +80,7 @@ catch(SQLException e)
     return FlightId;
 
 }
-	public void Addseats(int flightid , String Source, String Destination, LocalDate Departure_Date ) throws ClassNotFoundException, SQLException
+	public void Addseats(int flightid , String Source, String Destination, int economyseats, int premiumseats , int bussinessseats, LocalDate Departure_Date ) throws ClassNotFoundException, SQLException
 	{
 		System.out.println("Method Inside");
 		
@@ -90,16 +90,16 @@ catch(SQLException e)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		
-	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,business_seats,premium_economy_seats,flight_departure_date)values(?,?,?,?,?,?,?)";
+	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,premium_economy_seats,business_seats,flight_departure_date)values(?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt1 =  con.prepareStatement(query);
 		
 		stmt1.setString(1, Source);
 		stmt1.setString(2, Destination);
 		stmt1.setInt(3,flightid);
-		stmt1.setInt(4,30);
-		stmt1.setInt(5,31);
-		stmt1.setInt(6,31);
+		stmt1.setInt(4,economyseats);
+		stmt1.setInt(5,premiumseats);
+		stmt1.setInt(6,bussinessseats);
 		stmt1.setDate(7, java.sql.Date.valueOf(Departure_Date));
 
 		int str = stmt1.executeUpdate();

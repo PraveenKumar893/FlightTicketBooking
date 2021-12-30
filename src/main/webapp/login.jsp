@@ -100,12 +100,12 @@ span.psw {
 		<%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-
+String error  = (String) session.getAttribute("Error");
 %>		
 <main class="container-fluid">
 		<h3 align="center">Login</h3>
 		<div align="center">
-				<form  action="Loginservlet"  method="post" >
+				<form  action="Loginservlet"  method="post"  >
 				
 				<div class="imgcontainer">
 				<img src="image/images.jpg" alt="Avatar" class="avatar">
@@ -131,14 +131,25 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			    
 		<div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-     <a href="ForgetPassword.jsp?username=<%=username %>" class="btn btn-primary" onclick="return validation()">Forget password?</a>
+     <a href="ForgetPassword.jsp?username=<%=username %>" class="btn btn-primary" onclick="return validation()" >Forget password?</a>
   </div>
-	
-                 	
-	
-				
+  
+  
+  
+  
+  		               
+  
+		
    </form>
    </div>
+   <% 
+      	if(error!=null){%>
+      		        <p><%= session.getAttribute("Error")%> </p>
+
+      	<%} %>
+
+        <% session.removeAttribute("Error");%>
+   
    
      <script>
 		    function validation()

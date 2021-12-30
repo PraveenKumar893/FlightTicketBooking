@@ -86,7 +86,12 @@ requestDispatcher.forward(request, response);
 			}
 			else
 			{
-				response.getWriter().print("Data failed");
+				session.setAttribute("Error", "Invalid Crediantals");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+				requestDispatcher.forward(request, response);
+
+
+				//response.getWriter().print("Data failed");
 
 				
 			}
