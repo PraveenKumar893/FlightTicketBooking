@@ -109,6 +109,11 @@ span.psw {
   }
 
 </style>
+<%
+String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
+String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+
+%>
    
    	<main class="container-fluid">
 		<h3 align="center">Booking Details </h3>
@@ -202,16 +207,33 @@ span.psw {
               </select>
              
 			 <br>
+			 <%
+			 if(loggedInAsUser.equalsIgnoreCase("Guest") )
+			 {
+				 %>
 			
 			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
 				name="numberOfPassengers"  min="0" max="8"
-				placeholder="Enter passengers count" oninput="calc()" required autofocus /> <br />
+				placeholder="Enter passengers count" oninput="calculation()" required autofocus /> </br>
 				
 			<br />
+			<%}
+			 
+			 else
+			 {%>
+				 			<label for="numberOfPassengers">Number of passengers:</label>
+			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
+				name="numberOfPassengers"  min="0" max="8"
+				placeholder="Enter passengers count" oninput="calc()" required autofocus /> </br>
+				
+			<br />
+				 
+			<%  }
 			
+			%>
 			 
 			<%
 			
@@ -249,7 +271,8 @@ span.psw {
 				 value="<%=businessClassRate%>" readonly />
 			<br /> <br /> 
 			
-			<label for="price">Price:</label> <input
+			<label for="price">Price:</label> 
+			<input
 				type="number" id="price" name="price" style="position: relative; left: 74px; height: 25px; top: -6px; width: 230px"
 				 readonly /> <br /> <br />
 			<div style="text-align: center">
@@ -267,9 +290,11 @@ span.psw {
 		</div>
 		</main>
    	<script>
-		function calc() {
-			event.preventDefault();
-			
+	function calc() 
+	{
+		event.preventDefault();
+
+
 			
 			let coach = document.getElementById("coach").value;
 				console.log(coach);
@@ -286,10 +311,17 @@ span.psw {
 			
 			let price = 0;
 			let seats = 0;
-			
+			let totalprice = 0;
+
 			switch (coach) {
 			case "premium": {
-				price = numberOfPassengers * economyClassPrice;
+				totalprice = numberOfPassengers * economyClassPrice;
+		        let discount  =  totalprice*0.45;
+		        price    =   totalprice+discount;
+		        console.log(discount);
+		        console.log(totalprice);
+
+
 				document.getElementById("price").value = price;
 				seats  = premiumseats-numberOfPassengers;
 				document.getElementById("PremiumEconomy").value = seats;
@@ -304,7 +336,6 @@ span.psw {
 			
 					  seats = economyseats - numberOfPassengers ;
 					  console.log(seats);
-					 // }
 				document.getElementById("Economy").value = seats;
 
 
@@ -321,10 +352,75 @@ span.psw {
 				break;
 			}
 			}
+	}
+	
+	function calculation() 
+	{
+	    event.preventDefault();
+	    
+	    let coach = document.getElementById("coach").value;
+	        console.log(coach);
+	        
+	        
+	        
+	    let numberOfPassengers = document.getElementById("numberOfPassengers").value;
+	    let economyClassPrice = document.getElementById("economyClassPrice").value;
+	    let businessClassPrice = document.getElementById("businessClassPrice").value;
+	    let firstClassPrice = document.getElementById("firstClassPrice").value;
+	    let premiumseats = document.getElementById("PremiumEconomyclass").value;
+	    let Businesseats = document.getElementById("Bussinessclass").value;
+	    let economyseats = document.getElementById("Economyclass").value;
+	    
+	    let price = 0;
+	    let seats = 0;
+	    let totalprice =0;
+	    switch (coach) {
+	    case "premium": {
+	        price = numberOfPassengers * economyClassPrice;
+	        let discount  =  price*0.45;
+	        totalprice    =   price+discount;
+	        console.log(discount);
+	        console.log(totalprice);
+
+
+	        document.getElementById("price").value = totalprice;
+	        seats  = premiumseats-numberOfPassengers;
+	        document.getElementById("PremiumEconomy").value = seats;
+	       console.log(seats);
+	        
+	        break;
+	    }
+	    case "Economy": {
+	        price = numberOfPassengers * firstClassPrice;
+	        document.getElementById("price").value = price;
+	        
+	    
+	              seats = economyseats - numberOfPassengers ;
+	              console.log(seats);
+	             // }
+	        document.getElementById("Economy").value = seats;
+
+
+
+
+	        break;
+	    }
+	    case "Bussiness": {
+	        price = numberOfPassengers * businessClassPrice;
+	        document.getElementById("price").value = price;
+	        seats  = Businesseats-numberOfPassengers;
+	    document.getElementById("Bussiness").value = seats;
+
+	        break;
+	    }
+	    }
+
+	  }
+
 			
 		
 			
-		}	
+		
 		
 		
 	</script>

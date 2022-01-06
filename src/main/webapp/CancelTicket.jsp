@@ -82,14 +82,27 @@ private static Date getcurrentdate()
 					
 					<!-- <td onclick="tableoption()"> </td> -->
 					
+					<%
+					LocalDate  date  = objcancel.getArrival_date();
+					Date local = java.sql.Date.valueOf(date);
+
+					%>
+				<%
+			if (local.after(getcurrentdate())){
+			%>
+					
 					
 	<td><a href="FlightCancellation.jsp?seatno=<%=objcancel.getSeatno()%>&Flightid=<%=objcancel.getFlight_id()%>&Departuredate=<%=objcancel.getArrival_date()%>
 	&Class=<%=objcancel.getClass_details()%>"
 		class="btn btn-primary" >CancelTicket</a></td>
 							</tr>
-					
+					<% }
+			else
+			{%>
+				<td>CanCelled</td>
+			<%}
 				
-							
+				%>			
 							<%
 				}
 				%>
@@ -98,7 +111,6 @@ private static Date getcurrentdate()
 		           </table>
 			
 			<script>
-			
 		    function tableoption()
 		    {  
 		    console.log("called");

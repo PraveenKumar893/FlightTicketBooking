@@ -52,26 +52,30 @@ String role = (String)session.getAttribute("ROLE");
 				</li>
 				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="Mywallet.jsp">My Wallet</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" href="CancelTicket">Cancel Booking</a>
-				</li>
 				<%
-				}
-				else if(role.equals("guest") && loggedInAsUser!=null)
-					
+				if(loggedInAsUser.equalsIgnoreCase("Guest") )
 				{
-				%>
-		
-				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedguest%></a>
+					%>
+						<li class="nav-item"input type="text"  readonly><a class="nav-link" href= #>My Wallet</a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
-				</li>
+					
+				<%}
+				
+				
+				else
+				{
+					%>
+					<li class="nav-item"input type="text"  ><a class="nav-link" href= "Mywallet.jsp">My Wallet</a>
+			</li>
+
+				<% }%>
+					
+				
 				<li class="nav-item"><a class="nav-link" href="CancelTicket">Cancel Booking</a>
 				</li>
 				<%
 				}
-
+				
 				%>
 			</ul>
 		</div>
