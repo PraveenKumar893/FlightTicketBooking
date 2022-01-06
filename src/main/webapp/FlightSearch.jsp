@@ -1,4 +1,4 @@
-<%@page import="Models.Source"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Source"%>
 <%@page import="Services.FlightService"%>
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -103,7 +103,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 %>
       
  </datalist>
-              <input  type="date" name="date" min="2021-12-10" max="2022-10-26" ><br><br>
+              <input  type="date" name="date" id  = "date" max="2022-10-26" ><br><br>
           
             
             <button  type="submit"  >Submit </button><br><br>
@@ -120,5 +120,23 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
       
     
     </div>
+    
+    <script>
+    today();
+    function today(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var yyyy1= today.getFullYear()+10;
+    maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+    mindate =yyyy + '-' + mm + '-'+ dd  ;
+    document.getElementById("date").setAttribute("max",maxdate);
+    document.getElementById("date").setAttribute("min",mindate);
+
+
+}
+</script>
+    
 </body>
 </html>

@@ -117,7 +117,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
     <h1 style="text-align: center;"> eWallet Deposit</h1>
         <div >
        
-            <form  id="form" action="Wallet" method="post"   >
+            <form  id="form" name ="amountvalid" action="Wallet" method="post"  onsubmit="return validation()" >
             <div class="container">
                   <label for="closingbalance"><b>Closing Balance</b></label>
                   <input type="number" name="closingbalance" value="<%=Closingbalance%>"
@@ -163,5 +163,33 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
            </form>
             </div>
             </main>
+            		   <script>
+		    function validation()
+		    {
+		     var amount=document.amountvalid.depositamount.value 
+		    var confirmamount = document.amountvalid.confirmdepositamount.value
+		    if(amount==confirmamount)
+		    {
+                 return true;
+                 
+		    }
+		    else 		    {
+		        alert("Amount must be same!");  
+
+		    return false;  
+
+		    }
+		}
+		    	
+	 
+		    
+
+
+
+		  
+
+   </script>
+            
 </body>
+
 </html>

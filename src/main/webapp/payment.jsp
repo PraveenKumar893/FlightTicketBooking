@@ -1,4 +1,4 @@
-<%@page import="Models.Source"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Source"%>
 <%@page import="Services.FlightService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -137,12 +137,12 @@ String amount=  (String)request.getAttribute("Amount");
     
       <label for="wallet"><b>Mode</b></label>
     
-    <input type="radio" id="Creditcard" name="mode"
+    <input type="radio" id="Creditcard" name="mode" 
 				value="Creditcard" > 
-				<label for="Male" >Credit Card</label> 
+				<label for="card" >Credit Card</label> 
 				
-				<input type="radio" id="Debitcard" name="mode" value="Debitcard"> 
-				<label for="Female" >Debitcard</label> 
+				<input type="radio" id="Debitcard" name="mode" value="Debitcard" > 
+				<label for="card" >Debitcard</label> 
 				<input type="radio" id="Wallet"
 				name="mode" value="Wallet" > <label
 				for="Wallet" >Wallet</label>
@@ -152,9 +152,7 @@ String amount=  (String)request.getAttribute("Amount");
    
 				</div>
 				
-	
-	
-                 	
+
 	
 				
    </form>

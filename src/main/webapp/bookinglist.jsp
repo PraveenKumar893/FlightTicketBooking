@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@page import="Models.Passenger_details"%>
+        <%@page import="com.FlightTicketReservationSystem.Models.Passenger_details"%>
     <%@page import="java.util.List"%>
-            <%@page import="Dao.Passenger_detailsDao"%>
+            <%@page import="com.FlightTicketReservationSystem.DaoImpl.Passenger_detailsDao"%>
     
     
 <!DOCTYPE html>

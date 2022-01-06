@@ -6,7 +6,8 @@
 <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
-
+String loggedguest = (String)session.getAttribute("LOGGED_IN_USER");
+String role = (String)session.getAttribute("ROLE");
 %>
 	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 		<a class="navbar-brand">Air Line Reservation
@@ -34,18 +35,22 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				<li class="nav-item"><a class="nav-link" href="GuestLogin.jsp">Guest Login</a>
 				</li>
 				<%
-				} else if (loggedInAsUser == null && loggedInAsAdmin != null) {
+				} else if (loggedInAsUser == null && loggedInAsAdmin != null ) {
 				%>
 				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAsAdmin%></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="login.jsp">Logout</a>
+				<li class="nav-item"><a class="nav-link" href ="LogoutServlet">Logout</a>
 				</li>
+				
 				<%
-				} else {
+				} 
+				else if(loggedInAsUser != null && loggedInAsAdmin == null )
+				
+				{
 				%>
 				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedInAsUser%></a>
 				</li>
-				<li class="nav-item"><a class="nav-link" href="login.jsp">Logout</a>
+				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
 				</li>
 				<li class="nav-item"><a class="nav-link" href="Mywallet.jsp">My Wallet</a>
 				</li>
@@ -53,6 +58,20 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				</li>
 				<%
 				}
+				else if(role.equals("guest") && loggedInAsUser!=null)
+					
+				{
+				%>
+		
+				<li class="nav-item"><a class="nav-link" href="#">Welcome <%=loggedguest%></a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" href="CancelTicket">Cancel Booking</a>
+				</li>
+				<%
+				}
+
 				%>
 			</ul>
 		</div>

@@ -1,5 +1,5 @@
-<%@page import="Models.Flight_list"%>
-<%@page import="Dao.FlightSearchDao"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Flight_list"%>
+<%@page import="com.FlightTicketReservationSystem.DaoImpl.FlightSearchDao"%>
 <%@page import="Services.FlightService"%>
 <%@page import="java.time.LocalDate"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -105,6 +105,8 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+  lable{
+  }
 
 </style>
    
@@ -115,19 +117,24 @@ span.psw {
 			<h1>Booking Details</h1>
 			<label for="flightId">Flight Id:</label> 
 			<input type="text"
-				name="flightId" id="flightId" value="<%=request.getParameter("flightId")%>"
+				name="flightId" id="flightId"style="position: relative; left: 65px; height: 23px; top: -1px; width: 229px"
+				 value="<%=request.getParameter("flightId")
+				%>"
 				readonly /> <br /> <br /> 
 				<label for="source">Source:</label> 
 			<input type="text"
-				name="source" id="source" value="<%=request.getParameter("source")%>"
+				name="source" id="source" style="position: relative; left: 70px; height: 24px; top: 1px; width: 230px"
+				value="<%=request.getParameter("source")%>"
 				readonly /> <br /> <br /> 
 				<label for="destination">Destination:</label> 
 			<input type="text"
-				name="destination" id="destination" value="<%=request.getParameter("destination")%>"
+				name="destination" id="destination"style="position: relative; left: 54px; height: 24px; top: 3px; width: 230px"
+				 value="<%=request.getParameter("destination")%>"
 				readonly /> <br /> <br /> 
 				<label for="departuredate">Departure Date:</label> 
 			<input type="text"
-				name="departuredate" id="destination" value="<%=request.getParameter("Departure_Date")%>"
+				name="departuredate" id="destination" style="position: relative; left: 41px; height: 24px; top: 2px; width: 230px"
+				value="<%=request.getParameter("Departure_Date")%>"
 				readonly /> <br /> <br /> 
 				
 				
@@ -153,34 +160,41 @@ span.psw {
 				
 				
 			<input type="hidden"
-				name="Economyclass" id="Economyclass" value="<%=request.getParameter("Economy_class")%>"
+				name="Economyclass" id="Economyclass" 
+				value="<%=request.getParameter("Economy_class")%>"
 				readonly /> 
 			
 			
 				
 				<input type="hidden"
-				name="PremiumEconomyclass" id="PremiumEconomyclass" value="<%=request.getParameter("Premium_Economy_class")%>"
+				name="PremiumEconomyclass" id="PremiumEconomyclass" 
+				value="<%=request.getParameter("Premium_Economy_class")%>"
 				readonly  />  
 				
 								
 				
 				<input type="hidden"
-				name="Bussinessclass" id="Bussinessclass" value="<%=request.getParameter("Bussiness_class")%>"
+				name="Bussinessclass" id="Bussinessclass" 
+				value="<%=request.getParameter("Bussiness_class")%>"
 				readonly />  
 				
 				
 				<label for="username">Passenger
 				Name:</label> 
-				<input type="text" name="username" id="username" required autofocus /> <br />
+				<input type="text" name="username" id="username" style="position: relative; left: 35px; height: 24px; top: 1px; width: 230px"
+				required autofocus /> <br />
 				
 				 <br /> <br /> 
 				<label for="MobileNumber">Mobile No:</label> <input
-				type="text" name="MobileNumber"  placeholder="Enter mobile number"
+				type="text" name="MobileNumber"  placeholder="Enter mobile number"style="position: relative; left: 52px; height: 25px; top: -6px; width: 230px"
 				 required autofocus /> <br /> <br />
 				 
-				 				<label for="coach">Coach:</label> 
+				 				<label for="coach" style="position: relative; left: -4px; height: 25px; top: -6px; width: 230px"
+				 				
+				 				>Coach:</label> 
 				  
-				<select name="coach" id="coach"  >
+				<select name="coach" id="coach" style="position: relative; left: 66px; height: 26px; top: -6px; width: 230px"
+				 >
                 
                 <option value="Bussiness">Business Class</option>
                 <option value="Economy">economy</option>
@@ -190,7 +204,8 @@ span.psw {
 			 <br>
 			
 			<label for="numberOfPassengers">Number of passengers:</label>
-			<input type="number" id="numberOfPassengers"
+			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
+			
 				name="numberOfPassengers"  min="0" max="8"
 				placeholder="Enter passengers count" oninput="calc()" required autofocus /> <br />
 				
@@ -217,22 +232,31 @@ span.psw {
 			  
 					<label for="numberOfPassengers">Economy Price</label>
 			
-			<input type="text" id="firstClassPrice"
+			<input type="text" id="firstClassPrice"style="position: relative; left: 41px; height: 25px; top: -1px; width: 230px"
+			
 				value="<%=firstClassRate%>" readonly /> <br /> <br /> 
 				
-					<label for="numberOfPassengers">Premium Economy Price:</label>
+					<label for="numberOfPassengers">  Premium Economy Price</label>
 				<input
-				type="text" id="economyClassPrice" value="<%=economyClassRate%>"
+				type="text" id="economyClassPrice" style="position: relative; left: 13px; height: 25px; top: 3px; width: 230px"
+				
+				value="<%=economyClassRate%>"
 				readonly /> <br /> <br /> 
 					<label for="numberOfPassengers">Business Class Price:</label>
 				<input type="text"
-				id="businessClassPrice" value="<%=businessClassRate%>" readonly />
-			<br /> <br /> <label for="price">Price:</label> <input
-				type="number" id="price" name="price" readonly /> <br /> <br />
+				id="businessClassPrice"style="position: relative; left: 27px; height: 25px; top: 0px; width: 230px"
+				
+				 value="<%=businessClassRate%>" readonly />
+			<br /> <br /> 
+			
+			<label for="price">Price:</label> <input
+				type="number" id="price" name="price" style="position: relative; left: 74px; height: 25px; top: -6px; width: 230px"
+				 readonly /> <br /> <br />
 			<div style="text-align: center">
 			 
                	 
-			<button type="submit">ConfirmDetails</button>
+			<button type="submit"style="position: relative; left: 52px; height: 25px; top: -6px; width: 230px"
+			 >ConfirmDetails</button>
 			
 				   	 
        
@@ -265,7 +289,7 @@ span.psw {
 			
 			switch (coach) {
 			case "premium": {
-				price = numberOfPassengers * firstClassPrice;
+				price = numberOfPassengers * economyClassPrice;
 				document.getElementById("price").value = price;
 				seats  = premiumseats-numberOfPassengers;
 				document.getElementById("PremiumEconomy").value = seats;
@@ -274,7 +298,7 @@ span.psw {
 				break;
 			}
 			case "Economy": {
-				price = numberOfPassengers * economyClassPrice;
+				price = numberOfPassengers * firstClassPrice;
 				document.getElementById("price").value = price;
 				
 			

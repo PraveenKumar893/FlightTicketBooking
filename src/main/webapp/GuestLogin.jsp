@@ -95,7 +95,13 @@ span.psw {
   }
 }
 </style>
+<%
 
+String loggedguest = (String)session.getAttribute("LOGGED");
+String role = (String)session.getAttribute("ROLE");
+
+
+%>
 <main class="container-fluid">
 		<h3 align="center">Guest Login </h3>
 		<div align="center">

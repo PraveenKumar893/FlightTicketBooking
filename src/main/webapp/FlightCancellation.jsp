@@ -13,6 +13,19 @@
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
 				
+				<input type="number" name="Flightid" value= "<%=request.getParameter("Flightid")%>" readonly
+				 required autofocus
+				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
+				
+				<input type="date" name="DepartureDate" value= "<%=request.getParameter("Departuredate")%>" readonly
+				 required autofocus
+				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
+				
+								<input type="text" name="Class" value= "<%=request.getParameter("Class")%>" readonly
+				 required autofocus
+				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
+				
+				
 				
 				<button type="Submit"  required 
 					style="position: relative; left: 40px; height: 30px; top: 110px; width: 230px">

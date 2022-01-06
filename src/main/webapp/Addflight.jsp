@@ -37,11 +37,11 @@
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
-								<input type="date" name="ArrivalDate" placeholder = "ArrivalDate" required
+								<input type="date" name="ArrivalDate" id="Arrivaldate" placeholder = "ArrivalDate" required
 				style="position: relative; left: 40px; height: 30px; top:120px; width: 230px" />
 				<br>
 				
-								<input type="date" name="DepartureDate" placeholder = "ArrivalDate" required
+								<input type="date" name="DepartureDate" id="DepartureDate" placeholder = "DepartureDate" required
 				style="position: relative; left: 45px; height: 30px; top: 130px; width: 230px" />
 				<br>
 				
@@ -75,6 +75,41 @@
 				AddFlight	</button>
 			</div>
 		</form>
+    <script>
     
+    today();
+    function today()
+    {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var yyyy1= today.getFullYear()+10;
+    maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+    mindate =yyyy + '-' + mm + '-'+ dd  ;
+    document.getElementById("Arrivaldate").setAttribute("max",maxdate);
+    document.getElementById("Arrivaldate").setAttribute("min",mindate);
+
+    }
+    todaydate();
+    function todaydate()
+    {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var yyyy1= today.getFullYear()+10;
+    maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+    mindate =yyyy + '-' + mm + '-'+ dd  ;
+    document.getElementById("DepartureDate").setAttribute("max",maxdate);
+    document.getElementById("DepartureDate").setAttribute("min",mindate);
+
+    }
+
+    
+    
+    
+    
+    </script>
 </body>
 </html>

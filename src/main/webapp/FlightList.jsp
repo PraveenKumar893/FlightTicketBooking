@@ -1,4 +1,4 @@
-<%@page import="Models.Flight_list"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Flight_list"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -53,9 +53,13 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<th>Flight name</th>
 					<th>Departing From</th>
 					<th>Departing To</th>
-					<th>First Class</th>
 					<th>Economy Class</th>
+					<th>Premium Economy Class</th>
 					<th>Business Class</th>
+					<th>Arrival_Date</th>
+					<th>Departure_Date</th>
+					
+					
 					
 					
 					<%
@@ -95,6 +99,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<td> <%=flight.getEconomy_class()%></td>
 					<td> <%=flight.getPremium_Economy_class()%></td>
 					<td> <%=flight.getBussiness_class()%></td>
+					<td> <%=flight.getArrival_Time()%></td>
+					<td> <%=flight.getDeparture_time()%></td>
+					
 					
 					
 					

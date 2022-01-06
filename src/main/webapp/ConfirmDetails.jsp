@@ -1,4 +1,4 @@
-<%@page import="Models.Passenger_details"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Passenger_details"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 
@@ -116,57 +116,73 @@ Passenger_details passengers  = (Passenger_details) request.getAttribute("Passen
 		   		<form action="AddPassenger" method="post">
 		
  
-            <label for="username">UserName</label> 
-				<input type="text" name="username" id="username" value="<%=passengers.getPassenger_name()%>"readonly /> 
+            <label for="username" style="position: relative; left: 20px; height: 25px; top: 4px; width: 230px"
+            >PassengerName</label> 
+				<input type="text" name="username" id="username" style="position: relative; left: 29px; height: 25px; top: 5px; width: 210px"
+				value="<%=passengers.getPassenger_name()%>"readonly /> 
 				<br/>
 				<br>
 				<br>
             
 				
 				
-				 <label for="coach">CoachDetails</label> 
+				 <label for="coach"style="position: relative; left: 23px; height: 25px; top: -6px; width: 230px"
+				 >CoachDetails</label> 
             
 			<input type="text"
-				name="coach" id="flightId" value="<%=passengers.getClass_details()%>"
+				name="coach" id="flightId"  style="position: relative; left: 38px; height: 25px; top: -6px; width: 210px"
+				value="<%=passengers.getClass_details()%>"
 				readonly /> <br /> <br /> 
 				
 				
-				 <label for="MobileNumber">MobileNumber</label> 
+				 <label for="MobileNumber"style="position: relative; left: 23px; height: 25px; top: -6px; width: 230px"
+				 >MobileNumber</label> 
             
-			<input type="text"
-				name="MobileNumber" id="MobileNumber" value="<%=passengers.getMobile_number()%>"
+			<input type="number"
+				name="MobileNumber" id="MobileNumber" style="position: relative; left: 32px; height: 25px; top: -6px; width: 210px"
+				value="<%=passengers.getMobile_number()%>"
 				readonly /> <br /> <br /> 
 				
 				
-				 <label for="source">Source</label> 
+				 <label for="source" style="position: relative; left: 22px; height: 25px; top: -6px; width: 230px"
+				 >Source</label> 
             
 			<input type="text"
-				name="source" id="flightId" value="<%=passengers.getSource()%>"
+				name="source" id="flightId"style="position: relative; left: 61px; height: 25px; top: -6px; width: 210px"
+				 value="<%=passengers.getSource()%>"
 				readonly /> <br /> <br /> 
 				
 				
-				 <label for="destination">Destination</label> 
+				 <label for="destination" style="position: relative; left: 29px; height: 25px; top: -6px; width: 230px"
+				 >Destination</label> 
             
 			<input type="text"
-				name="destination" id="flightId" value="<%=passengers.getDestination()%>"
+				name="destination" id="flightId"style="position: relative; left: 47px; height: 25px; top: -6px; width: 210px"
+				 value="<%=passengers.getDestination()%>"
 				readonly /> <br /> <br /> 
 				
-				 <label for="bookingDate">BookingDate</label> 
+				 <label for="bookingDate" style="position: relative; left: 38px; height: 25px; top: -6px; width: 230px"
+				 >BookingDate</label> 
             
 			<input type="text"
-				name="bookingDate" id="flightId" value="<%=passengers.getArrival_date()%>"
+				name="bookingDate" id="flightId"style="position: relative; left: 44px; height: 25px; top: -6px; width: 210px"
+				 value="<%=passengers.getArrival_date()%>"
 				readonly /> <br /> <br /> 
 				
-				 <label for="numberOfPassengers">NoOfPassengers</label> 
+				 <label for="numberOfPassengers" style="position: relative; left: 25px; height: 25px; top: -6px; width: 230px"
+				 >NoOfPassengers</label> 
             
 			<input type="text"
-				name="numberOfPassengers" id="flightId" value="<%=passengers.getNoOfPassengers()%>"
+				name="numberOfPassengers" id="flightId"style="position: relative; left: 34px; height: 25px; top: -6px; width: 210px"
+				 value="<%=passengers.getNoOfPassengers()%>"
 				readonly /> <br /> <br /> 
 				
 				
-				            <label for="flightId">Flight Id:</label>
+				            <label for="flightId" style="position: relative; left: 26px; height: 25px; top: -6px; width: 230px"
+				            >Flight Id</label>
 			<input type="text"
-				name="flightId" id="flightId" value="<%=passengers.getFlight_id()%>"
+				name="flightId" id="flightId" style="position: relative; left: 55px; height: 25px; top: -6px; width: 210px"
+				value="<%=passengers.getFlight_id()%>"
 				readonly /> <br /> <br /> 
 				
 				<input type="hidden"

@@ -5,11 +5,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//import Dao.FlightSearchDao;
-import Dao.SourceDao;
-import Dao.WalletDao;
-import Models.Flight_list;
-import Models.Source;
+import com.FlightTicketReservationSystem.DaoImpl.SourceDao;
+import com.FlightTicketReservationSystem.DaoImpl.WalletDao;
+import com.FlightTicketReservationSystem.Models.Flight_list;
+import com.FlightTicketReservationSystem.Models.Source;
 
 public class FlightService {
 	

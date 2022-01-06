@@ -1,8 +1,10 @@
 
-<%@page import="Models.Flight_list"%>
-<%@page import="Dao.FlightSearchDao"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Flight_list"%>
+<%@page import="com.FlightTicketReservationSystem.DaoImpl.FlightSearchDao"%>
 <%@page import="Services.FlightService"%>
 <%@page import="java.time.LocalDate"%>
+<%@page import="java.util.Date"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -35,7 +37,9 @@
 			String source = flight.getSource();
 			String destination = flight.getDestination();
 			String flightname = flight.getFlight_name();
-			
+			Date Arrival_date  = flight.getArrival_Time();
+			Date Departure_date  = flight.getDeparture_time();
+
 			
 			%>
 			
@@ -66,6 +70,14 @@
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
+							<input type="date"  name="ArrivalDate" placeholder="Bussinessclass" value="<%=Arrival_date%>"  
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
+				<br> 
+				
+							<input type="date"  name="DepartureDate" placeholder="Bussinessclass" value="<%=Departure_date%>"  
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
+				<br> 
+				
 				
 				
 				
@@ -81,7 +93,7 @@
 			<div style="text-align: center">
 				<button type="Submit"  required 
 					style="position: relative; left: 40px; height: 30px; top: 110px; width: 230px">
-				SIGNUp	</button>
+				SUBMIT	</button>
 			</div>
 		</form>
 		

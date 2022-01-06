@@ -113,12 +113,19 @@ String error  = (String) session.getAttribute("Error");
 				
 				<div class="container">
 				    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" placeholder="Enter Username" name="username" required>
+    <input type="text" id="username" placeholder="Enter Username" name="username"  required>
+    
 <b></b>
-    <label for="password"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" required>
 
-    <button type="submit">Login</button>
+    <label for="password"><b>Password</b></label>
+    <input type="password" id = "Password"  placeholder="Enter Password" name="password" required>
+    
+
+    <button type="submit"  >Login</button>
+    
+    
+    
+    
    
 				</div>
 				
@@ -142,14 +149,7 @@ String error  = (String) session.getAttribute("Error");
 		
    </form>
    </div>
-   <% 
-      	if(error!=null){%>
-      		        <p><%= session.getAttribute("Error")%> </p>
-
-      	<%} %>
-
-        <% session.removeAttribute("Error");%>
-   
+      
    
      <script>
 		    function validation()
@@ -172,6 +172,47 @@ String error  = (String) session.getAttribute("Error");
 		    return false;  
 
 		    }
+		    
+		    
+		    function validlogin()
+		    {
+			    console.log("called");
+		        let uname =document.getElementById("username").value;
+		        let pass =document.getElementById("Password").value;
+		        
+		        console.log(uname);
+		   // var url="Exceptionlogin.jsp?loginfor="+loginfor;
+
+	        console.log(uname);
+
+		    if(window.XMLHttpRequest){  
+		    request=new XMLHttpRequest();  
+		    }  
+		    else if(window.ActiveXObject){  
+		    request=new ActiveXObject("Microsoft.XMLHTTP");  
+		    }  
+		    try  
+		    {  
+		    request.onreadystatechange=getInfo;  
+		    request.open("GET",url,true); 
+		    request.send();
+		    }  
+		    catch(e)  
+		    {  
+		    alert("Unable to connect to server"); 
+		    }
+		        
+
+		    }
+		    
+		    function getInfo()
+		    {  
+		    	if(request.readyState==4){  
+		    	var loginresponse =request.responseText;  
+		    	document.getElementById('Validresponse').innerHTML=loginresponse;  
+		    	}  
+		    }  
+
 		
 		    
 

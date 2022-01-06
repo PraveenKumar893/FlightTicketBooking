@@ -107,7 +107,7 @@ span.psw {
 			<main class="container-fluid">
 		<h3 align="center">New User Registration Form </h3>
 		<div align="center">	
-		<form name="RegisterForm" action="FlightRegister" method="post" onsubmit="return validation()" >
+		<form name="RegisterForm" action="FlightRegister" method="post"  >
 		
 		<div class="container">
 			
@@ -116,8 +116,12 @@ span.psw {
 				/>
 				
 			<br> <input type="email" id="email" name="email" pattern = "[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" 
+			onkeyup="sendemail()"
 				placeholder="Enter email address" required 
 				 />
+				 
+				 <br>
+				 <p id = "emailresponse"></p>
 			
 			
 			<br> <input type="text" name="username"
@@ -130,11 +134,11 @@ span.psw {
 				/>
 				
 			<br> <input type="password" name="password1"
-				placeholder="Confirm Password " required
+				placeholder="Confirm Password " required  
 				 /><br>
 				
 			<input type="radio" id="Male" name="Gender"
-				value="Male" > 
+				value="Male"  > 
 				<label for="Male" >Male</label> 
 				
 				<input type="radio" id="Female" name="Gender" value="Female"> 
@@ -145,7 +149,7 @@ span.psw {
 
 
                		 <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
-				 placeholder="Enter Mobile Number" required  
+				 placeholder="Enter Mobile Number" required  onkeydown="return validation()"
 				 />
 				
 				
@@ -155,7 +159,7 @@ span.psw {
 
 
 			<div style="text-align: center">
-				<button type="Submit"  required 
+				<button type="Submit"  required     onclick="alert('Data Registered')" 
 					>
 				Register	</button>
 			</div>
@@ -179,6 +183,42 @@ span.psw {
 
 		    }
 		}
+		    
+		    function sendemail()
+		    {  
+		    console.log("called");
+		        let email=document.getElementById("email").value;
+		        console.log(email);
+		    var url="Exception.jsp?email="+email;  
+		    if(window.XMLHttpRequest){  
+		    request=new XMLHttpRequest();  
+		    }  
+		    else if(window.ActiveXObject){  
+		    request=new ActiveXObject("Microsoft.XMLHTTP");  
+		    }  
+		    try  
+		    {  
+		    request.onreadystatechange=getInfo;  
+		    request.open("GET",url,true);  
+		    request.send();  
+		    }  
+		    catch(e)  
+		    {  
+		    alert("Unable to connect to server");  
+		    }
+		        
+		       }
+		    
+		    function getInfo(){  
+		    	if(request.readyState==4){  
+		    	var response =request.responseText;  
+		    	document.getElementById('emailresponse').innerHTML=response;  
+		    	}  
+		    	}  
+
+
+		    	
+	 
 		    
 
 

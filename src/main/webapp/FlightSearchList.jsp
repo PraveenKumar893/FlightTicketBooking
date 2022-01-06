@@ -1,4 +1,4 @@
-<%@page import="Models.Flight_Seat_Availability"%>
+<%@page import="com.FlightTicketReservationSystem.Models.Flight_Seat_Availability"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -26,8 +26,10 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		List<Flight_Seat_Availability> flights = (List<Flight_Seat_Availability>)request.getAttribute("Flight_List");
 		if (flights != null) {
 		%>
-		
-		<a href="FlightSearch.jsp" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br /> 
+		 
+		<a href="FlightSearch.jsp" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br />; 
+
+
  
 		<table border="2">
 			<h1><b>Flight List</b></h1>
@@ -42,6 +44,13 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<th>Economy Class</th>
 					<th>PremiumEconomyClass</th>
 					<th>Business Class</th>
+				    <th>Economy Rate</th>
+					<th>Premium Rate</th>
+					<th>Business Rate</th>
+					
+										
+					
+					
 					<%
 			if (loggedInAsUser != null) {
 			%>
@@ -73,6 +82,11 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<td> <%=flight.getEconomy_class()%></td>
 					<td><%=flight.getPremium_Economy_class()%></td>
 					<td> <%=flight.getBussiness_class()%></td>
+					<td> <%=flight.getEconomy_rate()%></td>
+					<td> <%=flight.getPremium_Economy_rate()%></td>					
+					<td> <%=flight.getBussiness_rate()%></td>
+					
+					
 					
 					<%
 			if (loggedInAsUser != null) {

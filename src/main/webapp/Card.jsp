@@ -112,9 +112,6 @@ span.psw {
 				<div class="container">
 				   
 <br></br>
-    <label for="ticketno"><b>Ticket No</b></label>
-    <input type="text"  name="ticketno" readonly>
-<br></br>
     <label for="cardno"><b>Card No</b></label>
     <input type="text"  name="cardno" readonly>
     <br></br>
@@ -136,7 +133,7 @@ span.psw {
     <br></br>
     
      <br></br>
-    <button type="submit">Pay</button>
+    <button type="submit"><a href="FlightSearch.jsp">PAY</a></button>
    
 				</div>
 					
