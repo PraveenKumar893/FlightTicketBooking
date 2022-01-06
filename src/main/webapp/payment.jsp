@@ -124,7 +124,6 @@ String amount=  (String)request.getAttribute("Amount");
 				
 				
 				
-				<div class="container">
 				    <label for="flightid"><b>Flight Id</b></label>
     <input type="text" id="flightid" name="flightid" value ="<%=flightid%>" readonly>
 <br></br>
@@ -135,7 +134,11 @@ String amount=  (String)request.getAttribute("Amount");
     <input type="text"  name="Amount" value="<%=amount%>" readonly>
     <br></br>
     
-      <label for="wallet"><b>Mode</b></label>
+		<div>
+		<%
+			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
+			%>
+				      <label for="wallet"><b>Mode</b></label>
     
     <input type="radio" id="Creditcard" name="mode" 
 				value="Creditcard" > 
@@ -143,22 +146,79 @@ String amount=  (String)request.getAttribute("Amount");
 				
 				<input type="radio" id="Debitcard" name="mode" value="Debitcard" > 
 				<label for="card" >Debitcard</label> 
-				<input type="radio" id="Wallet"
-				name="mode" value="Wallet" > <label
+				
+				<% }
+			else
+			{
+				%>
+				      <label for="wallet"><b>Mode</b></label>
+    
+    <input type="radio" id="yesCheck" name="yesCheck" onclick="yesnoCheck()"
+				value="Creditcard" > 
+				<label for="card" >Credit Card</label> 
+				
+				<input type="radio" id="valuecheck" name="valuecheck"   onclick="yesnoCheck()" value="Debitcard"> 
+				<label for="card" >Debitcard</label> 
+				
+                    				<input type="radio" id="Wallet" 
+				name="yesCheck" value="Wallet"  > <label
 				for="Wallet" >Wallet</label>
+                    
+			<% }
+			
+			%>
+			
+    		</div>
+    		
+    		<div id="ifYes" style="visibility:hidden">
+     <br></br>
+         <label for="cardno"><b>Card No</b></label>
+    <input type="text"  name="cardno" readonly>
+    <br></br>
+    
+  
+    <label for="cardtype"><b>Card Type</b></label>
+    <input type="text"  name="cardtype" readonly>
+<br></br>
+    <label for="holdername"><b>Holder Name</b></label>
+    <input type="text"  name="holdername" readonly>
+    <br></br>
+    
+    <label for="bankname"><b>Bank Name</b></label>
+    <input type="text"  name="bankname" readonly>
+    <br></br>
+    
+      <label for="expirydate"><b>Expiry Date</b></label>
+    <input type="date"  name="expirydate" readonly>
+    <br></br>
     
      <br></br>
-    <button type="submit">Pay</button>
+    <button type="submit"><a href="FlightSearch.jsp">PAY</a></button>
    
 				</div>
-				
-
-	
+     
 				
    </form>
-   </div>
 
    </main>
+   <script>
+   function yesnoCheck() {
+	    if (document.getElementById('yesCheck').checked) 
+	    {
+	        document.getElementById('ifYes').style.visibility = 'visible';
+	    }
+	    else if(document.getElementById('valuecheck').checked)
+	    	{
+	         document.getElementById('ifYes').style.visibility = 'visible';
+	    	}
+	}   
+   
+   
+   setTimeout(function(){
+       window.location.href = 'FlightSearch.jsp';
+    }, 10000);
+</script>
+
 
 </body>
 </html>

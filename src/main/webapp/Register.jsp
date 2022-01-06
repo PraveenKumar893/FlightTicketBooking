@@ -116,28 +116,44 @@ span.psw {
 				/>
 				
 			<br> <input type="email" id="email" name="email" pattern = "[a-zA-z][A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" 
-			onkeyup="sendemail()"
+onkeyup="sendemail()"
 				placeholder="Enter email address" required 
-				 />
+				 />	
+				<p style="position: relative; top: -130px; left: -127px" id = "emailresponse"></p>  
+				<p style="position: relative; top: -130px; left: -127px" id = "validresponse"></p>
+				 				 								 
+				 
 				 
 				 <br>
-				 <p id = "emailresponse"></p>
+				 
 			
 			
-			<br> <input type="text" name="username"
-				pattern="[A-Za-z\s]{3,8}"  placeholder="Enter User name" required
+			<br> <input type="text" id="username" name="username"onkeyup="validemail()"  
+				pattern="[A-Za-z\s]{3,8}"  placeholder="Enter User name" style="position: relative;top: -42px"  required
 				autofocus  
-				/>
+				/>	<br>			 <p id = "userresponse"></p>
+				
 				<br>
 				
-				<input type="password" name="password"placeholder="Enter new password" required
+				
+				<input type="password" name="password"placeholder="Enter new password" onkeyup="validuser()" 
+					style="position: relative;top: -76px"
+				required
 				/>
 				
-			<br> <input type="password" name="password1"
-				placeholder="Confirm Password " required  
+			<br> <input type="password" name="password1"style="position: relative;top: -64px"
+				required  placeholder="Confirm Password " 
 				 /><br>
 				
-			<input type="radio" id="Male" name="Gender"
+
+
+               		 <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
+				 placeholder="Enter Mobile Number" style="position: relative;top: -55px" required  onkeydown="return validation()"
+				 />
+				
+				
+			<br> 
+						<input type="radio" id="Male" name="Gender"
 				value="Male"  > 
 				<label for="Male" >Male</label> 
 				
@@ -146,20 +162,13 @@ span.psw {
 				<input type="radio" id="Others"
 				name="Gender" value="Others" > <label
 				for="Others" >Others</label>
-
-
-               		 <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
-				 placeholder="Enter Mobile Number" required  onkeydown="return validation()"
-				 />
-				
-				
-			<br> 
+			
                
 
 
 
 			<div style="text-align: center">
-				<button type="Submit"  required     onclick="alert('Data Registered')" 
+				<button type="Submit"  style="position: relative;top: 4px" required     onclick="alert('Data Registered')" 
 					>
 				Register	</button>
 			</div>
@@ -215,6 +224,70 @@ span.psw {
 		    	document.getElementById('emailresponse').innerHTML=response;  
 		    	}  
 		    	}  
+
+		    function validemail()
+		    {  
+		    console.log("called");
+		        let email=document.getElementById("email").value;
+		        console.log(email);
+		    var url="validemail.jsp?email="+email;  
+		    if(window.XMLHttpRequest){  
+		    request=new XMLHttpRequest();  
+		    }  
+		    else if(window.ActiveXObject){  
+		    request=new ActiveXObject("Microsoft.XMLHTTP");  
+		    }  
+		    try  
+		    {  
+		    request.onreadystatechange=getInfo;  
+		    request.open("GET",url,true);  
+		    request.send();  
+		    }  
+		    catch(e)  
+		    {  
+		    alert("Unable to connect to server");  
+		    }
+		        
+		       }
+		    
+		    function getInfo(){  
+		    	if(request.readyState==4){  
+		    	var response =request.responseText;  
+		    	document.getElementById('validresponse').innerHTML=response;  
+		    	}  
+		    	}  
+		    function validuser()
+		    {  
+		    console.log("called");
+		        let username=document.getElementById("username").value;
+		        console.log(username);
+		    var url="validusername.jsp?username="+username;  
+		    if(window.XMLHttpRequest){  
+		    request=new XMLHttpRequest();  
+		    }  
+		    else if(window.ActiveXObject){  
+		    request=new ActiveXObject("Microsoft.XMLHTTP");  
+		    }  
+		    try  
+		    {  
+		    request.onreadystatechange=getInfo;  
+		    request.open("GET",url,true);  
+		    request.send();  
+		    }  
+		    catch(e)  
+		    {  
+		    alert("Unable to connect to server");  
+		    }
+		        
+		       }
+		    
+		    function getInfo(){  
+		    	if(request.readyState==4){  
+		    	var response =request.responseText;  
+		    	document.getElementById('userresponse').innerHTML=response;  
+		    	}  
+		    	}  
+
 
 
 		    	

@@ -105,9 +105,9 @@ public class AddFlightservlet extends HttpServlet {
              
              
 			response.getWriter().print("Data Registered");
-			   			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
-				requestDispatcher.forward(request, response);		
-				
+//			   			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightList.jsp");
+//				requestDispatcher.forward(request, response);	
+			response.sendRedirect("FlightSearch.jsp");				
 			//response.sendRedirect("Login.jsp");
 		} catch (Exception e) {
 			//e.printStackTrace();

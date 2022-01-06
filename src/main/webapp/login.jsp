@@ -108,7 +108,7 @@ String error  = (String) session.getAttribute("Error");
 				<form  action="Loginservlet"  method="post"  >
 				
 				<div class="imgcontainer">
-				<img src="image/images.jpg" alt="Avatar" class="avatar">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz3d0MRSXuPw&usqp=CAU" alt="Avatar" class="avatar">
 				</div>
 				
 				<div class="container">
@@ -120,8 +120,9 @@ String error  = (String) session.getAttribute("Error");
     <label for="password"><b>Password</b></label>
     <input type="password" id = "Password"  placeholder="Enter Password" name="password" required>
     
+    				 <p id = "loginresponse"></p>
 
-    <button type="submit"  >Login</button>
+    <button type="submit"  onkeyup="validlogin()">Login</button>
     
     
     
@@ -138,7 +139,7 @@ String error  = (String) session.getAttribute("Error");
 			    
 		<div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-     <a href="ForgetPassword.jsp?username=<%=username %>" class="btn btn-primary" onclick="return validation()" >Forget password?</a>
+     <a href="ForgetPassword.jsp?username=<%=username %>" class="btn btn-primary"  >Forget password?</a>
   </div>
   
   
@@ -178,10 +179,9 @@ String error  = (String) session.getAttribute("Error");
 		    {
 			    console.log("called");
 		        let uname =document.getElementById("username").value;
-		        let pass =document.getElementById("Password").value;
 		        
 		        console.log(uname);
-		   // var url="Exceptionlogin.jsp?loginfor="+loginfor;
+		   var url="Exceptionlogin.jsp?uname="+uname;
 
 	        console.log(uname);
 
@@ -209,7 +209,7 @@ String error  = (String) session.getAttribute("Error");
 		    {  
 		    	if(request.readyState==4){  
 		    	var loginresponse =request.responseText;  
-		    	document.getElementById('Validresponse').innerHTML=loginresponse;  
+		    	document.getElementById('loginresponse').innerHTML=loginresponse;  
 		    	}  
 		    }  
 

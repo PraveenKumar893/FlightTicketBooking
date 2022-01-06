@@ -265,14 +265,40 @@ return booklist;
             {
 				 sql = "update flight_seats_availabilty set Ecomomy_seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
 					PreparedStatement stmt = con.prepareStatement(sql);
-					stmt.setInt(1, seats -1);
+					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
 					;
                  stmt.executeUpdate();
      			System.out.println("Function 4");
 
+            }  
+            if(classdetails.equalsIgnoreCase("premium"))
+            {
+				 sql = "update flight_seats_availabilty set Premium_Economy_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1, seats +1);
+					stmt.setInt(2, flightid);
+					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
+					;
+                 stmt.executeUpdate();
+     			System.out.println("Function PE4");
+
+            }  
+            if(classdetails.equalsIgnoreCase("business"))
+            {
+				 sql = "update flight_seats_availabilty set Business_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
+					PreparedStatement stmt = con.prepareStatement(sql);
+					stmt.setInt(1, seats +1);
+					stmt.setInt(2, flightid);
+					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
+					;
+                 stmt.executeUpdate();
+     			System.out.println("Function pe4");
+
             }     
+
+
 }
 		 
 		 catch(Exception e)
@@ -308,11 +334,19 @@ return booklist;
 					return seats;
 
 				}
-				else
+				else if(classdetails.equalsIgnoreCase("premium"))
+
 				{
-					  seats   = rs.getInt(2);
+					  seats   = rs.getInt("Premium_Economy_Seats");
 					return seats;
 				}
+				else if(classdetails.equalsIgnoreCase("business"))
+
+				{
+					  seats   = rs.getInt("Business_Seats");
+					return seats;
+				}
+
 				
 		 }
 		 }

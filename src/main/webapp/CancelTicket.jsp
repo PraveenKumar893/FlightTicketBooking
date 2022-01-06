@@ -85,6 +85,7 @@ private static Date getcurrentdate()
 					<%
 					LocalDate  date  = objcancel.getArrival_date();
 					Date local = java.sql.Date.valueOf(date);
+					String status =  objcancel.getStatus();
 
 					%>
 				<%
@@ -92,11 +93,23 @@ private static Date getcurrentdate()
 			%>
 					
 					
-	<td><a href="FlightCancellation.jsp?seatno=<%=objcancel.getSeatno()%>&Flightid=<%=objcancel.getFlight_id()%>&Departuredate=<%=objcancel.getArrival_date()%>
+							<%
+							 if(status.equals("Cancelled"))
+								{
+								%>
+								<td>ALCANCELLED</td>
+								<%}
+							 else
+							 {%>
+								 	<td><a href="FlightCancellation.jsp?seatno=<%=objcancel.getSeatno()%>&Flightid=<%=objcancel.getFlight_id()%>&Departuredate=<%=objcancel.getArrival_date()%>
 	&Class=<%=objcancel.getClass_details()%>"
 		class="btn btn-primary" >CancelTicket</a></td>
 							</tr>
+								 
+							<%  }
+							%>
 					<% }
+				
 			else
 			{%>
 				<td>CanCelled</td>
@@ -110,57 +123,6 @@ private static Date getcurrentdate()
 					</tbody>
 		           </table>
 			
-			<script>
-		    function tableoption()
-		    {  
-		    console.log("called");
-		        let date=document.getElementById("date").value;
-		       //var today = new Date();
-               //var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-
-		        console.log(date);
-		    var url="Datecheck.jsp?date="+date;  
-		    if(window.XMLHttpRequest){  
-		    request=new XMLHttpRequest();  
-		    }  
-		    else if(window.ActiveXObject){  
-		    request=new ActiveXObject("Microsoft.XMLHTTP");  
-		    }  
-		    try  
-		    {  
-		    request.onreadystatechange=getInfo;  
-		    request.open("GET",url,true);  
-		    request.send();  
-		    }  
-		    catch(e)  
-		    {  
-		    alert("Unable to connect to server");  
-		    }
-		        
-		       }
-		    
-		    function getInfo(){  
-		    	if(request.readyState==4){  
-		    	var response =request.responseText;  
-		    	document.getElementById('dateresponse').innerHTML=response;  
-		    	}  
-		    	}  
-
-
-		    	
-	 
-		    
-
-			
-			
-			
-			
-			
-			</script>
-		
-
-
-
 </body>
 
 </html>

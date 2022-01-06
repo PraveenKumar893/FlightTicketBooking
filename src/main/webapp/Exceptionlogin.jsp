@@ -14,18 +14,16 @@
 <body>
 <%
 
-/* String uname  =request.getParameter("uname");
-String password  = request.getParameter("password");
- */
+String uname  =request.getParameter("uname");
+//String password  = request.getParameter("password");
+
  
 try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from register where User_name=? and Password =?");  
-/* ps.setString(1,uname);  
-ps.setString(2,password);  
- */
+PreparedStatement ps=con.prepareStatement("select * from register where User_name=? ");  
+ps.setString(1,uname);  
 System.out.println("1");
 System.out.println("2");
 
@@ -34,7 +32,7 @@ ResultSet rs=ps.executeQuery();
 if(rs.next())
 {
 	PrintWriter Write = response.getWriter();
-   Write.println("Success ");
+   Write.println("Welcome"+uname);
    System.out.println("3");
    System.out.println("4");
 

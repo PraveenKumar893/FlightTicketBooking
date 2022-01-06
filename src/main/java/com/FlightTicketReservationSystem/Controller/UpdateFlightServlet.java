@@ -80,7 +80,7 @@ public class UpdateFlightServlet extends HttpServlet {
 					
 
 				 
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearchList.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 				requestDispatcher.forward(request, response);
 
 			} catch (Exception e) {

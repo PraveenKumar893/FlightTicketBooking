@@ -316,9 +316,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			switch (coach) {
 			case "premium": {
 				totalprice = numberOfPassengers * economyClassPrice;
-		        let discount  =  totalprice*0.45;
-		        price    =   totalprice+discount;
-		        console.log(discount);
+				price = totalprice - (totalprice * 15 / 100)
+
+
 		        console.log(totalprice);
 
 
@@ -330,7 +330,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				break;
 			}
 			case "Economy": {
-				price = numberOfPassengers * firstClassPrice;
+				totalprice = numberOfPassengers * firstClassPrice;
+				price = totalprice - (totalprice * 10/ 100)
+
 				document.getElementById("price").value = price;
 				
 			
@@ -344,7 +346,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				break;
 			}
 			case "Bussiness": {
-				price = numberOfPassengers * businessClassPrice;
+				totalprice = numberOfPassengers * businessClassPrice;
+				price = totalprice - (totalprice * 20/ 100)
+
 				document.getElementById("price").value = price;
 				seats  = Businesseats-numberOfPassengers;
 			document.getElementById("Bussiness").value = seats;
@@ -373,17 +377,20 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	    
 	    let price = 0;
 	    let seats = 0;
+	    let pricevalue = 0;
 	    let totalprice =0;
 	    switch (coach) {
 	    case "premium": {
-	        price = numberOfPassengers * economyClassPrice;
-	        let discount  =  price*0.45;
-	        totalprice    =   price+discount;
-	        console.log(discount);
+	        totalprice = numberOfPassengers * economyClassPrice;
+	        price  = totalprice+(totalprice*15/100) ;
+
 	        console.log(totalprice);
+	        console.log(price);
 
 
-	        document.getElementById("price").value = totalprice;
+
+
+	        document.getElementById("price").value = price;
 	        seats  = premiumseats-numberOfPassengers;
 	        document.getElementById("PremiumEconomy").value = seats;
 	       console.log(seats);
@@ -391,9 +398,11 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 	        break;
 	    }
 	    case "Economy": {
-	        price = numberOfPassengers * firstClassPrice;
+	    	totalprice = numberOfPassengers * firstClassPrice;
+	        price  = totalprice+(totalprice*10/100) ;
+
 	        document.getElementById("price").value = price;
-	        
+
 	    
 	              seats = economyseats - numberOfPassengers ;
 	              console.log(seats);
@@ -405,8 +414,11 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 	        break;
 	    }
-	    case "Bussiness": {
-	        price = numberOfPassengers * businessClassPrice;
+	    case "Bussiness": 
+	    {
+	    	totalprice = numberOfPassengers * businessClassPrice;
+	        price  = totalprice+(totalprice*20/100) ;
+
 	        document.getElementById("price").value = price;
 	        seats  = Businesseats-numberOfPassengers;
 	    document.getElementById("Bussiness").value = seats;

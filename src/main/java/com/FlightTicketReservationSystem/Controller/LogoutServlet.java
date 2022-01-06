@@ -31,7 +31,7 @@ public class LogoutServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("logout");
 	       request.getSession().invalidate();
-	       response.sendRedirect("login.jsp");
+	       response.sendRedirect("FlightSearch.jsp");
 	        //response.sendRedirect("login.jsp");
 	}
 
