@@ -18,7 +18,7 @@
 <style>
 
 body {
-background-image: url(image/bg9.jpg);
+background-image: url(image/254381.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	

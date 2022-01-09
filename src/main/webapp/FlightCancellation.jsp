@@ -4,9 +4,30 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Flight Cancel</title>
 </head>
+<style>
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+
+
+
+
+</style>
 <body>
+
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+
 <form name="cancelflight.form" action="FlightCancellation" method="post"  >
 			
 			<br /> <input type="number" name="seatno" value= "<%=request.getParameter("seatno")%>" readonly

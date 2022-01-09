@@ -94,6 +94,19 @@ span.psw {
     width: 100%;
   }
 }
+a:link, a:visited {
+  background-color: blue;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: red;
+}
+
 </style>
 <%
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
@@ -111,9 +124,16 @@ String amount=  (String)request.getAttribute("Amount");
    <main class="container-fluid">
 		<h3 align="center">Payment Details </h3>
 		<div align="center">
-				<form  action="Payment" method="post" >
+		
+		<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+		
+		
 				
 				
+					<div class="container">
+					
+													<form action="Payment" method="Get">
+					
 				
 				    <label for="flightid"><b>Flight Id</b></label>
     <input type="text" id="flightid" name="flightid" value ="<%=flightid%>" readonly>
@@ -125,18 +145,25 @@ String amount=  (String)request.getAttribute("Amount");
     <input type="text"  name="Amount" value="<%=amount%>" readonly>
     <br></br>
     
-		<div>
 		<%
 			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
 			%>
 				      <label for="wallet"><b>Mode</b></label>
     
-    <input type="radio" id="Creditcard" name="mode" 
-				value="Creditcard" > 
+    <input type="radio" id="Creditcard" name="yesCheck" 
+				value="Creditcard" onclick="yesnoCheck()" > 
 				<label for="card" >Credit Card</label> 
 				
-				<input type="radio" id="Debitcard" name="mode" value="Debitcard" > 
+				<input type="radio" id="Debitcard" name="yesCheck" value="Debitcard" onclick="dbcheck()" > 
 				<label for="card" >Debitcard</label> 
+				    <br>
+				    <br>
+				         		
+				        				<button type="Submit"  required 
+					>
+				Register	</button>
+				         		
+				         		
 				
 				<% }
 			else
@@ -148,67 +175,116 @@ String amount=  (String)request.getAttribute("Amount");
 				value="Creditcard" > 
 				<label for="card" >Credit Card</label> 
 				
-				<input type="radio" id="valuecheck" name="valuecheck"   onclick="yesnoCheck()" value="Debitcard"> 
+				<input type="radio" id="valuecheck" name="yesCheck"   onclick="dbcheck()" value="Debitcard"> 
 				<label for="card" >Debitcard</label> 
 				
                     				<input type="radio" id="Wallet" 
-				name="yesCheck" value="Wallet"  > <label
+				name="yesCheck" value="Wallet"  > 
+				<label
 				for="Wallet" >Wallet</label>
+				<br>
+				<br>
+				
+								<button type="Submit"  required 
+					>
+				Register	</button>
+				
+				
                     
 			<% }
 			
 			%>
-			
+				
+			</form>
     		</div>
+    		
     		
     		<div id="ifYes" style="visibility:hidden">
      <br></br>
          <label for="cardno"><b>Card No</b></label>
-    <input type="text"  name="cardno"  min  = "0">
+    <input type="text"  name="cardno"  min  = "0" pattern="[0-9]+" required>
     <br></br>
     
   
     <label for="cardtype"><b>Card Type</b></label>
-    <input type="text"  name="cardtype" >
+    <input type="text"  name="cardtype" required >
 <br></br>
     <label for="holdername"><b>Holder Name</b></label>
-    <input type="text"  name="holdername" >
+    <input type="text"  name="holdername" required >
     <br></br>
     
     <label for="bankname"><b>Bank Name</b></label>
-    <input type="text"  name="bankname" >
+    <input type="text"  name="bankname"  required>
     <br></br>
     
       <label for="expirydate"><b>Expiry Date</b></label>
-    <input type="date"  name="expirydate" >
+    <input type="date"  name="expirydate" required >
     <br></br>
     
      <br></br>
-    <button type="submit"><a href="FlightSearch.jsp">PAY</a></button>
+   
+				</div>
+         		<div id="yes" style="visibility:hidden">
+     <br></br>
+         <label for="cardno"><b>Card No</b></label>
+    <input type="text"  name="cardno"  min  = "0" pattern="[0-9]+" required>
+    <br></br>
+    
+  
+    <label for="cardtype"><b>Card Type</b></label>
+    <input type="text"  name="cardtype" required>
+<br></br>
+    <label for="holdername"><b>Holder Name</b></label>
+    <input type="text"  name="holdername" required>
+    <br></br>
+    
+    <label for="bankname"><b>Bank Name</b></label>
+    <input type="text"  name="bankname" required>
+    <br></br>
+    
+      <label for="expirydate"><b>Expiry Date</b></label>
+    <input type="date"  name="expirydate" required >
+    <br></br>
+    
+     <br></br>
    
 				</div>
      
+     
 				
    </form>
-
+</div>
    </main>
    <script>
    function yesnoCheck() {
-	    if (document.getElementById('yesCheck').checked) 
-	    {
-	        document.getElementById('ifYes').style.visibility = 'visible';
-	    }
-	    else if(document.getElementById('valuecheck').checked)
-	    	{
-	         document.getElementById('ifYes').style.visibility = 'visible';
-	    	}
-	}   
+	   var credit = document.getElementById('ifYes');
+	   if (credit.style.visibility === 'hidden') {
+		   credit.style.visibility = 'visible';
+		  } else {
+			  credit.style.visibility = 'hidden';
+		  }
+  }   
+   function dbcheck()
+   {
+	   var debit = document.getElementById('yes');
+	   if (debit.style.visibility === 'hidden') {
+		   debit.style.visibility = 'visible';
+		  } else {
+			  debit.style.visibility = 'hidden';
+		  }
+
+ 
+
+	   
+	   
+   }
    
    
-   setTimeout(function(){
+/*    setTimeout(function(){
        window.location.href = 'FlightSearch.jsp';
     }, 100000);
-</script>
+ */
+ </script>
 
 
 </body>

@@ -11,7 +11,7 @@
 
 	<style>
 body {
-	background-image: url(image/images_login.jpg);
+	background-image: url(image/878641.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }

@@ -3,16 +3,42 @@
             <%@page import="com.FlightTicketReservationSystem.Models.Passenger_details"%>
     <%@page import="java.util.List"%>
             <%@ page import="java.time.LocalDate"%> 
-                <%@ page import="java.sql.Date"%> 
+                <%@ page import="java.sql.Date"%>
+                            <%@page import="com.FlightTicketReservationSystem.DaoImpl.Passenger_detailsDao"%>
+                 
     
     
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>CANCEL LIST</title>
 </head>
+<style>
+
+a:link, a:visited {
+  background-color: #f44336;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: navy;
+}
+
+
+
+
+</style>
 <body>
+
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
+
+
+
 <%  
 		List<Passenger_details> objcancellist = (List<Passenger_details>)request.getAttribute("CancelList");
  
@@ -30,7 +56,6 @@ private static Date getcurrentdate()
 		
 		
 		
-						 <p id = "dateresponse"></p>
 		
 		   		<table border="2">
 			<h1><b>Flight List</b></h1>
@@ -68,6 +93,7 @@ private static Date getcurrentdate()
 					
 					<td><%=i%></td>
 					<td><%=objcancel.getClass_details()%></td>
+					<%System.out.println("class" +  objcancel.getClass_details());%>
 					<td><%=objcancel.getMobile_number()%></td>
 					
 					<td><%=objcancel.getSource()%></td>

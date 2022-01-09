@@ -101,6 +101,20 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
 
 </style>
 
@@ -126,12 +140,12 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 			<br></br>
 				 <label for="depositamount"><b>Deposit Amount</b></label>
 			 <input type="number" id="depositamount" name="depositamount"  
-				min = "0" required 
+				min = "0" pattern="[0-9]+" required 
 				 />
 			<br></br>
 			 <label for="confirmdepositamount"><b> Confirm Deposit Amount</b></label>
 			 <input type="number" id="confirmdepositamount" name="confirmdepositamount"  
-				min = "0" required 
+				min = "0"  pattern="[0-9]+" required 
 				 />
 				 <br></br>
 				  <label for="mode"><b> Payment Mode</b></label>
@@ -158,6 +172,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 					>
 				Submit	</button>
 			</div>
+			<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 			
             </div>
            </form>

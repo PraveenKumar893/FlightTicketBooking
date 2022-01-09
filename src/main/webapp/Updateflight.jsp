@@ -11,9 +11,30 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>UPDATE FLIGHT DETAILS</title>
 </head>
+<style>
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
+
+
+
+</style>
 <body>
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+
 
     <h1 style="text-align: center;">
 				<b>UPDATE  FLIGHT DETAILS</b></h1>
@@ -39,6 +60,7 @@
 			String flightname = flight.getFlight_name();
 			Date Arrival_date  = flight.getArrival_Time();
 			Date Departure_date  = flight.getDeparture_time();
+			
 
 			
 			%>
@@ -59,23 +81,29 @@
 				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
 				<br>
 				
-				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="<%=economyClassRate%>"  
+				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" value="<%=economyClassRate%>" 
+				min = "0" pattern="[0-9]"  
 				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" />
 				
 			<br> <input type="number" name="PremiumEconomyclass" value="<%=businessClassRate%>"  
-				placeholder="PREMIUM_ECONOMY_CLASS " 
+				placeholder="PREMIUM_ECONOMY_CLASS " 				min = "0" pattern="[0-9]"  
 				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /><br>
 				
-			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="<%=firstClassRate%>"  
+			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" value="<%=firstClassRate%>"
+							min = "0" pattern="[0-9]"    
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
 							<input type="date"  name="ArrivalDate" placeholder="Bussinessclass" value="<%=Arrival_date%>"  
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px">
 				<br> 
 				
 							<input type="date"  name="DepartureDate" placeholder="Bussinessclass" value="<%=Departure_date%>"  
-				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
+				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
+				<br> 
+				
+			<input type="text"  name="Status" placeholder="status" value="Yet To Arrived"  
+				value="Male" style="position: relative; left: 296px;height: 31px; top: -6px;width: 229px">
 				<br> 
 				
 				

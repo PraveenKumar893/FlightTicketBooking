@@ -113,6 +113,7 @@ public class WalletDao implements WalletInterface
 		String sql = "insert into PaymentDetails (FLIGHTID,TICKETNO,TOTALAMOUNT,MODEOFTRANSACTION,Username) values(?,?,?,?,?)";
 		PreparedStatement pst = connection.prepareStatement(sql);
 		pst.setInt(1, Flightid);
+		System.out.println("ckhfjfgffhfhsfhf");
 		pst.setInt(2, Ticketno);
 		pst.setInt(3, totalamount);
 		pst.setString(4, modeoftransaction);

@@ -11,15 +11,47 @@
 table, td, th {
 	text-align: center;
 }
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: green;
+  color: white;
+}
+
+
 </style>
 </head>
 
 <body>
+
+
+
 <%
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 %>
+
 
 	<%
 			if (loggedInAsAdmin != null) {
@@ -28,7 +60,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<a href="Addflight.jsp" class="btn btn-primary">Add Flight</a>
 			        
 			        <a href="Bookingdetails" class="btn btn-primary">Booking Details</a>
-			         <a href="FlightSearch.jsp" class="btn btn-primary">Back</a>
+		<a href="FlightSearch.jsp"  " class="btn btn-primary"> Back </a> <br > <br />; 
 			         
 					
 			
@@ -48,7 +80,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		%>
 		
 		
-		<table border="2">
+		<table border="1">
 			<h1><b>Flight List</b></h1>
 			<thead>
 				<tr>

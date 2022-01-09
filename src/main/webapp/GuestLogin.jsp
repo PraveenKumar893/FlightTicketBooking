@@ -94,6 +94,7 @@ span.psw {
     width: 100%;
   }
 }
+
 </style>
 <%
 
@@ -102,6 +103,10 @@ String role = (String)session.getAttribute("ROLE");
 
 
 %>
+
+
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />; 
+
 <main class="container-fluid">
 		<h3 align="center">Guest Login </h3>
 		<div align="center">
@@ -110,11 +115,12 @@ String role = (String)session.getAttribute("ROLE");
     		<form name="GuestForm" action="GuestLogin" method="post" >
     		
     			<div class="imgcontainer">
-				<img src="image/images.jpg" alt="Avatar" class="avatar">
+				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz3d0MRSXuPw&usqp=CAU
+" alt="Avatar" class="avatar">
 				</div>
 				
     		      <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
-				 placeholder="Enter Mobile Number" required  
+				 placeholder="Enter Mobile Number" required  pattern = "[6-9][0-9]{9}"
 				 />
 				
 				
@@ -129,8 +135,13 @@ String role = (String)session.getAttribute("ROLE");
 				<button type="Submit"  required 
 					>Submit
 					
+					
+					
 				
 			</div>
+			
+					<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
+			
 			</form>
     		
     </div>

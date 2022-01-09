@@ -213,6 +213,20 @@ public class Passenger_details
 		Bookingdate = bookingdate;
 		Flight_id = flight_id;
 	}
+	public Passenger_details(String class_details, long mobile_number, String source, String destination,
+			LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate, int flight_id) {
+		super();
+		Class_details = class_details;
+		Mobile_number = mobile_number;
+		Source = source;
+		Destination = destination;
+		Arrival_date = arrival_date;
+		TicketNo = ticketNo;
+		this.seatno = seatno;
+		Status = status;
+		Bookingdate = bookingdate;
+		Flight_id = flight_id;
+	}
 	public int getAmount() {
 		return Amount;
 	}

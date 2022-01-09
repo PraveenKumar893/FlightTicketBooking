@@ -193,6 +193,7 @@ return booklist;
 			while (rs.next()) 
 			{
 				String  Class =  rs.getString(2);
+				System.out.println(Class);
 				long  mobno =  rs.getLong(3);
 				String  source =  rs.getString(4);
 				String  destination =  rs.getString(5);
@@ -200,6 +201,8 @@ return booklist;
 				  LocalDate localDate2 = Departreddate.toLocalDate();
 System.out.println(localDate2);
 				int  flightid =  rs.getInt(7);
+				System.out.println(flightid);
+
 				int  seatno =  rs.getInt(8);
 				int  ticketno =  rs.getInt(9);
 				String  status =  rs.getString(10);
@@ -210,7 +213,7 @@ System.out.println(localDate2);
 				System.out.println(bookingdate);
 				
 				
-				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno, flightid,status,bookdate);
+				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno,status,bookdate,flightid);
 				canceldetails.add(passenegr);
 				}
 		

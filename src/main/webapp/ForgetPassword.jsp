@@ -76,7 +76,6 @@ span.psw {
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -87,6 +86,7 @@ span.psw {
   }
 }
 </style>
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 
      
 		<%
@@ -107,7 +107,7 @@ https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz
 				
 				<div class="container"> 
 				    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" placeholder="Enter Username" name="username"   required>
+    <input type="text" id="username" placeholder="Enter Username" name="username" value="<%=request.getParameter("username") %>"  required>
 <br></br>
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>

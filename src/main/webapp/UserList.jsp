@@ -8,7 +8,29 @@
 <meta charset="ISO-8859-1">
 <title>FLIGHT LIST</title>
 </head>
+<style>
+a:link, a:visited {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color: blue;
+  color: white;
+}
+
+
+
+
+</style>
 <body>
+
+
 <%  
 		List<Flight> regobject = (List<Flight>)request.getAttribute("Flight");
  

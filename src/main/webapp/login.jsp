@@ -85,6 +85,13 @@ span.psw {
     width: 100%;
   }
 }
+body{
+	background-image: url(image/254390.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
 </style>
 
      
@@ -124,13 +131,14 @@ String error  = (String) session.getAttribute("Error");
 				<%
 			
 			String username = request.getParameter("username");
+    		System.out.println("Username "+username);
 			
 			
 			%>
 			    
 		<div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-     <a href="ForgetPassword.jsp?username=<%=request.getParameter("username")%>" class="btn btn-primary"  >Forget password?</a>
+    <button type="button"  class="cancelbtn"><a href="FlightSearch.jsp" style="text-decoration: blink;">BACK</a></button>
+     <a href="ForgetPassword.jsp?username=<%=username%>" class="btn btn-primary"  >Forget password?</a>
   </div>
   
   

@@ -63,6 +63,7 @@ public class UpdateFlightServlet extends HttpServlet {
  LocalDate local = LocalDate.parse(Arrival_date);
 	String Departure_Date  =  request.getParameter("DepartureDate");
 	 LocalDate loca1 = LocalDate.parse(Departure_Date);
+	 String status  =request.getParameter("Status");
 				int Flightid = Integer.parseInt(Flight_id);
 				int Economyclass = Integer.parseInt(Economy_class);
 				int premiumclass = Integer.parseInt(premium_Economy_class);
@@ -71,7 +72,7 @@ public class UpdateFlightServlet extends HttpServlet {
 					AddFlightDao update = new AddFlightDao();
 					System.out.println("Call update4  method");
 					UpdateFlightServlet flightupdate = new UpdateFlightServlet();
-					 update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1);
+					 update.updateFlight(Flightid,flight_name,source,Destination,Economyclass,premiumclass,Bussinessclass,local,loca1,status);
 					System.out.println("Call update2  method");
 					System.out.println("update 2 completed ");
 					

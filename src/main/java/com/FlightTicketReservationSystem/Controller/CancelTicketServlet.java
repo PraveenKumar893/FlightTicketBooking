@@ -35,7 +35,6 @@ public class CancelTicketServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		Passenger_detailsDao cancellist = new Passenger_detailsDao();
-		
 	       HttpSession session = request.getSession();
 	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
@@ -44,9 +43,8 @@ public class CancelTicketServlet extends HttpServlet {
 		
 		
 		
-		//request.getRequestDispatcher("DisplaySearchFlight.jsp?").forward(request, response);
 		request.setAttribute("CancelList", cancelinfo);
-		System.out.println("Run File ");
+		System.out.println("Run File "+cancelinfo.get(2));
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("CancelTicket.jsp");
 		requestDispatcher.forward(request, response);
 

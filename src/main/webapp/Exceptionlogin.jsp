@@ -35,7 +35,7 @@ ResultSet rs=ps.executeQuery();
 if(rs.next())
 {
 	PrintWriter Write = response.getWriter();
-   Write.println("Welcome"+uname);
+   Write.println("Welcome"+"  "+uname);
    System.out.println("3");
    System.out.println("4");
 

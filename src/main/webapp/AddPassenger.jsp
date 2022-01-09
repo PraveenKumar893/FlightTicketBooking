@@ -29,7 +29,6 @@ form {
   align:"center";
 }
 
-/* Full-width inputs */
 input[type=text], input[type=password],input[type=date],input[type=number],input[type=tel] {
   width: 40%;
   padding: 7px 20px;
@@ -50,7 +49,6 @@ input[type=radio] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 button {
   background-color: #04AA6D;
   color: white;
@@ -61,42 +59,35 @@ button {
   width: 62%;
 }
 
-/* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
 
-/* Center the avatar image inside this container */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
 
-/* Avatar image */
 img.avatar {
   width: 23%;
   border-radius: 50%;
 }
 
-/* Add padding to containers */
 .container {
   padding: 16px;
 }
 
-/* The "Forgot password" text */
 span.psw {
   float: right;
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -107,6 +98,19 @@ span.psw {
   }
   lable{
   }
+  a:link, a:visited {
+  background-color: blue;
+  color: white;
+  padding: 14px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover, a:active {
+  background-color:red;
+}
+  
 
 </style>
 <%
@@ -118,6 +122,11 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
    	<main class="container-fluid">
 		<h3 align="center">Booking Details </h3>
 		<div align="center">
+		
+		<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+		
+		
+		
    		<form action="ConfirmDetails" method="post">
 			<h1>Booking Details</h1>
 			<label for="flightId">Flight Id:</label> 
@@ -187,11 +196,11 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				<label for="username">Passenger
 				Name:</label> 
 				<input type="text" name="username" id="username" style="position: relative; left: 35px; height: 24px; top: 1px; width: 230px"
-				required autofocus /> <br />
+				required autofocus  /> <br />
 				
 				 <br /> <br /> 
 				<label for="MobileNumber">Mobile No:</label> <input
-				type="text" name="MobileNumber"  placeholder="Enter mobile number"style="position: relative; left: 52px; height: 25px; top: -6px; width: 230px"
+				type="tel" name="MobileNumber" required pattern = "[6-9][0-9]{9}" placeholder="Enter mobile number"style="position: relative; left: 52px; height: 25px; top: -6px; width: 230px"
 				 required autofocus /> <br /> <br />
 				 
 				 				<label for="coach" style="position: relative; left: -4px; height: 25px; top: -6px; width: 230px"
@@ -215,7 +224,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
-				name="numberOfPassengers"  min="0" max="8"
+				name="numberOfPassengers"  min="0" max="8" pattern="[0-8]"
 				placeholder="Enter passengers count" oninput="calculation()" required autofocus /> </br>
 				
 			<br />
@@ -226,7 +235,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				 			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
-				name="numberOfPassengers"  min="0" max="8"
+				name="numberOfPassengers"  min="0" max="8" pattern="[0-8]"
 				placeholder="Enter passengers count" oninput="calc()" required autofocus /> </br>
 				
 			<br />
