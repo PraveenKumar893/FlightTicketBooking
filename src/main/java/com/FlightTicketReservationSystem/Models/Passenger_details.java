@@ -22,7 +22,38 @@ public class Passenger_details
 	private int businessseats;
 	private String Status;
 	private int Amount;
+	private LocalDate Bookingdate;
 
+	
+
+	
+	public Passenger_details(String passenger_name, long mobile_number, String source,
+			String destination, LocalDate arrival_date, int ticketNo, int seatno, int economyseat,
+			String status, LocalDate bookingdate) {
+		super();
+		Passenger_name = passenger_name;
+		Class_details = getClass_details();
+		Mobile_number = mobile_number;
+		Source = source;
+		Destination = destination;
+		Arrival_date = arrival_date;
+		TicketNo = ticketNo;
+		this.seatno = seatno;
+		Economyseat = economyseat;
+		this.premiumeconomyseats = premiumeconomyseats;
+		this.businessseats = businessseats;
+		Status = status;
+		Amount = getAmount();
+		Bookingdate = bookingdate;
+		Flight_id = getFlight_id();
+		NoOfPassengers = getNoOfPassengers();
+	}
+	public LocalDate getBookingdate() {
+		return Bookingdate;
+	}
+	public void setBookingdate(LocalDate bookingdate) {
+		Bookingdate = bookingdate;
+	}
 	public String getStatus() {
 		return Status;
 	}
@@ -46,19 +77,6 @@ public class Passenger_details
 		NoOfPassengers = noOfPassengers;
 		this.TicketNo =TicketNo;
 		this.Amount = Amount;
-	}
-	public Passenger_details(String class_details, long mobile_number, String source, String destination,
-			LocalDate arrival_date, int ticketNo, int seatno, int flight_id,String Status) {
-		super();
-		Class_details = class_details;
-		Mobile_number = mobile_number;
-		Source = source;
-		Destination = destination;
-		Arrival_date = arrival_date;
-		TicketNo = ticketNo;
-		this.seatno = seatno;
-		Flight_id = flight_id;
-		 this.Status   =  Status;
 	}
 	public int getEconomyseat() {
 		return Economyseat;
@@ -178,6 +196,22 @@ public class Passenger_details
 		TicketNo = TicketNo;
 		Flight_id = flight_id;
 		NoOfPassengers = noOfPassengers;
+	}
+	public Passenger_details(String passenger_name, String class_details, long mobile_number, String source,
+			String destination, LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate,
+			int flight_id) {
+		super();
+		Passenger_name = passenger_name;
+		Class_details = class_details;
+		Mobile_number = mobile_number;
+		Source = source;
+		Destination = destination;
+		Arrival_date = arrival_date;
+		TicketNo = ticketNo;
+		this.seatno = seatno;
+		Status = status;
+		Bookingdate = bookingdate;
+		Flight_id = flight_id;
 	}
 	public int getAmount() {
 		return Amount;

@@ -17,7 +17,7 @@ try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from register where User_name=?");  
+PreparedStatement ps=con.prepareStatement("select * from register where User_name=? ");  
 ps.setString(1,username);  
 ResultSet rs=ps.executeQuery();  
 if(rs.next())
@@ -25,12 +25,16 @@ if(rs.next())
 	System.out.println("nvfhfh");
 	PrintWriter Write = response.getWriter();
    Write.println("invalid User Name");
+	System.out.println("catch");
+
 }  
+
 }
 catch(Exception e)
 {
-	e.printStackTrace();  
-	System.out.println("catch");
+	e.printStackTrace(); 
+	System.out.println(e);
+
 
 }
  

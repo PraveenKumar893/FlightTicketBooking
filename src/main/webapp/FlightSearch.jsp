@@ -68,7 +68,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 %>
  <jsp:include page="Header.jsp"></jsp:include>
-        <h1 style="text-align: center;"> Welcome to Flight Reservation System</h1>
+       <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
+ 
         <div >
             <form  id="form" action="SearchFlight" method="post"  style="text-align: center; color: black; left:40px;" >
            

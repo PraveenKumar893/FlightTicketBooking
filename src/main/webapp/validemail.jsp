@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
         <%@page import="java.io.PrintWriter"%>
+            <%@ page import="java.sql.*"%> 
+        
     
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@ String email =request.getParameter("email");
 
 if (email.matches("[a-z0-9]+[@][a-z]+[.][a-z]+")&&email!="")
 {
-
+    
 }
 else
 {

@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("inside 11");
-		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,BOOKING_DATE,Ticket_no,Status,User_name) values(?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement stmt = con.prepareStatement(sql);
 		stmt.setString(1,obj.getPassenger_name());
 		System.out.println("inside 1");
@@ -36,15 +37,12 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 		stmt.setString(5, obj.getDestination());
 		stmt.setInt(6,obj.getFlight_id());
 		System.out.println("inside foldr");
-//		  String str = obj.getArrival_date().toString();
-//		  System.out.println(str);
-//		    java.sql.Date format = java.sql.Date.valueOf(str);
-//		  System.out.println(format);
-//		stmt.setDate(7,  format);
 		stmt.setDate(7,java.sql.Date.valueOf( obj.getArrival_date()));
 		stmt.setInt(8,ticketno);
 		stmt.setString(9, "Booked");
 		stmt.setString(10, username);
+		stmt.setDate(11, getcurrentdate());
+
 
 		int str2 = stmt.executeUpdate();
 	}
@@ -83,16 +81,22 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 				String destination = rs.getString(5);
 
 				LocalDate Bookingdate = rs.getDate(6).toLocalDate();
+				System.out.println(Bookingdate);
 				int flightid = rs.getInt(7);
 				int seatno = rs.getInt(8);
 				int ticketno = rs.getInt(9);
+				String status = rs.getString(10);
+				LocalDate Registereddate  = rs.getDate(12).toLocalDate();
+				System.out.println(Registereddate);
+
+				
 				
 
 
 
 				
 				
-				Passenger_details passenegr = new Passenger_details(name, classdetails, mobno, Source, destination,ticketno,seatno,flightid,Bookingdate);
+				Passenger_details passenegr = new Passenger_details(name, classdetails, mobno, Source, destination,Bookingdate,ticketno,seatno,status,Registereddate,flightid);
 				booklist.add(passenegr);
 
 				
@@ -192,15 +196,21 @@ return booklist;
 				long  mobno =  rs.getLong(3);
 				String  source =  rs.getString(4);
 				String  destination =  rs.getString(5);
-				LocalDate  bookingdate =  rs.getDate(6).toLocalDate();
+				Date  Departreddate =  rs.getDate(6);
+				  LocalDate localDate2 = Departreddate.toLocalDate();
+System.out.println(localDate2);
 				int  flightid =  rs.getInt(7);
 				int  seatno =  rs.getInt(8);
 				int  ticketno =  rs.getInt(9);
 				String  status =  rs.getString(10);
-				System.out.println(status);
+				Date  bookingdate =  rs.getDate(12);
+			  LocalDate bookdate = bookingdate.toLocalDate();
+
+				
+				System.out.println(bookingdate);
 				
 				
-				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, bookingdate, ticketno, seatno, flightid,status);
+				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno, flightid,status,bookdate);
 				canceldetails.add(passenegr);
 				}
 		

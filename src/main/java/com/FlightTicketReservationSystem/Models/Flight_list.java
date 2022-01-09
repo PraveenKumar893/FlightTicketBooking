@@ -13,7 +13,29 @@ public class Flight_list
 	private int Bussiness_class;
 	private Date Arrival_Time;
 	private Date Departure_time;
+	private int Economyseats;
+	private int premiumseats;
+	private int businessseats;
+	private String  Arrivaltime;
+	private String DepartureTime;
+	private String Flightstatus;
 
+
+
+	
+
+		public String getFlightstatus() {
+		return Flightstatus;
+	}
+	public void setFlightstatus(String flightstatus) {
+		Flightstatus = flightstatus;
+	}
+		public String getDepartureTime() {
+		return DepartureTime;
+	}
+	public void setDepartureTime(String departureTime) {
+		DepartureTime = departureTime;
+	}
 		public Flight_list(int flight_id, String flight_name,Date arrival_Time, Date departure_time
 				,String source, String destination, int economy_class,
 			int premium_Economy_class, int bussiness_class) {
@@ -85,6 +107,50 @@ public class Flight_list
 	public Flight_list() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public int getEconomyseats() {
+		return Economyseats;
+	}
+	public Flight_list(int flight_id, String flight_name, String source, String destination, int economy_class,
+			int premium_Economy_class, int bussiness_class, Date arrival_Time, Date departure_time, int economyseats,
+			int premiumseats, int businessseats, String arrivaltime, String departureTime, String flightstatus) {
+		super();
+		Flight_id = flight_id;
+		Flight_name = flight_name;
+		Source = source;
+		Destination = destination;
+		Economy_class = economy_class;
+		this.premium_Economy_class = premium_Economy_class;
+		Bussiness_class = bussiness_class;
+		Arrival_Time = arrival_Time;
+		Departure_time = departure_time;
+		Economyseats = economyseats;
+		this.premiumseats = premiumseats;
+		this.businessseats = businessseats;
+		Arrivaltime = arrivaltime;
+		DepartureTime = departureTime;
+		Flightstatus = flightstatus;
+	}
+	public void setEconomyseats(int economyseats) {
+		Economyseats = economyseats;
+	}
+	public int getPremiumseats() {
+		return premiumseats;
+	}
+	public void setPremiumseats(int premiumseats) {
+		this.premiumseats = premiumseats;
+	}
+	public int getBusinessseats() {
+		return businessseats;
+	}
+	public void setBusinessseats(int businessseats) {
+		this.businessseats = businessseats;
+	}
+	public String getArrivaltime() {
+		return Arrivaltime;
+	}
+	public void setArrivaltime(String arrivaltime) {
+		Arrivaltime = arrivaltime;
 	}
 	
 	

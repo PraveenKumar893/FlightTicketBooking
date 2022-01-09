@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.TimeZone;
 
 import com.FlightTicketReservationSystem.Dao.SourceInterface;
 import com.FlightTicketReservationSystem.Models.Flight_Seat_Availability;
 import com.FlightTicketReservationSystem.Models.Flight_list;
 import com.FlightTicketReservationSystem.Models.Source;
 
+import java.security.Timestamp;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -30,7 +32,7 @@ public class SourceDao implements SourceInterface
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 			
-			String sql = " SELECT b.flight_id,b.flight_name,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class FROM Flight_Seats_availabilty a join Flight_details b on a.flight_id = b.flight_id WHERE b.source = ? AND b.destination  = ? and a.flight_departure_date >= ?";
+			String sql = " SELECT b.flight_id,b.flight_name,b.source,b.destination,a.flight_departure_date,a.ecomomy_seats,a.premium_economy_Seats,a.business_seats, b.Economy_class, b.Premium_Economy_class, b.Bussiness_class, b.ArrivalTime , a.DepartureTime FROM Flight_Seats_availabilty a join Flight_details b on a.flight_id = b.flight_id WHERE b.source = ? AND b.destination  = ? and a.flight_departure_date >= ?";
 			
 			PreparedStatement pst = connection.prepareStatement(sql);
 			pst.setString(1, source);
@@ -56,10 +58,21 @@ public class SourceDao implements SourceInterface
 					double Economy_rate = rs1.getDouble("Economy_class");
 					double premium_economy_rate = rs1.getDouble("Premium_Economy_class");
 					double Bussiness_rate = rs1.getDouble("Bussiness_class");
+					java.sql.Timestamp  time = rs1.getTimestamp("ArrivalTime");
+					SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+					sdf.setTimeZone(TimeZone.getTimeZone("IST"));
+					String arrived = sdf.format(time); 	
+					java.sql.Timestamp  Time = rs1.getTimestamp("DepartureTime");
+					sdf.setTimeZone(TimeZone.getTimeZone("IST"));
+					String Departed = sdf.format(Time); 	
+
+
+
 					
 					
 					
-					Flight_Seat_Availability objFlightseat = new Flight_Seat_Availability(Flight_id,Flight_name,Source, flight_destination, Departure_Time, economyClass,  premiumeconomyclass, businessClass,Economy_rate,premium_economy_rate,Bussiness_rate);
+					
+					Flight_Seat_Availability objFlightseat = new Flight_Seat_Availability(Flight_id,Flight_name,Source, flight_destination, Departure_Time, economyClass,  premiumeconomyclass, businessClass,Economy_rate,premium_economy_rate,Bussiness_rate,arrived,Departed);
 					
 					Seatavailabilitylist.add(objFlightseat);
 					

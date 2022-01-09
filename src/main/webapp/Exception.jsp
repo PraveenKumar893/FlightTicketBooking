@@ -13,23 +13,28 @@
 </head>
 <body>
 <%
-String email =request.getParameter("email");  
+String email =request.getParameter("email"); 
 try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from register where Email_id=?");  
+PreparedStatement ps=con.prepareStatement("select * from register where Email_id=? ");  
 ps.setString(1,email);  
 ResultSet rs=ps.executeQuery();  
 if(rs.next())
 {
+	System.out.println(email);
 	PrintWriter Write = response.getWriter();
    Write.println("invalid Email id");
+	System.out.println("fhfh"+email);
+
 }  
 }
 catch(Exception e)
 {
-	e.printStackTrace();  
+	e.printStackTrace(); 
+	System.out.println("khhgfhfjgfhffhf"+e);
+
 }
  
 

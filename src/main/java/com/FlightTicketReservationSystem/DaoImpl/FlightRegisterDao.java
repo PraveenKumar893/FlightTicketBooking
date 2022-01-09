@@ -30,10 +30,12 @@ public class FlightRegisterDao implements FlightRegisterInterface
 			stmt.setLong(6, objFlightRegister.getPhonenumber());
 			stmt.setDate(7, getcurrentdate());
 			int str = stmt.executeUpdate();
+			System.out.println("Completed :" +str);
 		}
 		catch(SQLException e)
 		{
 			e.printStackTrace();
+			System.out.println(e);
 
 		}
 	}

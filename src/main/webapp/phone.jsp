@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-        <%@ page import="java.sql.*"%> 
+            <%@ page import="java.sql.*"%> 
     <%@page import="java.io.PrintWriter"%>
-        <%@page import="java.util.*"%>
-    
     
 <!DOCTYPE html>
 <html>
@@ -14,38 +12,30 @@
 <body>
 <%
 
-String uname  =request.getParameter("uname");
-String password  = request.getParameter("Password");
-System.out.println("Passeord : " +password);
+String phone = request.getParameter("phoneno");
+System.out.println("phone"+phone);
+long mobile   = Long.parseLong(phone);
+System.out.println("mobile"+mobile);
 
 
- 
 try
 {  
 	Class.forName("oracle.jdbc.driver.OracleDriver");
 	Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-PreparedStatement ps=con.prepareStatement("select * from register where User_name=? and Password = ? ");  
-ps.setString(1,uname); 
-ps.setString(2,password);
-System.out.println("1");
-System.out.println("2");
+PreparedStatement ps=con.prepareStatement("select * from register where Phone_number=? ");  
+ps.setLong(1,mobile); 
+System.out.println("jfgfdh");
+System.out.println("mobile ");
 
 
 ResultSet rs=ps.executeQuery();  
 if(rs.next())
 {
 	PrintWriter Write = response.getWriter();
-   Write.println("Welcome"+uname);
+   Write.println("Invalid Mobile "+mobile);
    System.out.println("3");
    System.out.println("4");
 
-}
-else
-{
-	PrintWriter Write = response.getWriter();
-	   Write.println("Please Enetr Correct Details");
-
-	
 }
 }
 catch(Exception e)
@@ -59,6 +49,7 @@ catch(Exception e)
 	e.printStackTrace();  
 }
  
+
 
 %>
 

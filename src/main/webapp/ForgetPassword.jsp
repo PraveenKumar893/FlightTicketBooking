@@ -28,7 +28,6 @@ form {
   align:"center";
 }
 
-/* Full-width inputs */
 input[type=text], input[type=password] {
   width: 50%;
   padding: 12px 20px;
@@ -38,7 +37,6 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 button {
   background-color: #04AA6D;
   color: white;
@@ -49,36 +47,30 @@ button {
   width: 62%;
 }
 
-/* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
 
-/* Center the avatar image inside this container */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
 
-/* Avatar image */
 img.avatar {
   width: 23%;
   border-radius: 50%;
 }
 
-/* Add padding to containers */
 .container {
   padding: 16px;
 }
 
-/* The "Forgot password" text */
 span.psw {
   float: right;
   padding-top: 16px;
@@ -108,12 +100,14 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				<form  action="ForgetPassword" name="loginform" method="post" onsubmit = "return passwordvalidation()" >
 				
 				<div class="imgcontainer">
-				<img src="image/images.jpg" alt="Avatar" class="avatar">
+				<img src="
+
+https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz3d0MRSXuPw&usqp=CAU" alt="Avatar" class="avatar">
 				</div>
 				
 				<div class="container"> 
 				    <label for="username"><b>Username</b></label>
-    <input type="text" id="username" placeholder="Enter Username" name="username" value ="<%=request.getParameter("username")%>"  required>
+    <input type="text" id="username" placeholder="Enter Username" name="username"   required>
 <br></br>
     <label for="password"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>

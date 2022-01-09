@@ -42,10 +42,12 @@ private static Date getcurrentdate()
 					<th>Source</th>
 					<th>Destination</th>
 					<th>FlightID</th>
-					<th>BookingDate</th>
+					<th>DeparturedDate</th>
 					<th>TicketNo</th>
 					<th>SeatNo</th>
 					<th>Status</th>
+					<th>BookingDate</th>
+					
 					<th>CancelFlight</th>
 					
 					
@@ -72,13 +74,16 @@ private static Date getcurrentdate()
 					
 					<td> <%=objcancel.getDestination()%></td>
 										<td> <%=objcancel.getFlight_id()%></td>
-															<td><input type="hidden" id="date" > <%=objcancel.getArrival_date()%></td>
+															<td> <%=objcancel.getArrival_date()%></td>
 					
 					<td> <%=objcancel.getTicketNo()%></td>
 										
 					
 					<td> <%=objcancel.getSeatno()%></td>
 					<td> <%=objcancel.getStatus()%></td>
+					<td> <%=objcancel.getBookingdate()%></td>
+					
+					
 					
 					<!-- <td onclick="tableoption()"> </td> -->
 					
@@ -97,7 +102,7 @@ private static Date getcurrentdate()
 							 if(status.equals("Cancelled"))
 								{
 								%>
-								<td>ALCANCELLED</td>
+								<td>CANCELLED</td>
 								<%}
 							 else
 							 {%>
@@ -112,7 +117,7 @@ private static Date getcurrentdate()
 				
 			else
 			{%>
-				<td>CanCelled</td>
+				<td>DEPARTURED</td>
 			<%}
 				
 				%>			

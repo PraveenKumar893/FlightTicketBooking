@@ -29,7 +29,6 @@ form {
   align:"center";
 }
 
-/* Full-width inputs */
 input[type=text] {
   width: 40%;
   padding: 12px 20px;
@@ -47,7 +46,6 @@ input[type=text] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
 button {
   background-color: #04AA6D;
   color: white;
@@ -58,42 +56,35 @@ button {
   width: 32%;
 }
 
-/* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
 }
 
-/* Extra style for the cancel button (red) */
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
   background-color: #f44336;
 }
 
-/* Center the avatar image inside this container */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
 }
 
-/* Avatar image */
 img.avatar {
   width: 23%;
   border-radius: 50%;
 }
 
-/* Add padding to containers */
 .container {
   padding: 16px;
 }
 
-/* The "Forgot password" text */
 span.psw {
   float: right;
   padding-top: 16px;
 }
 
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
     display: block;
@@ -173,23 +164,23 @@ String amount=  (String)request.getAttribute("Amount");
     		<div id="ifYes" style="visibility:hidden">
      <br></br>
          <label for="cardno"><b>Card No</b></label>
-    <input type="text"  name="cardno" readonly>
+    <input type="text"  name="cardno"  min  = "0">
     <br></br>
     
   
     <label for="cardtype"><b>Card Type</b></label>
-    <input type="text"  name="cardtype" readonly>
+    <input type="text"  name="cardtype" >
 <br></br>
     <label for="holdername"><b>Holder Name</b></label>
-    <input type="text"  name="holdername" readonly>
+    <input type="text"  name="holdername" >
     <br></br>
     
     <label for="bankname"><b>Bank Name</b></label>
-    <input type="text"  name="bankname" readonly>
+    <input type="text"  name="bankname" >
     <br></br>
     
       <label for="expirydate"><b>Expiry Date</b></label>
-    <input type="date"  name="expirydate" readonly>
+    <input type="date"  name="expirydate" >
     <br></br>
     
      <br></br>
@@ -216,7 +207,7 @@ String amount=  (String)request.getAttribute("Amount");
    
    setTimeout(function(){
        window.location.href = 'FlightSearch.jsp';
-    }, 10000);
+    }, 100000);
 </script>
 
 

@@ -29,9 +29,12 @@
 					<th>Source</th>
 					<th>Destination</th>
 					<th>FlightID</th>
-					<th>BookingDate</th>
+					<th>DeparturedDate</th>
 					<th>TicketNo</th>
 					<th>SeatNo</th>
+					<th>Status</th>
+					<th>BookingDate</th>
+					
 					
 					
 					</tr>
@@ -63,6 +66,10 @@
 										
 					
 					<td> <%=objbook.getSeatno()%></td>
+										<td> <%=objbook.getStatus()%></td>
+					
+					<td> <%=objbook.getBookingdate()%></td>
+					
 					
 					
 			</tr>

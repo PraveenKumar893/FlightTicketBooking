@@ -113,15 +113,15 @@ span.psw {
 				   
 <br></br>
     <label for="cardno"><b>Card No</b></label>
-    <input type="text"  name="cardno" readonly>
+    <input type="text"  name="cardno" readonly min = "0">
     <br></br>
     
   
     <label for="cardtype"><b>Card Type</b></label>
-    <input type="text"  name="cardtype" readonly>
+    <input type="text"  name="cardtype" readonly  >
 <br></br>
     <label for="holdername"><b>Holder Name</b></label>
-    <input type="text"  name="holdername" readonly>
+    <input type="text"  name="holdername" readonly >
     <br></br>
     
     <label for="bankname"><b>Bank Name</b></label>
@@ -144,6 +144,23 @@ span.psw {
    setTimeout(function(){
        window.location.href = 'FlightSearch.jsp';
     }, 10000);
+</script>
+<script>
+
+today();
+function today(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var yyyy1= today.getFullYear()+10;
+maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+mindate =yyyy + '-' + mm + '-'+ dd  ;
+document.getElementById("date").setAttribute("max",maxdate);
+document.getElementById("date").setAttribute("min",mindate);
+
+
+
 </script>
    </main>
 

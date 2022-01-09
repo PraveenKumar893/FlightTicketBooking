@@ -26,14 +26,14 @@
 				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
 				<br>
 				
-				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS" required
+				<input type="number" name="Economyclass"placeholder="ECONOMY_CLASS"  min = "0" required
 				style="position: relative; left: 40px; height: 30px; top: 62px; width: 230px" />
 				
-			<br> <input type="number" name="PremiumEconomyclass"
+			<br> <input type="number" name="PremiumEconomyclass" min = "0"
 				placeholder="PREMIUM_ECONOMY_CLASS " required
 				style="position: relative; left: 40px; height: 30px; top: 77px; width: 230px" /><br>
 				
-			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass"
+			<input type="number"  name="Bussinessclass" placeholder="Bussinessclass" min = "0"
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
@@ -51,16 +51,16 @@
 				
 				
 				
-				<input type="number" name="ecomomy_seats" placeholder = "ecomomy_seats" required
+				<input type="number" name="ecomomy_seats" placeholder = "ecomomy_seats" min = "0" required
 				style="position: relative; left: 384px; height: 30px; top: -33px; width: 230px" />
 				<br>
 				
 				
-				<input type="number" name="premium_economy_seats" placeholder = "premium_economy_seats" required
+				<input type="number" name="premium_economy_seats" placeholder = "premium_economy_seats"  min = "0"required
 				style="position: relative; left: 384px; height: 30px; top: -7px; width: 230px" />
 				<br>
 				
-								<input type="number" name="business_seats" placeholder = "business_seats" required
+								<input type="number" name="business_seats" placeholder = "business_seats" min = "0" required
 				style="position: relative; left: 384px; height: 30px; top: 15px; width: 230px" />
 				<br>
 				

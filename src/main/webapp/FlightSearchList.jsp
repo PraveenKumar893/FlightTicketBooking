@@ -47,6 +47,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				    <th>Economy Rate</th>
 					<th>Premium Rate</th>
 					<th>Business Rate</th>
+					<th>Arrival Time</th>
+					<th>Departure Time</th>
+					
 					
 										
 					
@@ -85,6 +88,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<td> <%=flight.getEconomy_rate()%></td>
 					<td> <%=flight.getPremium_Economy_rate()%></td>					
 					<td> <%=flight.getBussiness_rate()%></td>
+				    <td> <%=flight.getArrivalTime()%></td>
+					<td> <%=flight.getDepartureTime()%></td>
+					
 					
 					
 					

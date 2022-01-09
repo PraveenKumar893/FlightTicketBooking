@@ -10,7 +10,7 @@
 <body>
 <style>
 body {
-	background-image: url(image/image_register.jpg);
+	background-image: url(image/images_login.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -126,12 +126,12 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 			<br></br>
 				 <label for="depositamount"><b>Deposit Amount</b></label>
 			 <input type="number" id="depositamount" name="depositamount"  
-				 required 
+				min = "0" required 
 				 />
 			<br></br>
 			 <label for="confirmdepositamount"><b> Confirm Deposit Amount</b></label>
 			 <input type="number" id="confirmdepositamount" name="confirmdepositamount"  
-				 required 
+				min = "0" required 
 				 />
 				 <br></br>
 				  <label for="mode"><b> Payment Mode</b></label>
