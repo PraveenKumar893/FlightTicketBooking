@@ -33,7 +33,7 @@ a:hover, a:active {
 
 </style>
 <body>
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 
 
     <h1 style="text-align: center;">
@@ -125,7 +125,26 @@ a:hover, a:active {
 			</div>
 		</form>
 		
+    <script>
     
+    
+    
+    
+    today();
+    function today(){
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        var yyyy1= today.getFullYear()+10;
+    maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+    mindate =yyyy + '-' + mm + '-'+ dd  ;
+    document.getElementById("date").setAttribute("max",maxdate);
+    document.getElementById("date").setAttribute("min",mindate);
+
+
+}
+</script>
 
 </body>
 </html>

@@ -118,7 +118,11 @@ String error  = (String) session.getAttribute("Error");
     <label for="password"><b>Password</b></label>
     <input type="password" id = "Password"  placeholder="Enter Password" name="password" required>
     
-    				 <p id = "loginresponse"></p>
+    <div style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
+    
+        				 <p id = "loginresponse"></p>
+    
+    </div>
 
     <button type="submit"  onkeyup="validlogin()">Login</button>
     

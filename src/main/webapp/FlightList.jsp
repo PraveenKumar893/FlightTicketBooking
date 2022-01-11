@@ -5,8 +5,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="ISO-8859-1">
 <title>Flight List</title>
+
 <style type="text/css">
 table, td, th {
 	text-align: center;
@@ -37,9 +39,22 @@ a:hover, a:active {
   background-color: green;
   color: white;
 }
+.passive {
+  background-color: white;
+  color: black;
+  border: 2px solid green;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
 
-
+.phover {
+ background-color: red;
+  color: white;
+}
 </style>
+
 </head>
 
 <body>
@@ -60,7 +75,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 					<a href="Addflight.jsp" class="btn btn-primary">Add Flight</a>
 			        
 			        <a href="Bookingdetails" class="btn btn-primary">Booking Details</a>
-		<a href="FlightSearch.jsp"  " class="btn btn-primary"> Back </a> <br > <br />; 
+		<a href="FlightSearch.jsp"  " class="btn btn-outline-danger"> Back </a> <br > <br />
 			         
 					
 			
@@ -80,7 +95,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		%>
 		
 		
-		<table border="1">
+		  <table border="1">
+		
 			<h1><b>Flight List</b></h1>
 			<thead>
 				<tr>
@@ -173,7 +189,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 						<%
 			if (loggedInAsAdmin != null) {
 			%>
-					<td><a href="Deleteflight.jsp?flightId=<%=flight.getFlight_id() %>" class="btn btn-primary">DeleteFlight</a></td>
+					<td><a href="Deleteflight.jsp?flightId=<%=flight.getFlight_id() %>" class="btn btn-danger">
+					DeleteFlight</a></td>
 				</tr>
 				<% }
 			
@@ -190,5 +207,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			</tbody>
 		</table>
 		<%} %>
+		
 </body>
 </html>

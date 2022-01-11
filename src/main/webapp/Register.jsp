@@ -5,6 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Register</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
 </head>
 <body>
@@ -111,6 +112,7 @@ span.psw {
 			<br> <input type="text"  id="email" name="email" onkeyup="sendemail()" 
 				placeholder="Enter email address" style="position: relative;top: -8px" required/>	
 				  
+				  
 				 	
 				<br>
 				 
@@ -148,13 +150,13 @@ span.psw {
 			
 						<input type="radio" id="Male" name="Gender"
 				value="Male"  onkeyup="phonenumber()"> 
-				<label for="Male" >Male</label> 
+				<label for="Male" style="color: white;">Male</label> 
 				
 				<input type="radio" id="Female" name="Gender" value="Female"> 
-				<label for="Female" >Female</label> 
+				<label for="Female" style="color: white;">Female</label> 
 				<input type="radio" id="Others"
 				name="Gender" value="Others" > <label
-				for="Others" >Others</label>
+				for="Others"style="color: white;" >Others</label>
 			
             
 
@@ -165,12 +167,15 @@ span.psw {
 					>
 				Register	</button>
 			</div>
-		 <p  id = "emailresponse"></p> 
+			<div style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
+		 				  	
+		 				  	 <p  id = "emailresponse"></p> 
+		 
 			<p id="validresponse" ></p>
 			
 			<p id = "userresponse"></p>
-						<p id = "phoneresponse"></p>
-			
+			<p id = "phoneresponse"></p>
+			</div>
 			
 			</div>
 		</form>
@@ -346,6 +351,8 @@ span.psw {
 		  
 
    </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+   
    							    
    </main>
 		

@@ -24,7 +24,7 @@ if(rs.next())
 {
 	System.out.println("nvfhfh");
 	PrintWriter Write = response.getWriter();
-   Write.println("invalid User Name");
+   Write.println("User Name already Registered");
 	System.out.println("catch");
 
 }  

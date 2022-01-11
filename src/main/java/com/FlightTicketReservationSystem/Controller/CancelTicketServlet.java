@@ -44,7 +44,6 @@ public class CancelTicketServlet extends HttpServlet {
 		
 		
 		request.setAttribute("CancelList", cancelinfo);
-		System.out.println("Run File "+cancelinfo.get(2));
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("CancelTicket.jsp");
 		requestDispatcher.forward(request, response);
 

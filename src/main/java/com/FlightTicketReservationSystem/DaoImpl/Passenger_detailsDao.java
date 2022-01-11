@@ -179,10 +179,12 @@ return booklist;
 		List<Passenger_details> canceldetails = new ArrayList<>();
 		try 
 		{
+			System.out.println("Cancel come inside");
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("Weleocme to add flight ");
-		String sql = "SELECT * FROM passenger_details WHERE user_name = ? ";
+		String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,a.Departured_date ,a.ticket_no , a.Seat_no ,a.Status,a.Booked_date,b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b on  \r\n"
+				+ "a.flight_id = b.flightid where User_name = ?  ";
 		
 		PreparedStatement pst = connection.prepareStatement(sql);
 		pst.setString(1, Username);
@@ -192,28 +194,32 @@ return booklist;
 			System.out.println("Valid");
 			while (rs.next()) 
 			{
-				String  Class =  rs.getString(2);
+				String  Class =  rs.getString(1);
 				System.out.println(Class);
-				long  mobno =  rs.getLong(3);
-				String  source =  rs.getString(4);
-				String  destination =  rs.getString(5);
+				long  mobno =  rs.getLong(2);
+				String  source =  rs.getString(3);
+				String  destination =  rs.getString(4);
 				Date  Departreddate =  rs.getDate(6);
 				  LocalDate localDate2 = Departreddate.toLocalDate();
 System.out.println(localDate2);
-				int  flightid =  rs.getInt(7);
+				int  flightid =  rs.getInt(5);
 				System.out.println(flightid);
 
 				int  seatno =  rs.getInt(8);
-				int  ticketno =  rs.getInt(9);
-				String  status =  rs.getString(10);
-				Date  bookingdate =  rs.getDate(12);
+				int  ticketno =  rs.getInt(7);
+				String  status =  rs.getString(9);
+				Date  bookingdate =  rs.getDate(10);
 			  LocalDate bookdate = bookingdate.toLocalDate();
+			  String amountmode = rs.getString(12);
+			  int amount = rs.getInt(11);
+			  System.out.println("amount"+amount);
+			  
 
 				
 				System.out.println(bookingdate);
 				
 				
-				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno,status,bookdate,flightid);
+				Passenger_details passenegr = new Passenger_details(Class, mobno, source, destination, localDate2, ticketno, seatno,status,bookdate,flightid,amountmode,amount);
 				canceldetails.add(passenegr);
 				}
 		

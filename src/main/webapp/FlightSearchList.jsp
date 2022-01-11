@@ -12,6 +12,9 @@ table, td, th {
 }
 
 </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -34,7 +37,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 
  
-		<table border="2">
+		<table class="table table-hover">
 			<h1><b>Flight List</b></h1>
 			<thead>
 				<tr>

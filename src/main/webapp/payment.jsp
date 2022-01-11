@@ -5,6 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 <meta charset="ISO-8859-1">
 <title>Payment Page</title>
 </head>
@@ -14,10 +16,18 @@
 body {
 background-image: url(image/bg9.jpg);
 	background-repeat: no-repeat;
+		height : 100%;
+	width : 100%;	
 	background-size: cover;
+top:0;
+right:0;
+left:0;
+bottom:0;
+z-index:-1;
+position:absolute;	
+	
 	
 	font-family: Arial, Helvetica, sans-serif;
-	align:"center";
 	
 }
 
@@ -30,7 +40,7 @@ form {
 }
 
 input[type=text] {
-  width: 40%;
+  width: 50%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -38,7 +48,7 @@ input[type=text] {
   box-sizing: border-box;
 }
  input[type=radio] {
-  width: 10%;
+  width: 8%;
   padding: 12px 20px;
   margin: 8px 0;
   display: inline-block;
@@ -106,6 +116,36 @@ a:link, a:visited {
 a:hover, a:active {
   background-color: red;
 }
+    .container{
+              position: absolute;
+              text-align: center;
+              margin-left: 10%;
+            margin-top: 5%;
+    }
+
+
+    #master{
+        visibility: hidden;
+    }
+    #groups{
+        visibility: hidden;
+    }
+
+#master{
+position: fixed;
+width: 40%;
+
+}
+
+#fun{
+position: fixed;
+width : 100%;
+}
+#groups{
+position: fixed;
+width: 40%
+
+}
 
 </style>
 <%
@@ -125,18 +165,21 @@ String amount=  (String)request.getAttribute("Amount");
 		<h3 align="center">Payment Details </h3>
 		<div align="center">
 		
-		<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 		
 		
 				
 				
-					<div class="container">
+					<div class="Files" id="fun">
 					
 													<form action="Payment" method="Get">
 					
+						<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 				
-				    <label for="flightid"><b>Flight Id</b></label>
-    <input type="text" id="flightid" name="flightid" value ="<%=flightid%>" readonly>
+				
+				
+				
+				    <label for="flightid" ><b>Flight Id</b></label>
+    <input type="text" id="flightid" name="flightid" value ="<%=flightid%>"  readonly>
 <br></br>
     <label for="ticketno"><b>Ticket No</b></label>
     <input type="text"  name="ticketno" value="<%=ticketno%>" readonly>
@@ -148,144 +191,83 @@ String amount=  (String)request.getAttribute("Amount");
 		<%
 			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
 			%>
-				      <label for="wallet"><b>Mode</b></label>
+				      <label for="wallet""><b>Mode *</b></label>
     
-    <input type="radio" id="Creditcard" name="yesCheck" 
-				value="Creditcard" onclick="yesnoCheck()" > 
+    <input type="radio"  name="yesCheck" 
+				value="Creditcard" onclick="credit()" > 
 				<label for="card" >Credit Card</label> 
 				
-				<input type="radio" id="Debitcard" name="yesCheck" value="Debitcard" onclick="dbcheck()" > 
+				<input type="radio"  name="yesCheck" value="Debitcard" onclick="debit()" > 
 				<label for="card" >Debitcard</label> 
 				    <br>
 				    <br>
 				         		
-				        				<button type="Submit"  required 
+				        			<button type="Submit"  required 
 					>
-				Register	</button>
-				         		
+				SUBMIT	</button>
 				         		
 				
 				<% }
 			else
 			{
 				%>
-				      <label for="wallet"><b>Mode</b></label>
+				      <label for="wallet"><b>Mode *</b></label>
     
-    <input type="radio" id="yesCheck" name="yesCheck" onclick="yesnoCheck()"
-				value="Creditcard" > 
+    <input type="radio"  name="yesCheck" value="Creditcard" onclick="credit()"
+				 > 
 				<label for="card" >Credit Card</label> 
 				
-				<input type="radio" id="valuecheck" name="yesCheck"   onclick="dbcheck()" value="Debitcard"> 
+				<input type="radio"  name="yesCheck"  value="Debitcard"  onclick="debit()" > 
 				<label for="card" >Debitcard</label> 
 				
-                    				<input type="radio" id="Wallet" 
+                    				<input type="radio"  
 				name="yesCheck" value="Wallet"  > 
 				<label
 				for="Wallet" >Wallet</label>
 				<br>
 				<br>
-				
-								<button type="Submit"  required 
+							<button type="Submit"  required 
 					>
-				Register	</button>
+				SUBMIT	</button>
 				
+													
 				
                     
 			<% }
 			
 			%>
+			
+    		</form>
 				
-			</form>
     		</div>
     		
-    		
-    		<div id="ifYes" style="visibility:hidden">
-     <br></br>
-         <label for="cardno"><b>Card No</b></label>
-    <input type="text"  name="cardno"  min  = "0" pattern="[0-9]+" required>
-    <br></br>
-    
-  
-    <label for="cardtype"><b>Card Type</b></label>
-    <input type="text"  name="cardtype" required >
-<br></br>
-    <label for="holdername"><b>Holder Name</b></label>
-    <input type="text"  name="holdername" required >
-    <br></br>
-    
-    <label for="bankname"><b>Bank Name</b></label>
-    <input type="text"  name="bankname"  required>
-    <br></br>
-    
-      <label for="expirydate"><b>Expiry Date</b></label>
-    <input type="date"  name="expirydate" required >
-    <br></br>
-    
-     <br></br>
-   
-				</div>
-         		<div id="yes" style="visibility:hidden">
-     <br></br>
-         <label for="cardno"><b>Card No</b></label>
-    <input type="text"  name="cardno"  min  = "0" pattern="[0-9]+" required>
-    <br></br>
-    
-  
-    <label for="cardtype"><b>Card Type</b></label>
-    <input type="text"  name="cardtype" required>
-<br></br>
-    <label for="holdername"><b>Holder Name</b></label>
-    <input type="text"  name="holdername" required>
-    <br></br>
-    
-    <label for="bankname"><b>Bank Name</b></label>
-    <input type="text"  name="bankname" required>
-    <br></br>
-    
-      <label for="expirydate"><b>Expiry Date</b></label>
-    <input type="date"  name="expirydate" required >
-    <br></br>
-    
-     <br></br>
-   
-				</div>
-     
-     
-				
-   </form>
-</div>
    </main>
-   <script>
-   function yesnoCheck() {
-	   var credit = document.getElementById('ifYes');
-	   if (credit.style.visibility === 'hidden') {
-		   credit.style.visibility = 'visible';
-		  } else {
-			  credit.style.visibility = 'hidden';
-		  }
-  }   
-   function dbcheck()
-   {
-	   var debit = document.getElementById('yes');
-	   if (debit.style.visibility === 'hidden') {
-		   debit.style.visibility = 'visible';
-		  } else {
-			  debit.style.visibility = 'hidden';
-		  }
+<!--     <script>
+    function credit(){
+        document.getElementById("master").style.visibility = "visible";
+        document.getElementById("groups").style.visibility = "hidden";
+        document.getElementById("fun").style.visibility = "hidden";
 
- 
+       }
+       function debit(){
+           document.getElementById("groups").style.visibility = "visible";
+           document.getElementById("master").style.visibility = "hidden";
+           document.getElementById("fun").style.visibility = "hidden";
+
+       } 
+</script>
+ --> 
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 	   
 	   
-   }
    
-   
-/*    setTimeout(function(){
+  <!-- <script>
+     setTimeout(function(){
        window.location.href = 'FlightSearch.jsp';
-    }, 100000);
- */
+    }, 100000000);
+ 
  </script>
-
-
+ -->
 </body>
 </html>

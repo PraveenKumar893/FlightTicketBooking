@@ -46,14 +46,19 @@ public class PaymentServlet extends HttpServlet {
 	System.out.println("inside  111");
 		String flightid = request.getParameter("flightid");
 		int FlightId = Integer.parseInt(flightid);
+		System.out.println(FlightId);
 		String ticketno = request.getParameter("ticketno");
 		int TicketNo = Integer.parseInt(ticketno);
+		System.out.println(TicketNo);
 		String Amount = request.getParameter("Amount");
 		int Price = Integer.parseInt(Amount);
+		System.out.println(Price);
 		String mode = request.getParameter("yesCheck");
 		System.out.println(mode);
-		System.out.println("inside  111");
+		System.out.println("inside  1uhhhh11");
 
+		request.setAttribute("Mode", mode);
+		
 		if(mode.equalsIgnoreCase("Wallet"))
 		{
 			int walletamount = wallet.checkusername(Username);
@@ -63,7 +68,7 @@ public class PaymentServlet extends HttpServlet {
 				wallet.updatebalance(Username,Closingbalance);
 				
 				wallet.InserPaymentdetails(FlightId, TicketNo, Closingbalance, mode, Username);
-				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 				requestDispatcher.forward(request, response);
 			}
 			else
@@ -88,7 +93,7 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(Username);
 			System.out.println("cjccbalwaidhinsertded");
 			wallet.InserPaymentdetails(FlightId, TicketNo, Price, mode, Username);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("pay.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		

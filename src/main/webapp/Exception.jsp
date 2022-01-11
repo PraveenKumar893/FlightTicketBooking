@@ -25,7 +25,7 @@ if(rs.next())
 {
 	System.out.println(email);
 	PrintWriter Write = response.getWriter();
-   Write.println("invalid Email id");
+   Write.println("Email id Already Registered");
 	System.out.println("fhfh"+email);
 
 }  

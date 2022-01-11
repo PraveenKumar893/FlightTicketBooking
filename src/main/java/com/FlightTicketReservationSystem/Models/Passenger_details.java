@@ -23,10 +23,24 @@ public class Passenger_details
 	private String Status;
 	private int Amount;
 	private LocalDate Bookingdate;
+	private String mode;
+	private int amountpaid;
 
 	
 
 	
+	public int getAmountpaid() {
+		return amountpaid;
+	}
+	public void setAmountpaid(int amountpaid) {
+		this.amountpaid = amountpaid;
+	}
+	public String getMode() {
+		return mode;
+	}
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
 	public Passenger_details(String passenger_name, long mobile_number, String source,
 			String destination, LocalDate arrival_date, int ticketNo, int seatno, int economyseat,
 			String status, LocalDate bookingdate) {
@@ -214,7 +228,8 @@ public class Passenger_details
 		Flight_id = flight_id;
 	}
 	public Passenger_details(String class_details, long mobile_number, String source, String destination,
-			LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate, int flight_id) {
+			LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate, int flight_id,
+			String mode , int amountpaid) {
 		super();
 		Class_details = class_details;
 		Mobile_number = mobile_number;
@@ -226,6 +241,9 @@ public class Passenger_details
 		Status = status;
 		Bookingdate = bookingdate;
 		Flight_id = flight_id;
+		this.mode = mode;
+		this.amountpaid = amountpaid;
+		
 	}
 	public int getAmount() {
 		return Amount;

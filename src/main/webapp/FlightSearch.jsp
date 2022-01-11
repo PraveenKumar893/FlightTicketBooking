@@ -70,12 +70,12 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  <jsp:include page="Header.jsp"></jsp:include>
        <marquee style="color: red"><i style="font-size: 30px">LET  &nbsp &nbsp &nbsp YOUR  &nbsp &nbsp &nbsp DREAMS  &nbsp &nbsp &nbsp TAKE  &nbsp &nbsp &nbsp FLIGHT</i></marquee>
  
-        <div >
-            <form  id="form" action="SearchFlight" method="post"  style="text-align: center; color: black; left:40px;" >
+        <div style="margin-left: 918px;margin-top: 30px">
+            <form  id="form" action="SearchFlight" method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
            
               
               <input type="text"  
-              id="fightsource" list="source" name="source">  
+              id="fightsource" list="source" name="source" placeholder="Source">  
  <datalist id="source">  
    <%
 				
@@ -92,7 +92,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  </datalist>
     
    <input type="text"  
-              id="fightdestination" list="destination" name="destination">  
+              id="fightdestination" list="destination" name="destination" placeholder="Destination">  
  <datalist id="destination">  
    <%
 							 

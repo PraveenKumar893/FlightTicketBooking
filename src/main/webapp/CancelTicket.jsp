@@ -41,7 +41,9 @@ a:hover, a:active {
 
 <%  
 		List<Passenger_details> objcancellist = (List<Passenger_details>)request.getAttribute("CancelList");
- 
+/* 		String Mode  = (String)request.getAttribute("Mode");
+		System.out.println("Mode cfsdf " + Mode);
+ */ 
 		%>
 <%!
 private static Date getcurrentdate()
@@ -72,7 +74,8 @@ private static Date getcurrentdate()
 					<th>SeatNo</th>
 					<th>Status</th>
 					<th>BookingDate</th>
-					
+					<th>ModeStatus</th>
+					<th>TotalAmount</th>
 					<th>CancelFlight</th>
 					
 					
@@ -108,17 +111,22 @@ private static Date getcurrentdate()
 					<td> <%=objcancel.getSeatno()%></td>
 					<td> <%=objcancel.getStatus()%></td>
 					<td> <%=objcancel.getBookingdate()%></td>
+					<td> <%=objcancel.getMode()%></td>
+					<td> <%=objcancel.getAmountpaid()%></td>
 					
 					
 					
-					<!-- <td onclick="tableoption()"> </td> -->
+					
 					
 					<%
+					String modeof = objcancel.getMode();
+					System.out.println(modeof);
 					LocalDate  date  = objcancel.getArrival_date();
 					Date local = java.sql.Date.valueOf(date);
 					String status =  objcancel.getStatus();
-
 					%>
+				
+				
 				<%
 			if (local.after(getcurrentdate())){
 			%>
