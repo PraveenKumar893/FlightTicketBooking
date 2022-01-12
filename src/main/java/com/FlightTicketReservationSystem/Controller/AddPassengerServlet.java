@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.FlightTicketReservationSystem.DaoImpl.FlightRegisterDao;
 import com.FlightTicketReservationSystem.DaoImpl.Passenger_detailsDao;
@@ -48,10 +50,11 @@ public class AddPassengerServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		
 		 response.setContentType("text/html");
 	        PrintWriter out=response.getWriter();
 	        out.println("hello");
-//	       String gender = "Female";
+	        
 	    try {
 			  String Flight_Id =request.getParameter("flightId");
 			  int flightid = Integer.parseInt(Flight_Id);
@@ -76,11 +79,11 @@ public class AddPassengerServlet extends HttpServlet {
 	      long mobileno = Long.parseLong(mobno);
 	      System.out.println(mobno);
 			String class_details = request.getParameter("coach");
-			//String seat  = request.getParameter("SEAT_NO");
-			//int seat_no = Integer.parseInt(seat);
 	       String noofpassengers = request.getParameter("numberOfPassengers");
-	       System.out.println(noofpassengers);
+	       System.out.println("String No of passengers" +noofpassengers);
 	       int noofpass = Integer.parseInt(noofpassengers);
+	       System.out.println("int No of passengers" +noofpass);
+
 	       System.out.println(noofpass);
 	       String ticket_no = request.getParameter("ticketno");
 	     int ticketno = Integer.parseInt(ticket_no);
@@ -92,22 +95,34 @@ public class AddPassengerServlet extends HttpServlet {
 	     
 	     System.out.println(seatno);
 
-	    //   int ticketno = generator();
-	       
+	     HttpSession session = request.getSession();
+	     session.setAttribute("logpass",noofpass);
+	     
+System.out.println("mbhfvddno fpo a[apasssenddhgdtad");	 
+
+
+
 	       System.out.println(ticketno);
-	       HttpSession session = request.getSession();
+//	       HttpSession session = request.getSession();
 	       String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
      System.out.println(loggedInAsUser);
 	     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, ticketno,flightid,local);
 			Passenger_detailsDao pass = new Passenger_detailsDao();
+			
+			ArrayList<Integer> list=new ArrayList<Integer>(); 
+
 			for(int i=0;i<noofpass;i++)
 			{
 				System.out.println("hi");
 				 int seatnumber = pass.Setnogenerated(passenger,ticketno,loggedInAsUser);
+				 list.add(seatnumber);
 				 System.out.println("Seatnumbehfsfdy" +seatnumber);
-				 request.setAttribute("SeatValue", seatnumber);
+//				  request.setAttribute("SeatValue", value);
 
 			}
+			request.setAttribute("SeatValue", list);
+			System.out.println(list);
+			
 			pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
 				
 			

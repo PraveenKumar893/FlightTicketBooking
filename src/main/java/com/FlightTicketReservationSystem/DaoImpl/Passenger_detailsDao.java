@@ -55,7 +55,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 	
 	public int Setnogenerated(Passenger_details obj,int ticketno,String username)
 	{
-		 Integer seatno = 0;
+		 int seatno = 0;
 		 String returnCols[] = { "Seat_no" };
 
 		try
@@ -88,7 +88,7 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
         java.sql.ResultSet generatedKeys = stmt.getGeneratedKeys();
         if (generatedKeys.next()) 
        		System.out.println(generatedKeys);
-        seatno =  generatedKeys.getInt(1); 
+         seatno =  generatedKeys.getInt(1); 
         System.out.println(seatno);
 
 	}

@@ -1,7 +1,11 @@
 <%@page import="com.FlightTicketReservationSystem.Models.Source"%>
 <%@page import="Services.FlightService"%>
+    <%@page import="java.util.List.*"%>
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+        <%@page import="java.util.ArrayList"%>
+            
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,7 +158,8 @@ String role = (String)session.getAttribute("ROLE");
 String flightid=  (String)request.getAttribute("Flight_ID");
 String ticketno	=  (String)request.getAttribute("Ticket_no");
 String amount=  (String)request.getAttribute("Amount");
-int seatno = (int)request.getAttribute("SeatValue");
+
+ArrayList<Integer> seatnumeric = (ArrayList<Integer>)request.getAttribute("Seatnovalue");
 
 %>
 
@@ -189,7 +194,7 @@ int seatno = (int)request.getAttribute("SeatValue");
     <br></br>
     
         <label for="Seatno"><b>SEATNO</b></label>
-    <input type="text"  name="seatno" value="<%=seatno%>" readonly>
+    <input type="text"  name="seatno" value="<%=seatnumeric%>" readonly>
     <br></br>
     
     

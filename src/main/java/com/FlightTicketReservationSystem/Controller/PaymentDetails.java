@@ -1,6 +1,7 @@
 package com.FlightTicketReservationSystem.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class PaymentDetails
@@ -39,7 +41,23 @@ public class PaymentDetails extends HttpServlet {
 			String Amount = request.getParameter("amount");
 			int Price = Integer.parseInt(Amount);
 		     
-request.getAttribute("SeatValue");
+			HttpSession session = request.getSession();
+			int pass = (int)session.getAttribute("logpass");
+
+			  ArrayList<Integer> list=new ArrayList<Integer>();    
+
+ArrayList<Integer> value = (ArrayList<Integer>)request.getAttribute("SeatValue");
+			
+//			for(int i = 0; i<pass;i++)
+//			{
+//				System.out.println("hi payment Details");
+//				list.addAll(value);
+//				
+//				System.out.println("For Lopp value"+request.getAttribute("SeatValue"));
+//
+//			}
+//
+System.out.println(value);
 
 System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
 		     
@@ -49,6 +67,8 @@ System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
 		     System.out.println(flightid);
 		     request.setAttribute("Ticket_no", ticketno);
 		     request.setAttribute("Amount", Amount);
+		     request.setAttribute("Seatnovalue", value);
+
 		     
 
 
