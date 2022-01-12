@@ -21,19 +21,18 @@ public class Passenger_details
 	private int premiumeconomyseats;
 	private int businessseats;
 	private String Status;
-	private int Amount;
 	private LocalDate Bookingdate;
 	private String mode;
-	private int amountpaid;
+	private int Amount;
 
 	
 
 	
-	public int getAmountpaid() {
-		return amountpaid;
+	public int getAmount() {
+		return Amount;
 	}
-	public void setAmountpaid(int amountpaid) {
-		this.amountpaid = amountpaid;
+	public void setAmount(int amount) {
+		Amount = amount;
 	}
 	public String getMode() {
 		return mode;
@@ -57,7 +56,6 @@ public class Passenger_details
 		this.premiumeconomyseats = premiumeconomyseats;
 		this.businessseats = businessseats;
 		Status = status;
-		Amount = getAmount();
 		Bookingdate = bookingdate;
 		Flight_id = getFlight_id();
 		NoOfPassengers = getNoOfPassengers();
@@ -229,7 +227,7 @@ public class Passenger_details
 	}
 	public Passenger_details(String class_details, long mobile_number, String source, String destination,
 			LocalDate arrival_date, int ticketNo, int seatno, String status, LocalDate bookingdate, int flight_id,
-			String mode , int amountpaid) {
+			String mode , int Amount) {
 		super();
 		Class_details = class_details;
 		Mobile_number = mobile_number;
@@ -242,14 +240,9 @@ public class Passenger_details
 		Bookingdate = bookingdate;
 		Flight_id = flight_id;
 		this.mode = mode;
-		this.amountpaid = amountpaid;
+		this.Amount = Amount;
 		
-	}
-	public int getAmount() {
-		return Amount;
-	}
-	public void setAmount(int amount) {
-		Amount = amount;
+		
 	}
 				
 }

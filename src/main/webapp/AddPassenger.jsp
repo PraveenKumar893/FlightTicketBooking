@@ -14,7 +14,7 @@
    
  <style>
 body {
-	background-image: url(image/images_login.jpg);
+	background-image: url(https://images.unsplash.com/photo-1604484384465-fbc304d466ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MzJ8fGpldHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -123,7 +123,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		<h3 align="center">Booking Details </h3>
 		<div align="center">
 		
-		<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+		<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 		
 		
 		

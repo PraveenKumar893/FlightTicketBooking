@@ -6,7 +6,7 @@ import com.FlightTicketReservationSystem.Models.Passenger_details;
 
 public interface PassengerDetailsInterface 
 {
-	public void PassengerDetails(Passenger_details obj,int ticketno,String username);
+	public int PassengerDetails(Passenger_details obj,int ticketno,String username);
 	
 	public List<Passenger_details> Bookinglist();
 	

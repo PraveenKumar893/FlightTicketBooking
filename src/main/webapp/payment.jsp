@@ -154,7 +154,7 @@ String role = (String)session.getAttribute("ROLE");
 String flightid=  (String)request.getAttribute("Flight_ID");
 String ticketno	=  (String)request.getAttribute("Ticket_no");
 String amount=  (String)request.getAttribute("Amount");
-
+int seatno = (int)request.getAttribute("SeatValue");
 
 %>
 
@@ -188,16 +188,21 @@ String amount=  (String)request.getAttribute("Amount");
     <input type="text"  name="Amount" value="<%=amount%>" readonly>
     <br></br>
     
+        <label for="Seatno"><b>SEATNO</b></label>
+    <input type="text"  name="seatno" value="<%=seatno%>" readonly>
+    <br></br>
+    
+    
 		<%
 			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
 			%>
 				      <label for="wallet""><b>Mode *</b></label>
     
     <input type="radio"  name="yesCheck" 
-				value="Creditcard" onclick="credit()" > 
+				value="Creditcard" required> 
 				<label for="card" >Credit Card</label> 
 				
-				<input type="radio"  name="yesCheck" value="Debitcard" onclick="debit()" > 
+				<input type="radio"  name="yesCheck" value="Debitcard" required > 
 				<label for="card" >Debitcard</label> 
 				    <br>
 				    <br>
@@ -213,20 +218,19 @@ String amount=  (String)request.getAttribute("Amount");
 				%>
 				      <label for="wallet"><b>Mode *</b></label>
     
-    <input type="radio"  name="yesCheck" value="Creditcard" onclick="credit()"
-				 > 
+    <input type="radio"  name="yesCheck" value="Creditcard" required				 > 
 				<label for="card" >Credit Card</label> 
 				
-				<input type="radio"  name="yesCheck"  value="Debitcard"  onclick="debit()" > 
+				<input type="radio"  name="yesCheck"  value="Debitcard"  required > 
 				<label for="card" >Debitcard</label> 
 				
                     				<input type="radio"  
-				name="yesCheck" value="Wallet"  > 
+				name="yesCheck" value="Wallet"  required > 
 				<label
 				for="Wallet" >Wallet</label>
 				<br>
 				<br>
-							<button type="Submit"  required 
+							<button type="Submit"   
 					>
 				SUBMIT	</button>
 				

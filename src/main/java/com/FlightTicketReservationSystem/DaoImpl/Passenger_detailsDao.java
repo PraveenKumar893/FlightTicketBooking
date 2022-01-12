@@ -19,15 +19,52 @@ import com.FlightTicketReservationSystem.Models.Passenger_details;
 
 public class Passenger_detailsDao implements PassengerDetailsInterface
 {
-	public void PassengerDetails(Passenger_details obj,int ticketno,String username)
+//	public void PassengerDetails(Passenger_details obj,int ticketno,String username)
+//	{
+//		try
+//		{
+//		Class.forName("oracle.jdbc.driver.OracleDriver");
+//		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+//		System.out.println("inside 11");
+//		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
+//		PreparedStatement stmt = con.prepareStatement(sql);
+//		stmt.setString(1,obj.getPassenger_name());
+//		System.out.println("inside 1");
+//		stmt.setString(2,obj.getClass_details());
+//		stmt.setLong(3,obj.getMobile_number());
+//		stmt.setString(4, obj.getSource());
+//		System.out.println("Inside2 ");
+//		stmt.setString(5, obj.getDestination());
+//		stmt.setInt(6,obj.getFlight_id());
+//		System.out.println("inside foldr");
+//		stmt.setDate(7,java.sql.Date.valueOf( obj.getArrival_date()));
+//		stmt.setInt(8,ticketno);
+//		stmt.setString(9, "Booked");
+//		stmt.setString(10, username);
+//		stmt.setDate(11, getcurrentdate());
+//
+//
+//		int str2 = stmt.executeUpdate();
+//	}
+//	catch(Exception e)
+//	{
+//		System.out.println(e.getMessage());
+//		
+//	}
+//}
+	
+	public int Setnogenerated(Passenger_details obj,int ticketno,String username)
 	{
+		 Integer seatno = 0;
+		 String returnCols[] = { "Seat_no" };
+
 		try
 		{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("inside 11");
 		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
-		PreparedStatement stmt = con.prepareStatement(sql);
+		PreparedStatement stmt = con.prepareStatement(sql,returnCols);
 		stmt.setString(1,obj.getPassenger_name());
 		System.out.println("inside 1");
 		stmt.setString(2,obj.getClass_details());
@@ -45,13 +82,29 @@ public class Passenger_detailsDao implements PassengerDetailsInterface
 
 
 		int str2 = stmt.executeUpdate();
+		
+		System.out.println(returnCols);
+		
+        java.sql.ResultSet generatedKeys = stmt.getGeneratedKeys();
+        if (generatedKeys.next()) 
+       		System.out.println(generatedKeys);
+        seatno =  generatedKeys.getInt(1); 
+        System.out.println(seatno);
+
 	}
 	catch(Exception e)
 	{
 		System.out.println(e.getMessage());
+		System.out.println(e);
 		
 	}
+		return seatno;
 }
+
+	
+	
+	
+	
 	private static java.sql.Date getcurrentdate()
 	{
 		java.util.Date today = new java.util.Date();
@@ -183,8 +236,9 @@ return booklist;
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		System.out.println("Weleocme to add flight ");
-		String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,a.Departured_date ,a.ticket_no , a.Seat_no ,a.Status,a.Booked_date,b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b on  \r\n"
-				+ "a.flight_id = b.flightid where User_name = ?  ";
+		String sql = "select a.Class , a.Mobile_number, a. Source , a.Destination, a.FLight_id,a.Departured_date ,a.ticket_no , a.Seat_no ,\r\n"
+				+ "a.Status,a.Booked_date,b.TotalAmount , b.ModeofTransaction from passenger_details a inner join paymentdetails b on  			\r\n"
+				+ "a.seat_no = b.seatno where user_name = ?";
 		
 		PreparedStatement pst = connection.prepareStatement(sql);
 		pst.setString(1, Username);
@@ -374,6 +428,17 @@ System.out.println(localDate2);
 			 
 		 }
              return seats;
+	}
+
+
+
+
+
+	@Override
+	public int PassengerDetails(Passenger_details obj, int ticketno, String username) {
+		return ticketno;
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -10,9 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import com.FlightTicketReservationSystem.DaoImpl.AddFlightDao;
 import com.FlightTicketReservationSystem.DaoImpl.Passenger_detailsDao;
+import com.FlightTicketReservationSystem.DaoImpl.WalletDao;
 
 /**
  * Servlet implementation class FlightCancellation
@@ -56,14 +59,32 @@ public class FlightCancellationServlet extends HttpServlet {
 	System.out.println(departuredate);
 	 LocalDate date = LocalDate.parse(departuredate);
 	 System.out.println(date);
+	 
+	 String amountpaid  = request.getParameter("amount");
+	 int amount = Integer.parseInt(amountpaid);
+	 System.out.println(amount);
 
-		
+	 HttpSession session = request.getSession();
+	 String User = (String) session.getAttribute("LOGGED_IN_USER");
+		       WalletDao wallet = new WalletDao();
+		       
+		       
+		       
+		       
 				Passenger_detailsDao cancelflight = new Passenger_detailsDao();
 				try {
 					cancelflight.Updatecancelstatus(seatno);
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
 				System.out.println(ticketcount);
 				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
+				
+			       int refundbalance = wallet.getclosingbalance(class_details);
+			       
+			       System.out.println(refundbalance);
+
+				     wallet.refundbalance(User, amount);
+				     
+				
 //					cancelflight.Updatepassenger(economy, premium, business,class_details,flight);
 					
 					

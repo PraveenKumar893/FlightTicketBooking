@@ -12,6 +12,9 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>UPDATE FLIGHT DETAILS</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <style>
 a:link, a:visited {
@@ -123,6 +126,7 @@ a:hover, a:active {
 					style="position: relative; left: 40px; height: 30px; top: 110px; width: 230px">
 				SUBMIT	</button>
 			</div>
+			
 		</form>
 		
     <script>

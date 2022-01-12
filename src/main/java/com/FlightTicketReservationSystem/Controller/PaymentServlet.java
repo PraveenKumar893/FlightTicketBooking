@@ -55,19 +55,28 @@ public class PaymentServlet extends HttpServlet {
 		System.out.println(Price);
 		String mode = request.getParameter("yesCheck");
 		System.out.println(mode);
+		
+		String seat_no = request.getParameter("seatno");
+		
+		int seatstatus = Integer.parseInt(seat_no);
+		
+		
 		System.out.println("inside  1uhhhh11");
 
-		request.setAttribute("Mode", mode);
+//		request.setAttribute("Mode", mode);
 		
 		if(mode.equalsIgnoreCase("Wallet"))
 		{
+			System.out.println("vnhvhcvdhg12122");
 			int walletamount = wallet.checkusername(Username);
 			if(walletamount > 0 &&  walletamount > Price)
 			{
 				int Closingbalance = walletamount - Price;
+				System.out.println("dnfvgfdsdghwdhdghdf");
+
 				wallet.updatebalance(Username,Closingbalance);
 				
-				wallet.InserPaymentdetails(FlightId, TicketNo, Closingbalance, mode, Username);
+				wallet.InserPaymentdetails(FlightId, TicketNo, Price, mode, Username,seatstatus);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 				requestDispatcher.forward(request, response);
 			}

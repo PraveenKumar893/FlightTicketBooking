@@ -10,6 +10,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Booking Details</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <style>
 
@@ -30,7 +34,7 @@ a:hover, a:active {
 </style>
 <body>
 
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
 
 
 <%  
@@ -38,10 +42,10 @@ a:hover, a:active {
  
 		%>
 		
-		   		<table border="2">
-			<h1><b>Flight List</b></h1>
+		   		<table border="2" class="table">
+			<h1 align="centre"><b>Booking  List</b></h1>
 			<thead>
-				<tr>
+				<tr class="table-secondary">
 				   <th >S.no</th>
 					<th>Passenger Name</th>
 					<th>Class Details</th>
@@ -72,7 +76,7 @@ a:hover, a:active {
 				
 					
 					<td><%=i%></td>
-					<td><%=objbook.getPassenger_name()%></td>
+					<td class="table-success"><%=objbook.getPassenger_name()%></td>
 					<td><%=objbook.getClass_details()%></td>
 			  	<td><%=objbook.getMobile_number()%></td> 
 					
@@ -85,7 +89,7 @@ a:hover, a:active {
 					<td> <%=objbook.getTicketNo()%></td>
 										
 					
-					<td> <%=objbook.getSeatno()%></td>
+					<td class="table-active"> <%=objbook.getSeatno()%></td>
 										<td> <%=objbook.getStatus()%></td>
 					
 					<td> <%=objbook.getBookingdate()%></td>

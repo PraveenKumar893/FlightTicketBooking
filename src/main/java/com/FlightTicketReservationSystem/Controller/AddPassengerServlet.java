@@ -84,6 +84,13 @@ public class AddPassengerServlet extends HttpServlet {
 	       System.out.println(noofpass);
 	       String ticket_no = request.getParameter("ticketno");
 	     int ticketno = Integer.parseInt(ticket_no);
+	     
+	     String seat_no  =  request.getParameter("seatno");
+	     System.out.println(seat_no);
+	     
+	     int seatno = Integer.parseInt(seat_no);
+	     
+	     System.out.println(seatno);
 
 	    //   int ticketno = generator();
 	       
@@ -93,14 +100,16 @@ public class AddPassengerServlet extends HttpServlet {
      System.out.println(loggedInAsUser);
 	     Passenger_details passenger = new Passenger_details(name, class_details, mobileno, Source, Destination, ticketno,flightid,local);
 			Passenger_detailsDao pass = new Passenger_detailsDao();
-		
 			for(int i=0;i<noofpass;i++)
 			{
 				System.out.println("hi");
-				pass.PassengerDetails(passenger,ticketno,loggedInAsUser);
+				 int seatnumber = pass.Setnogenerated(passenger,ticketno,loggedInAsUser);
+				 System.out.println("Seatnumbehfsfdy" +seatnumber);
+				 request.setAttribute("SeatValue", seatnumber);
+
 			}
 			pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
-						
+				
 			
 			//response.getWriter().print("Data Registered");
 			out.println("<script type=\"text/javascript\">");

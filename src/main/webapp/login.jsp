@@ -11,7 +11,7 @@
 <style>
 
 body {
-background-image: url(image/bg9.jpg);
+background-image: url(https://wallpapercave.com/wp/wp2574353.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	
@@ -24,8 +24,8 @@ background-image: url(image/bg9.jpg);
 
 form {
   border: 3px solid #f1f1f1;
-  width:30%;
-  align:"center";
+  width:90%;
+  align:"left";
 }
 
 input[type=text], input[type=password] {
@@ -86,7 +86,7 @@ span.psw {
   }
 }
 body{
-	background-image: url(image/254390.jpg);
+	background-image: url(https://wallpapercave.com/wp/wp2574353.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 
@@ -99,9 +99,10 @@ body{
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 String error  = (String) session.getAttribute("Error");
-%>		
+%>	
+<div style="margin-right: 900px; margin-top: 70px;">	
 <main class="container-fluid">
-		<h3 align="center">Login</h3>
+		<h3 align="center" style="color: white;">Login</h3>
 		<div align="center">
 				<form  action="Loginservlet"  method="post"  >
 				
@@ -110,17 +111,17 @@ String error  = (String) session.getAttribute("Error");
 				</div>
 				
 				<div class="container">
-				    <label for="username"><b>Username</b></label>
+				    <label for="username" style="color: white;" ><b>Username</b></label>
     <input type="text" id="username" placeholder="Enter Username" name="username"  required>
     
 <b></b>
 
-    <label for="password"><b>Password</b></label>
+    <label for="password" style="color: white;"><b>Password</b></label>
     <input type="password" id = "Password"  placeholder="Enter Password" name="password" required>
     
     <div style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
     
-        				 <p id = "loginresponse"></p>
+        				<b> <p style="font-style: italic; color: red; font-size: 25px" id = "loginresponse"></p></b>
     
     </div>
 
@@ -153,7 +154,7 @@ String error  = (String) session.getAttribute("Error");
 		
    </form>
    </div>
-      
+    </div>  
    
      <script>
 		    function validation()

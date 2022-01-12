@@ -54,6 +54,9 @@ a:hover, a:active {
   color: white;
 }
 </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </head>
 
@@ -95,10 +98,10 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		%>
 		
 		
-		  <table border="1">
+		  <table class="table">
 		
-			<h1><b>Flight List</b></h1>
-			<thead>
+			<h1 align="center"><b>Flight List</b></h1>
+			<thead class="table-warning">
 				<tr>
 				   <th >S.no</th>
 					<th>Flight Id</th>

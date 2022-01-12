@@ -149,7 +149,7 @@ span.psw {
 			<br> 
 			
 						<input type="radio" id="Male" name="Gender"
-				value="Male"  onkeyup="phonenumber()"> 
+				value="Male"  onkeyup="phonenumber()"  > 
 				<label for="Male" style="color: white;">Male</label> 
 				
 				<input type="radio" id="Female" name="Gender" value="Female"> 
@@ -163,7 +163,7 @@ span.psw {
 
 
 			<div style="text-align: center">
-				<button type="Submit"  style="position: relative;top: 4px" required     " 
+				<button type="Submit"  style="position: relative;top: 4px" required     "  
 					>
 				Register	</button>
 			</div>
@@ -333,10 +333,12 @@ span.psw {
 		    	if(request.readyState==4){  
 		    	var response =request.responseText;  
 		    	document.getElementById('phoneresponse').innerHTML=response;  
+		    	document.getElementById('phoneNumber').value="";  
+		    	
+
 		    	//alert(response);
 		    	}  
 		    	}  
-
 
 		    
 

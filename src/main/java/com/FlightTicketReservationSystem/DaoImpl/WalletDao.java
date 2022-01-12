@@ -38,8 +38,11 @@ public class WalletDao implements WalletInterface
 		}
 		
 	      return Closing_balance;
+	      
+	      
 			
 	}
+	
 	public  int checkusername( String username) throws Exception
 	{
 		
@@ -68,6 +71,42 @@ public class WalletDao implements WalletInterface
 		return Closing_balance;
 	}
 		
+	public void refundbalance(String username,int refundamount)
+	{
+		
+		try {
+		int balance = 	checkusername(username);
+		
+		System.out.println(balance);
+		
+		refundamount = balance + refundamount;
+		
+		System.out.println(refundamount);
+		
+		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
+		System.out.println("Weleocme to add flight ");
+		
+           String sql = "update wallet_details set wallet_amount =?  WHERE user_name = ?";
+		
+		PreparedStatement pst = connection.prepareStatement(sql);
+		pst.setInt(1, refundamount);
+		pst.setString(2, username);
+
+		ResultSet rs = pst.executeQuery();
+
+		System.out.println("Fully COmpleted");
+		
+		System.out.println("Refund Amount : "+refundamount);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+	}
 	public  void insetbalance( String username,int Amount) throws Exception
 	{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -104,26 +143,36 @@ public class WalletDao implements WalletInterface
 	      
 	}
 	
-	public void InserPaymentdetails(int Flightid, int Ticketno , int totalamount , String modeoftransaction,String username) throws ClassNotFoundException, SQLException
+	public void InserPaymentdetails(int Flightid, int Ticketno , int amount , String modeoftransaction,String username,int seatno) throws ClassNotFoundException, SQLException
 
 	{
 		System.out.println(username);
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-		String sql = "insert into PaymentDetails (FLIGHTID,TICKETNO,TOTALAMOUNT,MODEOFTRANSACTION,Username) values(?,?,?,?,?)";
+		String sql = "insert into PaymentDetails (FLIGHTID,TICKETNO,TOTALAMOUNT,MODEOFTRANSACTION,Username,Seatno) values(?,?,?,?,?,?)";
 		PreparedStatement pst = connection.prepareStatement(sql);
 		pst.setInt(1, Flightid);
 		System.out.println("ckhfjfgffhfhsfhf");
 		pst.setInt(2, Ticketno);
-		pst.setInt(3, totalamount);
+		pst.setInt(3, amount);
 		pst.setString(4, modeoftransaction);
 		pst.setString(5, username);
+		pst.setInt(6, seatno);
 	    pst.executeUpdate();
 
+	    
+	    System.out.println("Payument completetdbn,dbjkd");
 
 
 
 
+		
+	}
+
+	@Override
+	public void InserPaymentdetails(int Flightid, int Ticketno, int totalamount, String modeoftransaction,
+			String username) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 

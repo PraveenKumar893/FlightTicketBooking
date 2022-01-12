@@ -38,11 +38,20 @@ public class PaymentDetails extends HttpServlet {
 			int TicketNo = Integer.parseInt(ticketno);
 			String Amount = request.getParameter("amount");
 			int Price = Integer.parseInt(Amount);
-			
+		     
+request.getAttribute("SeatValue");
+
+System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
+		     
+		     System.out.println("Seftgddfghdcghdcagfhcdafhdafhdcgfadcghdac");
+
 		     request.setAttribute("Flight_ID", flightid);
 		     System.out.println(flightid);
 		     request.setAttribute("Ticket_no", ticketno);
 		     request.setAttribute("Amount", Amount);
+		     
+
+
 
 		     RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
 				requestDispatcher.forward(request, response);

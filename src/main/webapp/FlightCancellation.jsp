@@ -46,6 +46,12 @@ a:hover, a:active {
 				 required autofocus
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
 				
+					<input type="text" name="amount" value= "<%=request.getParameter("Amount")%>" readonly
+				 required autofocus
+				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" /><br><br>
+				
+				
+				
 				
 				
 				<button type="Submit"  required 

@@ -7,6 +7,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>FLIGHT LIST</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <style>
 a:link, a:visited {
@@ -30,16 +32,17 @@ a:hover, a:active {
 </style>
 <body>
 
+<a href="FlightSearch.jsp"class="btn btn-danger"> Back </a> <br > <br />
 
 <%  
 		List<Flight> regobject = (List<Flight>)request.getAttribute("Flight");
  
 		%>
 	
-   		<table border="2">
-			<h1><b>Flight List</b></h1>
+   		<table border="2" class="table">
+			<h1 align="center"><b>Registered User  List</b></h1>
 			<thead>
-				<tr>
+				<tr class="table-primary">
 				   <th >S.no</th>
 					<th>Registered Name</th>
 					<th>Email_id</th>
@@ -63,13 +66,13 @@ a:hover, a:active {
 					
 					<td><%=i%></td>
 					<td><%=register.getName()%></td>
-					<td><%=register.getEmailid()%></td>
+					<td class="table-warning"><%=register.getEmailid()%></td>
 					<td><%=register.getUsername()%></td>
 					<td><%=register.getPassword()%></td>
 					
 					<td> <%=register.getGender()%></td>
 					<td> <%=register.getPhonenumber()%></td>
-					<td> <%=register.getRegisterDate()%></td>
+					<td class="table-danger"> <%=register.getRegisterDate()%></td>
 					
 			</tr>
 					
