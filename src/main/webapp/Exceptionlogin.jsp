@@ -43,7 +43,7 @@ if(rs.next())
 else
 {
 	PrintWriter Write = response.getWriter();
-	   Write.println("Please Enetr Correct Details");
+	   Write.println("Invalid Credientals");
 
 	
 }

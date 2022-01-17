@@ -161,6 +161,15 @@ String amount=  (String)request.getAttribute("Amount");
 
 ArrayList<Integer> seatnumeric = (ArrayList<Integer>)request.getAttribute("Seatnovalue");
 
+String seatvaluefield =  seatnumeric.toString();
+
+System.out.println("seatvaluefield     :"+seatvaluefield);
+
+
+String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
+
+str=str.replaceAll("\\s", "");
+System.out.println(str);
 %>
 
 
@@ -178,7 +187,6 @@ ArrayList<Integer> seatnumeric = (ArrayList<Integer>)request.getAttribute("Seatn
 					
 													<form action="Payment" method="Get">
 					
-						<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
 				
 				
 				
@@ -194,7 +202,7 @@ ArrayList<Integer> seatnumeric = (ArrayList<Integer>)request.getAttribute("Seatn
     <br></br>
     
         <label for="Seatno"><b>SEATNO</b></label>
-    <input type="text"  name="seatno" value="<%=seatnumeric%>" readonly>
+    <input type="text"  name="seatno" value="<%=str%>" readonly>
     <br></br>
     
     

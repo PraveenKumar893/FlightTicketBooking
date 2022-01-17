@@ -63,6 +63,19 @@ public class PaymentServlet extends HttpServlet {
 		System.out.println(TicketNo);
 		String Amount = request.getParameter("Amount");
 		int Price = Integer.parseInt(Amount);
+		
+		
+	int noofflightpassengers = (int)session.getAttribute("logpass");
+	
+	System.out.println("noofpassemnehfeg"+noofflightpassengers);
+	
+	
+ int splitprice =  Price/noofflightpassengers;
+ 
+ System.out.println("lldjhdsjghdsgdggsdg"+splitprice);
+ 
+ 
+		
 		System.out.println(Price);
 		String mode = request.getParameter("yesCheck");
 		System.out.println(mode);
@@ -118,7 +131,7 @@ public class PaymentServlet extends HttpServlet {
 				{
 					System.out.println("seatno integeegcfcdg"+mystr);
 					int seatstatus = Integer.parseInt(mystr);
-				wallet.InserPaymentdetails(FlightId, TicketNo, Price, mode, Username,seatstatus);
+				wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
 
 
 			}

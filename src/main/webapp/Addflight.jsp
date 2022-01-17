@@ -26,7 +26,7 @@ a:hover, a:active {
 </style>
 <body>
 
-       <a href="FlightSearch.jsp"   class="btn btn-danger"> Back </a> <br > <br />;
+       <a href="FlightSearch.jsp"   class="btn btn-danger"> Back </a> <br > <br />
        
     <h1 style="text-align: center;">
 				<b>ADD FLIGHT DETAILS</b></h1>

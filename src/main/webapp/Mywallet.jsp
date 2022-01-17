@@ -172,7 +172,7 @@ int Closingbalance = flightService.getclosingbalance(loggedInAsUser);
 					>
 				Submit	</button>
 			</div>
-			<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+			<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic"> Back </a> <br > <br />
 			
             </div>
            </form>

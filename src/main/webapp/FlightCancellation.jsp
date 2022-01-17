@@ -26,7 +26,7 @@ a:hover, a:active {
 </style>
 <body>
 
-<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />; 
+<a href="FlightSearch.jsp"class="btn btn-primary" style="font-style: italic;"> Back </a> <br > <br />
 
 <form name="cancelflight.form" action="FlightCancellation" method="post"  >
 			

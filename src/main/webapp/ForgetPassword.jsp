@@ -99,11 +99,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		<div align="center">
 				<form  action="ForgetPassword" name="loginform" method="post" onsubmit = "return passwordvalidation()" >
 				
-				<div class="imgcontainer">
-				<img src="
-
-https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz3d0MRSXuPw&usqp=CAU" alt="Avatar" class="avatar">
-				</div>
 				
 				<div class="container"> 
 				    <label for="username"><b>Username</b></label>

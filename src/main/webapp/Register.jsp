@@ -140,12 +140,12 @@ span.psw {
 				<br>
 				
 
-
+<div id="phonere">
                		 <input type="tel" id="phoneNumber" name="phoneNumber" pattern = "[6-9][0-9]{9}" 
 				 placeholder="Enter Mobile Number" style="position: relative;top: -25px" required  onkeydown="return validation()"
 				 />
 				
-				
+				</div>
 			<br> 
 			
 						<input type="radio" id="Male" name="Gender"
@@ -333,12 +333,10 @@ span.psw {
 		    	if(request.readyState==4){  
 		    	var response =request.responseText;  
 		    	document.getElementById('phoneresponse').innerHTML=response;  
-		    	document.getElementById('phoneNumber').value="";  
-		    	
 
-		    	//alert(response);
-		    	}  
-		    	}  
+		    } 
+		    	}
+		    	 
 
 		    
 

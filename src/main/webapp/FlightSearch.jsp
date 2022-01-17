@@ -74,9 +74,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
             <form  id="form" action="SearchFlight" method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
            
               
-              <input type="text"  
+              <input type="text"  required
               id="fightsource" list="source" name="source" placeholder="Source">  
- <datalist id="source">  
+ <datalist id="source" >  
    <%
 				
 				FlightService flightService = new FlightService();
@@ -92,7 +92,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  </datalist>
     
    <input type="text"  
-              id="fightdestination" list="destination" name="destination" placeholder="Destination">  
+              id="fightdestination" list="destination" name="destination" placeholder="Destination" required
+>  
  <datalist id="destination">  
    <%
 							 
@@ -104,7 +105,12 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 %>
       
  </datalist>
-              <input  type="date" name="date" id  = "date" max="2022-10-26" ><br><br>
+              <input  type="date" name="date" id  = "date" max="2022-10-26"  >
+              
+              
+              <br><br>
+              
+              
           
             
             <button  type="submit"  >Submit </button><br><br>
@@ -122,6 +128,10 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     
     </div>
     
+                <p id="searchresponse"></p>
+    
+    
+    
     <script>
     today();
     function today(){
@@ -137,6 +147,51 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 
 
 }
+    
+    function searchvalid()  
+    {  
+        var source = document.getElementById("fightsource").value; 
+    	var destination = document.getElementById("fightdestination").value;
+
+
+    var url="Search.jsp?source="+source+'&destination='+destination;  
+
+    console.log("Called");
+    console.log("Called second time");
+    console.log(destination);
+    console.log(source);
+
+      
+    if(window.XMLHttpRequest){  
+    request=new XMLHttpRequest();  
+    }  
+    else if(window.ActiveXObject){  
+    request=new ActiveXObject("Microsoft.XMLHTTP");  
+    }  
+      
+    try{  
+    request.onreadystatechange=getInfo;  
+    request.open("GET",url,true);  
+    request.send();  
+    }catch(e){alert("Unable to connect to server");}  
+    }  
+      
+    function getInfo(){  
+    if(request.readyState==4){  
+    var response=request.responseText;  
+    
+      alert(document.getElementById('searchresponse').innerHTML=response); 
+
+   
+ }  
+    }  
+      
+
+    
+    
+    
+    
+    
 </script>
     
 </body>

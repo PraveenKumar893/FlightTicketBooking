@@ -106,9 +106,6 @@ String error  = (String) session.getAttribute("Error");
 		<div align="center">
 				<form  action="Loginservlet"  method="post"  >
 				
-				<div class="imgcontainer">
-				<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIwMIGTutu1jpkhgNCLM-Rd2gz3d0MRSXuPw&usqp=CAU" alt="Avatar" class="avatar">
-				</div>
 				
 				<div class="container">
 				    <label for="username" style="color: white;" ><b>Username</b></label>
@@ -124,12 +121,13 @@ String error  = (String) session.getAttribute("Error");
         				<b> <p style="font-style: italic; color: red; font-size: 25px" id = "loginresponse"></p></b>
     
     </div>
+    
 
     <button type="submit"  onkeyup="validlogin()">Login</button>
     
     
     
-    
+     
    
 				</div>
 				

@@ -97,11 +97,11 @@ a:hover, a:active {
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 99px;width: 229px">
 				<br> 
 				
-							<input type="date"  name="ArrivalDate" placeholder="Bussinessclass" value="<%=Arrival_date%>"  
+							<input type="date"  name="ArrivalDate" id="arrivaldate" placeholder="Bussinessclass" value="<%=Arrival_date%>"  
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 124px;width: 229px">
 				<br> 
 				
-							<input type="date"  name="DepartureDate" placeholder="Bussinessclass" value="<%=Departure_date%>"  
+							<input type="date"  name="DepartureDate" id="DepartureDate" placeholder="Bussinessclass" value="<%=Departure_date%>"  
 				value="Male" style="position: relative; left: 39px;height: 31px; top: 156px;width: 229px">
 				<br> 
 				
@@ -143,11 +143,28 @@ a:hover, a:active {
         var yyyy1= today.getFullYear()+10;
     maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
     mindate =yyyy + '-' + mm + '-'+ dd  ;
-    document.getElementById("date").setAttribute("max",maxdate);
-    document.getElementById("date").setAttribute("min",mindate);
+    document.getElementById("arrivaldate").setAttribute("max",maxdate);
+    document.getElementById("arrivaldate").setAttribute("min",mindate);
 
 
 }
+</script>
+<script>
+today();
+function today(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    var yyyy1= today.getFullYear()+10;
+maxdate =yyyy1 + '-' + mm + '-'+ dd  ;
+mindate =yyyy + '-' + mm + '-'+ dd  ;
+document.getElementById("DepartureDate").setAttribute("max",maxdate);
+document.getElementById("DepartureDate").setAttribute("min",mindate);
+
+
+}
+
 </script>
 
 </body>

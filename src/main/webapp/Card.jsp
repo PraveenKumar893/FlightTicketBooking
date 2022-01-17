@@ -143,7 +143,7 @@ span.psw {
    <script>
    setTimeout(function(){
        window.location.href = 'FlightSearch.jsp';
-    }, 10000);
+    }, 50000);
 </script>
 <script>
 

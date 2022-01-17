@@ -47,6 +47,10 @@ public class PaymentDetails extends HttpServlet {
 			  ArrayList<Integer> list=new ArrayList<Integer>();    
 
 ArrayList<Integer> value = (ArrayList<Integer>)request.getAttribute("SeatValue");
+
+
+
+
 			
 //			for(int i = 0; i<pass;i++)
 //			{
