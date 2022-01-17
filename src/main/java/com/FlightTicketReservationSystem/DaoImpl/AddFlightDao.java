@@ -80,7 +80,7 @@ catch(SQLException e)
     return FlightId;
 
 }
-	public void Addseats(int flightid , String Source, String Destination, int economyseats, int premiumseats , int bussinessseats, LocalDate Departure_Date ) throws ClassNotFoundException, SQLException
+	public void Addseats(int flightid , String Source, String Destination, int economyseats, int premiumseats , int bussinessseats, LocalDate Departure_Date,LocalTime DepartureTime ) throws ClassNotFoundException, SQLException
 	{
 		System.out.println("Method Inside");
 		
@@ -90,7 +90,7 @@ catch(SQLException e)
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 		
-	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,premium_economy_seats,business_seats,flight_departure_date)values(?,?,?,?,?,?,?)";
+	String query =  "insert into flight_seats_availabilty (Source,Destination,Flight_id,Ecomomy_seats,premium_economy_seats,business_seats,flight_departure_date,DepartureTime)values(?,?,?,?,?,?,?,?)";
 		
 		PreparedStatement stmt1 =  con.prepareStatement(query);
 		
@@ -101,6 +101,8 @@ catch(SQLException e)
 		stmt1.setInt(5,premiumseats);
 		stmt1.setInt(6,bussinessseats);
 		stmt1.setDate(7, java.sql.Date.valueOf(Departure_Date));
+		stmt1.setTime(8,java.sql.Time.valueOf(DepartureTime ));
+
 
 		int str = stmt1.executeUpdate();
 		//con.commit();
@@ -206,6 +208,12 @@ return registerlist;
 	@Override
 	public void updateFlight(int flightid, String flightname, String Source, String Destination, int Economy_class,
 			int premium_Economy_class, int Bussiness_class) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void Addseats(int flightid, String Source, String Destination, int economyseats, int premiumseats,
+			int bussinessseats, LocalDate Departure_Date) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
 		
 	}

@@ -80,7 +80,12 @@ public class WalletDao implements WalletInterface
 		
 		System.out.println(balance);
 		
-		refundamount = balance + refundamount;
+		int discountamount = (int) (refundamount*0.05);
+		
+		System.out.println("discountamount : "+discountamount);
+		
+		
+		refundamount = balance +refundamount - discountamount;
 		
 		System.out.println(refundamount);
 		

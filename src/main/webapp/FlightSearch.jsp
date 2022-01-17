@@ -92,7 +92,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  </datalist>
     
    <input type="text"  
-              id="fightdestination" list="destination" name="destination" placeholder="Destination" required
+              id="fightdestination" list="destination" name="destination" placeholder="Destination" required 
 >  
  <datalist id="destination">  
    <%
@@ -180,7 +180,9 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
     if(request.readyState==4){  
     var response=request.responseText;  
     
-      alert(document.getElementById('searchresponse').innerHTML=response); 
+      document.getElementById('searchresponse').innerHTML=response; 
+      
+      
 
    
  }  

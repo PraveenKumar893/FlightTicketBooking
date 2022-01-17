@@ -33,7 +33,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 		if (flights != null) {
 		%>
 		 
-		<a href="FlightSearch.jsp" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br />; 
+		<a href="FlightSearch.jsp" style="position: relative;left:339px;top:70px;width: 140px;height: 29px; font-style: italic;  " class="btn btn-primary"> Back </a> <br > <br />
 
 
  
@@ -119,9 +119,23 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				<%
 				}
 				%>
+				
+				
 
-			</tbody>
-		</table>
-		<%} %>
+ 	<%} 
+		
+		
+		else 
+		{%>
+		
+		  <th> NO FLIGHT FOUND FOR ENTERED SOURCE AND DESTINATION </th>
+	<%}
+
+%>
+				</tbody>
+</table>	
+		
+		
+		
 </body>
 </html>

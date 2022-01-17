@@ -33,17 +33,17 @@ a:hover, a:active {
 		<form name="addflight" action="AddFlightservlet" method="post"  >
 			
 			<br /> <input type="text" name="Flightname"  
-				placeholder="FLIGHT_NAME" required autofocus pattern="[A-Za-z]{3,120}" 
+				placeholder="FLIGHT_NAME" required autofocus pattern="[A-Z a-z]{3,120}" 
 				style="position: relative; left: 40px; height: 30px; top: -2px; width: 230px" />
 				
 			<br> <input type="text" id="text" name="source" 
-				placeholder="Enter Source" required pattern="[A-Za-z]{3,120}"
+				placeholder="Enter Source" required pattern="[A-Z a-z]{3,120}"
 				style="position: relative; left: 41px; height: 33px; top: 17px; width: 228px" />
 			
 			
 			<br> <input type="text" name="Destination"
 			  placeholder="Enter Destination " required
-				autofocus  pattern="[A-Za-z]{3,120}"
+				autofocus  pattern="[A-Z a-z]{3,120}"
 				style="position: relative; left: 40px; height: 30px; top: 39px; width: 230px" />
 				<br>
 				
@@ -67,8 +67,13 @@ a:hover, a:active {
 				<br>
 				
 				<input type="time" name="Arrivaltime" placeholder = "ArrivalTime" required
+				style="position: relative; left: 382px; height: 30px; top:-153px; width: 230px" />
+				<br>
+				
+				<input type="time" name="Departuretime" placeholder = "Departure TIme" required
 				style="position: relative; left: 382px; height: 30px; top: -114px; width: 230px" />
 				<br>
+				
 				
 				
 				
