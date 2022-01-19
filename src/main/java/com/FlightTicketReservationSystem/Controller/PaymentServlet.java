@@ -89,30 +89,11 @@ public class PaymentServlet extends HttpServlet {
 		String[] res = str.split(",",0);
 		
 		System.out.println("Stringresvalue"+res);
-		
-//		for(String mystr:  res)
-//		{
-//			System.out.println("seatno integeegcfcdg"+mystr);
-//			
-//
-//	}
-	
-		
-//		ArrayList<Integer> seatupdatestatus = new ArrayList<Integer>();
-//		
-//            for(int i = 0; i<seat_no.length();i++)
-//            {
-//            	seatupdatestatus.add(seatstatus);
-//            }
-//		
-//            System.out.println(seatupdatestatus);
-//		System.out.println("inside  1uhhhh11");
-
 
 	    int passvalue = (int)session.getAttribute("logpass");
 	      
 	       
-	      // request.setAttribute("noofpas", noofpass);
+		int seatstatus = 0;
 
 
 		if(mode.equalsIgnoreCase("Wallet"))
@@ -130,7 +111,7 @@ public class PaymentServlet extends HttpServlet {
 				for(String mystr:  res)
 				{
 					System.out.println("seatno integeegcfcdg"+mystr);
-					int seatstatus = Integer.parseInt(mystr);
+					 seatstatus = Integer.parseInt(mystr);
 				wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
 
 
@@ -164,7 +145,14 @@ public class PaymentServlet extends HttpServlet {
 		{
 			System.out.println(Username);
 			System.out.println("cjccbalwaidhinsertded");
-			wallet.InserPaymentdetails(FlightId, TicketNo, Price, mode, Username);
+			for(String mystr:  res)
+			{
+				System.out.println("seatno integeegcfcdg"+mystr);
+				 seatstatus = Integer.parseInt(mystr);
+					wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
+
+			}
+			System.out.println("Seatstststgadcgdcdaddagcdacsavalue  "+seatstatus);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("pay.jsp");
 			requestDispatcher.forward(request, response);
 		}

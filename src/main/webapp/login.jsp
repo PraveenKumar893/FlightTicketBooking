@@ -99,11 +99,12 @@ body{
 String loggedInAsAdmin = (String) session.getAttribute("LOGGED_IN_ADMIN");
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 String error  = (String) session.getAttribute("Error");
-%>	
+ %>	
 <div style="margin-right: 900px; margin-top: 70px;">	
 <main class="container-fluid">
 		<h3 align="center" style="color: white;">Login</h3>
-		<div align="center">
+		<div align="center">		
+	
 				<form  action="Loginservlet"  method="post"  >
 				
 				
@@ -122,14 +123,31 @@ String error  = (String) session.getAttribute("Error");
     
     </div>
     
-
-    <button type="submit"  onkeyup="validlogin()">Login</button>
-    
-    
-    
-     
+   	 <div id="fads">
+   	<%
+			if (error!= null) {
+			%>
+					<p id="value"   style="font-size: 20px; color: red;"><%=error%> </p>
+					
+				<% }
+			
+			
+   			%>
    
-				</div>
+   </div>
+ 
+
+
+
+    <button type="submit"  >Login</button>
+
+ </div>
+ 
+ 
+
+ 
+ 
+     
 				
 				<%
 			
@@ -218,11 +236,14 @@ String error  = (String) session.getAttribute("Error");
 		    	}  
 		    }  
 
+		    window.onload = function() {
+		    	  window.setTimeout(fadeout, 3000); //8 seconds
+		    	}
 		
-		    
-
-
-
+      function fadeout()
+      {
+    	  document.getElementById('value').style.opacity= '0';
+      }
 		  
 
    </script>

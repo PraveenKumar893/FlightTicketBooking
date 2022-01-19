@@ -109,7 +109,7 @@ span.psw {
 				/>
 				<br>
 				
-			<br> <input type="text"  id="email" name="email" onkeyup="sendemail()" 
+			<br> <input type="text"  id="email" name="email" onkeyup = "sendemail()"
 				placeholder="Enter email address" style="position: relative;top: -8px" required/>	
 				  
 				  
@@ -127,7 +127,7 @@ span.psw {
 				<br>
 				
 				
-				<input type="password" name="password"placeholder="Enter new password" onkeyup="validuser()" 
+				<input type="password" name="password"placeholder="Enter new password" onkeyup=" validuser()" 
 					style="position: relative;top: -8px"
 				required
 				/><br>
@@ -135,7 +135,7 @@ span.psw {
 				
 				
 			<br> <input type="password" name="password1"style="position: relative;top: -25px"
-				required  placeholder="Confirm Password " 
+				required  placeholder="Confirm Password "  
 				 /><br>
 				<br>
 				
@@ -167,7 +167,7 @@ span.psw {
 					>
 				Register	</button>
 			</div>
-			<div style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
+			<div id="messages" style="text-align: center;color: white;font-family:cursive; font-style: inherit   ;font-size: 18px;">
 		 				  	
 		 				  	 <p  id = "emailresponse"></p> 
 		 
@@ -201,10 +201,9 @@ span.psw {
 		    function sendemail()
 		    {  
 		    console.log("called");
-		        let email=document.getElementById("email").value;
+		        let email=document.getElementById('email').value;
 
-		        
-		        console.log(email);
+		      console.log(email);
 
 		    var url="Exception.jsp?email="+email;  
 		    if(window.XMLHttpRequest){  
@@ -215,7 +214,7 @@ span.psw {
 		    }  
 		    try  
 		    {  
-		    request.onreadystatechange=getInfo;  
+		    request.onreadystatechange=putInfo;  
 		    request.open("GET",url,true);  
 		    request.send();  
 		    }  
@@ -226,15 +225,19 @@ span.psw {
 		        
 		       }
 		    
-		    function getInfo(){  
+		    function putInfo(){  
 		    	if(request.readyState==4){  
-		    	var response =request.responseText; 
-		    	console.log(response);
-		    	document.getElementById('emailresponse').innerHTML=response; 
-		    	console.log("cjngchgc"+response);
+		    	var mailresponse =request.responseText; 
+		    	console.log(mailresponse);
+		    	if(mailresponse.includes("Email id Already Registered"))
+		    		{
+		    	document.getElementById('emailresponse').innerHTML=mailresponse;
+		    	document.getElementById('email').value = '';  	
+		    	}
+		    	
+		    	}  
+		   }  
 
-		    	}  
-		    	}  
 
 		    function validemail()
 		    {  
@@ -252,7 +255,7 @@ span.psw {
 		    }  
 		    try  
 		    {  
-		    request.onreadystatechange=getInfo;  
+		    request.onreadystatechange=updateInfo;  
 		    request.open("GET",url,true);  
 		    request.send();  
 		    }  
@@ -263,11 +266,15 @@ span.psw {
 		        
 		       }
 		    
-		    function getInfo(){  
+		    function updateInfo(){  
 		    	if(request.readyState==4){  
-		    	var response =request.responseText;  
-		    	document.getElementById('validresponse').innerHTML=response;  
-		    	//alert(response);
+		    	var formatresponse =request.responseText;  
+		    	if(formatresponse.includes("mention Email id in correct format"))
+		    		{
+		    	document.getElementById('validresponse').innerHTML=formatresponse; 
+		    	document.getElementById('email').value = ''	;
+		    		}
+		    	
 		    	}  
 		    	}  
 		    function validuser()
@@ -284,7 +291,7 @@ span.psw {
 		    }  
 		    try  
 		    {  
-		    request.onreadystatechange=getInfo;  
+		    request.onreadystatechange=getuser;  
 		    request.open("GET",url,true);  
 		    request.send();  
 		    }  
@@ -295,10 +302,15 @@ span.psw {
 		        
 		       }
 		    
-		    function getInfo(){  
+		    function getuser(){  
 		    	if(request.readyState==4){  
 		    	var response =request.responseText;  
+		    	if(response.includes("User Name already Registered"))
+		    		{
 		    	document.getElementById('userresponse').innerHTML=response;  
+		    	document.getElementById('username').value = '';  
+                		    		}
+		   
 		    	}  
 		    	}  
 		    
@@ -331,26 +343,42 @@ span.psw {
 		    
 		    function getInfo(){  
 		    	if(request.readyState==4){  
-		    	var response =request.responseText;  
-		    	document.getElementById('phoneresponse').innerHTML=response;  
-
+		    	var phonevalueresponse =request.responseText;  
+		    	if(phonevalueresponse.includes("Invalid Mobile"))
+		    		{
+			    	document.getElementById('phoneresponse').innerHTML=phonevalueresponse;  		    	
+			    	document.getElementById('phoneNumber').value = '';  		    	
+		    		}
+		    	else
+		    		{
+		    		
+		    		}
+		    		
+		    	
 		    } 
 		    	}
-		    	 
+		    window.onload = function() {
+		    	  window.setTimeout(fadeout, 8000); //8 seconds
+		    	}
+
+		    	function fadeout() {
+		    	  document.getElementById('emailresponse').style.opacity = '0';
+		    	}
+			    window.onload = function() {
+			    	  window.setTimeout(fadingout, 8000); //8 seconds
+			    	  console.log("Fade statrty")
+			    	}
+
+			    	function fadingout() {
+			    	  document.getElementById('userresponse').style.opacity = '0';
+			    	  console.log("Fade Ended")
+
+			    	}
 
 		    
-
-
-
-		    	
-	 
 		    
+		    </script>
 
-
-
-		  
-
-   </script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
    
    							    

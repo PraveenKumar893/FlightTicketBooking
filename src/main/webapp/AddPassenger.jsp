@@ -196,7 +196,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				<label for="username">Passenger
 				Name:</label> 
 				<input type="text" name="username" id="username" style="position: relative; left: 35px; height: 24px; top: 1px; width: 230px"
-				required autofocus  /> <br />
+				required autofocus pattern = "[A-Z  a-z]{3,20}"  /> <br />
 				
 				 <br /> <br /> 
 				<label for="MobileNumber">Mobile No:</label> <input
@@ -224,7 +224,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
-				name="numberOfPassengers"  min="0" max="8" pattern="[0-8]"
+				name="numberOfPassengers"  min="1" max="8" pattern="[1-8]"
 				placeholder="Enter passengers count" oninput="calculation()" required autofocus /> </br>
 				
 			<br />
@@ -235,7 +235,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 				 			<label for="numberOfPassengers">Number of passengers:</label>
 			<input type="number" id="numberOfPassengers" style="position: relative; left: 14px; height: 24px; top: 3px; width: 230px"
 			
-				name="numberOfPassengers"  min="0" max="8" pattern="[0-8]"
+				name="numberOfPassengers"  min="1" max="8" pattern="[1-8]"
 				placeholder="Enter passengers count" oninput="calc()" required autofocus /> </br>
 				
 			<br />

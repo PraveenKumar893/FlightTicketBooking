@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Payment JSP</title>
+<title>Payment </title>
 </head>
 <body>
     		    		<div id="master">
-    		    <form action="Payment" method="get" class="container" >
+    		    <form  class="container" >
     		    
     		    
   
@@ -18,14 +18,14 @@
         
       
         <label for="cardtype"><b>Card Type</b></label>
-        <input type="text"  name="cardtype" required style="margin-left: 51px;height: 35px" >
+        <input type="text"  name="cardtype" required style="margin-left: 51px;height: 35px"  pattern="[A-Z a-z\s]{3,8}">
     <br></br>
         <label for="holdername"><b>Holder Name</b></label>
-        <input type="text"  name="holdername" required style="margin-left: 33px;height: 35px">
+        <input type="text"  name="holdername" required style="margin-left: 33px;height: 35px" pattern="[A-Z a-z\s]{3,20}">
         <br></br>
         
         <label for="bankname"><b>Bank Name</b></label>
-        <input type="text"  name="bankname"  required style="margin-left: 46px;height: 35px">
+        <input type="text"  name="bankname"  required style="margin-left: 46px;height: 35px" pattern="[A-Z a-z\s]{3,18}">
         <br></br>
         
           <label for="expirydate"><b>Expiry Date</b></label>
