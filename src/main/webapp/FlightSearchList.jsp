@@ -125,11 +125,6 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  	<%} 
 		
 		
-		else 
-		{%>
-		
-		  <th> NO FLIGHT FOUND FOR ENTERED SOURCE AND DESTINATION </th>
-	<%}
 
 %>
 				</tbody>

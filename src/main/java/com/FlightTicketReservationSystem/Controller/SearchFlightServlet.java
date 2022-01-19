@@ -8,6 +8,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,15 +64,30 @@ public class SearchFlightServlet extends HttpServlet {
 		{
 		
 	        out.println("hello");
-			String Source = request.getParameter("source");
-			String Destination = request.getParameter("destination");
-			System.out.println(Source);
-			System.out.println(Destination);
+	        LocalDate local = null;
+	        String Source = "";
+	        String Destination = "";
+			 Source = request.getParameter("source");
+			 System.out.println(Source);
+			 Destination = request.getParameter("destination");
+			 System.out.println(Destination);
+			String date =  request.getParameter("date");
+			System.out.println(date);
+			if(date!=null && date != "")
+			{
+			 local = LocalDate.parse(date);
+			System.out.println(local);
+			}
+
+			//System.out.println(Source);
+			//System.out.println(Destination);
 		
 			
 			
 			
-			List<Flight_Seat_Availability> objavailability = objsearchflight.ListSeat(Source, Destination);
+			//List<Flight_Seat_Availability> objavailability = objsearchflight.ListSeat(Source, Destination);
+			List<Flight_Seat_Availability> objavailability = objsearchflight.Seatvalue(Source, Destination, local);
+
 			System.out.println(objavailability);
 			request.setAttribute("Flight_List", objavailability);
 		

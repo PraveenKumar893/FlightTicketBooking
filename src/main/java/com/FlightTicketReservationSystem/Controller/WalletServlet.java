@@ -46,6 +46,8 @@ public class WalletServlet extends HttpServlet {
 		{
 			HttpSession session = request.getSession();		
 		String Username	= (String)session.getAttribute("LOGGED_IN_USER");
+	String classvalue = (String)session.getAttribute("ClassDetails");
+
 		
 		System.out.println(Username);
 			String Walletamount = request.getParameter("depositamount");
@@ -54,12 +56,14 @@ public class WalletServlet extends HttpServlet {
 			WalletDao wallet = new WalletDao();
 			int Amount = wallet.checkusername(Username);
 			System.out.println(Amount);
+			
 			if(Amount > 0)
 			{
 				int closingbalance = wallet_amount + Amount ; 
 				wallet.updatebalance(Username, closingbalance);
 				
 			}
+			
 			else
 			{
 				wallet.insetbalance(Username, wallet_amount);

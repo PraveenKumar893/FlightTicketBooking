@@ -74,8 +74,8 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
             <form  id="form" action="SearchFlight" method="post"  style="text-align: center; color: black; left:40px; width: 380px;" >
            
               
-              <input type="text"  required
-              id="fightsource" list="source" name="source" placeholder="Source">  
+              <input type="text"  
+              id="fightsource" list="source" name="source" placeholder="Source" required>  
  <datalist id="source" >  
    <%
 				
@@ -92,7 +92,7 @@ String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
  </datalist>
     
    <input type="text"  
-              id="fightdestination" list="destination" name="destination" placeholder="Destination" required 
+              id="fightdestination" list="destination" name="destination" placeholder="Destination"  required
 >  
  <datalist id="destination">  
    <%
