@@ -57,7 +57,7 @@ public class PaymentServlet extends HttpServlet {
 	System.out.println("inside  111");
 		String flightid = request.getParameter("flightid");
 		int FlightId = Integer.parseInt(flightid);
-		System.out.println(FlightId);
+		System.out.println("Flightd idkjhsjdda"+FlightId);
 		String ticketno = request.getParameter("ticketno");
 		int TicketNo = Integer.parseInt(ticketno);
 		System.out.println(TicketNo);
@@ -94,7 +94,17 @@ public class PaymentServlet extends HttpServlet {
 	      
 	       
 		int seatstatus = 0;
+		
+	     String economy = (String) session.getAttribute("Economy");
+	     
+	     System.out.println("Economyclass fir;leel   "+economy);
+	      String pre = (String)session.getAttribute("Premium");
+	    String bus = (String)  session.getAttribute("Bussiness");
+	    
+		String coach = (String)session.getAttribute("ClassDetails");
+	     System.out.println("Classs Details value  "+coach);
 
+       Passenger_detailsDao pass =  new Passenger_detailsDao();
 
 		if(mode.equalsIgnoreCase("Wallet"))
 		{
@@ -112,15 +122,13 @@ public class PaymentServlet extends HttpServlet {
 				{
 					System.out.println("seatno integeegcfcdg"+mystr);
 					 seatstatus = Integer.parseInt(mystr);
+					 System.out.println("Seadhdhdhv"+seatstatus);
 				wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
-
+				
 
 			}
-//				for(int i=0;i<passvalue;i++)
-//				{
-//				wallet.InserPaymentdetails(FlightId, TicketNo, Price, mode, Username,0);
-//				
-//				}
+				pass.Updatepassenger(Integer.parseInt(economy), Integer.parseInt(pre), Integer.parseInt(bus),coach,FlightId);
+
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 				requestDispatcher.forward(request, response);
 			}
@@ -152,6 +160,8 @@ public class PaymentServlet extends HttpServlet {
 					wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
 
 			}
+			pass.Updatepassenger(Integer.parseInt(economy), Integer.parseInt(pre), Integer.parseInt(bus),coach,FlightId);
+
 			System.out.println("Seatstststgadcgdcdaddagcdacsavalue  "+seatstatus);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 			requestDispatcher.forward(request, response);
@@ -180,73 +190,6 @@ public class PaymentServlet extends HttpServlet {
 		//doGet(request, response);
 		 response.setContentType("text/html");
 	        PrintWriter out=response.getWriter();
-//		try
-//		{
-//			System.out.println("method come inside");
-//		HttpSession session = request.getSession();
-//		WalletDao wallet = new WalletDao();
-//		String Username = (String)session.getAttribute("LOGGED_IN_USER");
-//		System.out.println("method come outsidehcvbsv");
-//
-//	System.out.println("inside  111");
-//		String flightid = request.getParameter("flightid");
-//		int FlightId = Integer.parseInt(flightid);
-//		String ticketno = request.getParameter("ticketno");
-//		int TicketNo = Integer.parseInt(ticketno);
-//		String Amount = request.getParameter("Amount");
-//		int Price = Integer.parseInt(Amount);
-//		String mode = request.getParameter("yesCheck");
-//		System.out.println(mode);
-//		System.out.println("inside  111");
-//
-//		if(mode.equalsIgnoreCase("Wallet"))
-//		{
-//			int walletamount = wallet.checkusername(Username);
-//			if(walletamount > 0 &&  walletamount > Price)
-//			{
-//				int Closingbalance = walletamount - Price;
-//				wallet.updatebalance(Username,Closingbalance);
-//				
-//				wallet.InserPaymentdetails(FlightId, TicketNo, Closingbalance, mode, Username);
-//				RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-//				requestDispatcher.forward(request, response);
-//			}
-//			else
-//			{
-//				String someMessage = "Not Having Sufficient Amount !";
-//				out.println("<script type='text/javascript'>");
-//				out.println("alert(" + "'" + someMessage + "'" + ");</script>");
-//				out.println("</head><body></body></html>");
-//				System.out.println("inside  111");
-//
-//				RequestDispatcher requestDispatcher = request.getRequestDispatcher("Mywallet.jsp");
-//				requestDispatcher.forward(request, response);
-//			}
-//
-//
-//			
-//		
-//		}
-//		
-//		else 
-//		{
-//			System.out.println(Username);
-//			System.out.println("cjccbalwaidhinsertded");
-//			wallet.InserPaymentdetails(FlightId, TicketNo, Price, mode, Username);
-//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-//			requestDispatcher.forward(request, response);
-//		}
-//		
-//		
-//		}
-//		catch(Exception e)
-//		{
-//			System.out.println(e.getMessage());
-//			System.out.println(e);
-//		}
-//		
-//	}
-//
-//}
+
 }
 	}

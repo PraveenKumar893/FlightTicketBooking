@@ -70,15 +70,25 @@ public class AddPassengerServlet extends HttpServlet {
 	      String mobno = request.getParameter("MobileNumber");
 	      
 	      String economyseats = request.getParameter("Economyclass");
-	     
-	      System.out.println(economyseats);
+	      System.out.println("Economy  String  seat valeue"+economyseats);
+
+	      int econ = Integer.parseInt(economyseats);
+	      System.out.println("Economy seat valeue"+econ);
 			String premiumeconomyseats = request.getParameter("PremiumEconomyclass");
-			
+			System.out.println(premiumeconomyseats);
 	      String businesseats = request.getParameter("Bussinessclass");
+	      
+	      
+	      
+
+	      
+	      
 	      
 	      long mobileno = Long.parseLong(mobno);
 	      System.out.println(mobno);
 			String class_details = request.getParameter("coach");
+			System.out.println(class_details);
+			
 	       String noofpassengers = request.getParameter("numberOfPassengers");
 	       System.out.println("String No of passengers" +noofpassengers);
 	       int noofpass = Integer.parseInt(noofpassengers);
@@ -97,6 +107,13 @@ public class AddPassengerServlet extends HttpServlet {
 
 	     HttpSession session = request.getSession();
 	     session.setAttribute("logpass",noofpass);
+	     
+	     session.setAttribute("Economy", economyseats);
+	      session.setAttribute("Premium", premiumeconomyseats);
+	      session.setAttribute("Bussiness", businesseats);
+			session.setAttribute("ClassDetails", class_details);
+			
+
 	     
 System.out.println("mbhfvddno fpo a[apasssenddhgdtad");	 
 
@@ -123,7 +140,7 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 			request.setAttribute("SeatValue", list);
 			System.out.println(list);
 			
-			pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
+			//pass.Updatepassenger(Integer.parseInt(economyseats), Integer.parseInt(premiumeconomyseats), Integer.parseInt(businesseats),class_details,flightid);
 				
 			
 			//response.getWriter().print("Data Registered");
@@ -142,7 +159,6 @@ System.out.println("mbhfvddno fpo a[apasssenddhgdtad");
 		} catch (Exception e) {
 			System.out.println("Hello error");
 			e.printStackTrace();
-			response.sendRedirect("Register.jsp?errorMessage=" + e.getMessage());
 		}
 
 			

@@ -19,40 +19,6 @@ import com.FlightTicketReservationSystem.Models.Passenger_details;
 
 public class Passenger_detailsDao implements PassengerDetailsInterface
 {
-//	public void PassengerDetails(Passenger_details obj,int ticketno,String username)
-//	{
-//		try
-//		{
-//		Class.forName("oracle.jdbc.driver.OracleDriver");
-//		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
-//		System.out.println("inside 11");
-//		String sql = "insert into passenger_details (PASSENGER_NAME,CLASS,MOBILE_NUMBER,SOURCE,DESTINATION,FLIGHT_ID,Departured_Date,Ticket_no,Status,User_name,Booked_Date) values(?,?,?,?,?,?,?,?,?,?,?)";
-//		PreparedStatement stmt = con.prepareStatement(sql);
-//		stmt.setString(1,obj.getPassenger_name());
-//		System.out.println("inside 1");
-//		stmt.setString(2,obj.getClass_details());
-//		stmt.setLong(3,obj.getMobile_number());
-//		stmt.setString(4, obj.getSource());
-//		System.out.println("Inside2 ");
-//		stmt.setString(5, obj.getDestination());
-//		stmt.setInt(6,obj.getFlight_id());
-//		System.out.println("inside foldr");
-//		stmt.setDate(7,java.sql.Date.valueOf( obj.getArrival_date()));
-//		stmt.setInt(8,ticketno);
-//		stmt.setString(9, "Booked");
-//		stmt.setString(10, username);
-//		stmt.setDate(11, getcurrentdate());
-//
-//
-//		int str2 = stmt.executeUpdate();
-//	}
-//	catch(Exception e)
-//	{
-//		System.out.println(e.getMessage());
-//		
-//	}
-//}
-	
 	public int Setnogenerated(Passenger_details obj,int ticketno,String username)
 	{
 		 int seatno = 0;
@@ -165,6 +131,7 @@ return booklist;
 	
 	public  void Updatepassenger(int economyseats , int premiumseats, int businessseats,String Coach, int Flightid) 
 	{
+		System.out.println("Update Passenger Method");
 		 try
 		 {
 			 System.out.println("hi");
@@ -341,7 +308,7 @@ System.out.println(localDate2);
 					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
-					;
+					
                  stmt.executeUpdate();
      			System.out.println("Function 4");
 
@@ -353,19 +320,19 @@ System.out.println(localDate2);
 					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
-					;
+					
                  stmt.executeUpdate();
      			System.out.println("Function PE4");
 
             }  
-            if(classdetails.equalsIgnoreCase("business"))
+            if(classdetails.equalsIgnoreCase("Bussiness"))
             {
 				 sql = "update flight_seats_availabilty set Business_Seats =  ?   where flight_id = ? and Flight_Departure_Date = ?";
 					PreparedStatement stmt = con.prepareStatement(sql);
 					stmt.setInt(1, seats +1);
 					stmt.setInt(2, flightid);
 					stmt.setDate(3, java.sql.Date.valueOf(DepartureDate));
-					;
+					
                  stmt.executeUpdate();
      			System.out.println("Function pe4");
 
@@ -413,8 +380,8 @@ System.out.println(localDate2);
 					  seats   = rs.getInt("Premium_Economy_Seats");
 					return seats;
 				}
-				else if(classdetails.equalsIgnoreCase("business"))
-
+				//else if(classdetails.equalsIgnoreCase("business"))
+				else
 				{
 					  seats   = rs.getInt("Business_Seats");
 					return seats;
@@ -427,7 +394,7 @@ System.out.println(localDate2);
 		 {
 			 
 		 }
-             return seats;
+		return seats;
 	}
 
 

@@ -75,7 +75,7 @@ public class FlightCancellationServlet extends HttpServlet {
 				try {
 					cancelflight.Updatecancelstatus(seatno);
 				int ticketcount = 	cancelflight.getticketcount(class_details,flight,date);
-				System.out.println(ticketcount);
+				System.out.println("Ticket COunttvalue"+ticketcount);
 				cancelflight.Updateticketcount(flight,date,class_details,ticketcount);
 				
 			       int refundbalance = wallet.getclosingbalance(class_details);
