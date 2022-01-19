@@ -153,7 +153,7 @@ public class PaymentServlet extends HttpServlet {
 
 			}
 			System.out.println("Seatstststgadcgdcdaddagcdacsavalue  "+seatstatus);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("pay.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		

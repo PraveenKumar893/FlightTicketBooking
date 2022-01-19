@@ -109,7 +109,7 @@ span.psw {
 				/>
 				<br>
 				
-			<br> <input type="text"  id="email" name="email" onkeyup = "sendemail()"
+			<br> <input type="text"  id="email" name="email" onkeyup = "sendemail()" 
 				placeholder="Enter email address" style="position: relative;top: -8px" required/>	
 				  
 				  
@@ -127,7 +127,7 @@ span.psw {
 				<br>
 				
 				
-				<input type="password" name="password"placeholder="Enter new password" onkeyup=" validuser()" 
+				<input type="password" name="password" id="password" placeholder="Enter new password" onkeyup=" validuser()" 
 					style="position: relative;top: -8px"
 				required
 				/><br>
@@ -232,8 +232,10 @@ span.psw {
 		    	if(mailresponse.includes("Email id Already Registered"))
 		    		{
 		    	document.getElementById('emailresponse').innerHTML=mailresponse;
-		    	document.getElementById('email').value = '';  	
-		    	}
+		    	document.getElementById('email').value = '';  
+		    	
+
+		    }
 		    	
 		    	}  
 		   }  
@@ -309,7 +311,8 @@ span.psw {
 		    		{
 		    	document.getElementById('userresponse').innerHTML=response;  
 		    	document.getElementById('username').value = '';  
-                		    		}
+
+                }
 		   
 		    	}  
 		    	}  
@@ -357,27 +360,37 @@ span.psw {
 		    	
 		    } 
 		    	}
-		    window.onload = function() {
-		    	  window.setTimeout(fadeout, 8000); //8 seconds
+	    	document.getElementById("email").onkeydown = function() {validfunction()};
+
+	    	function validfunction()
+	    	{
+	    		document.getElementById("emailresponse").innerHTML = "";
+
+	    	}
+		    
+		    	document.getElementById("username").onkeydown = function() {emailfunction()};
+		    	
+		    	function emailfunction()
+		    	{
+		    		document.getElementById("validresponse").innerHTML = "";
+		    	}
+		    	document.getElementById("password").onkeydown = function() {userfunction()};
+		    	
+		    	function userfunction()
+		    	{
+		    		document.getElementById("userresponse").innerHTML = "";
+		    	}
+		    	document.getElementById("Male").onkeydown = function() {myfunction()};
+		    	
+		    	function myfunction()
+		    	{
+		    		document.getElementById("phoneresponse").innerHTML = "";
 		    	}
 
-		    	function fadeout() {
-		    	  document.getElementById('emailresponse').style.opacity = '0';
-		    	}
-			    window.onload = function() {
-			    	  window.setTimeout(fadingout, 8000); //8 seconds
-			    	  console.log("Fade statrty")
-			    	}
 
-			    	function fadingout() {
-			    	  document.getElementById('userresponse').style.opacity = '0';
-			    	  console.log("Fade Ended")
 
-			    	}
-
-		    
-		    
-		    </script>
+ 	  
+ </script>
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
    
