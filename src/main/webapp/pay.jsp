@@ -1,46 +1,128 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@page import="com.FlightTicketReservationSystem.Models.Source"%>
+<%@page import="Services.FlightService"%>
+    <%@page import="java.util.List.*"%>
+
+            <%@page import="java.util.ArrayList"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Payment </title>
 </head>
+<%
+String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
+String role = (String)session.getAttribute("ROLE");
+ int flightid=  (int)session.getAttribute("Flightid");
+int ticketno	=  (int)session.getAttribute("Ticketno");
+String amount=  (String)request.getAttribute("Amount");
+
+
+ArrayList<Integer> seatnumeric = (ArrayList<Integer>)session.getAttribute("Seatfield");
+
+String seatvaluefield =  seatnumeric.toString();
+
+System.out.println("seatvaluefield     :"+seatvaluefield);
+
+
+String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
+
+str=str.replaceAll("\\s", "");
+System.out.println(str); 
+ %>
+
+
+
+
+
 <body>
-    		    		<div id="master">
-    		    <form  class="container" >
-    		    
-    		    
-  
-        <label for="cardno"><b>Card No</b></label>
-        <input type="text"  name="cardno"  min  = "0" max = "16" pattern="[0-9]+" required style="margin-left: 60px; height: 35px">
-        <br></br>
-        
-      
-        <label for="cardtype"><b>Card Type</b></label>
-        <input type="text"  name="cardtype" required style="margin-left: 51px;height: 35px"  pattern="[A-Z a-z\s]{3,8}">
-    <br></br>
-        <label for="holdername"><b>Holder Name</b></label>
-        <input type="text"  name="holdername" required style="margin-left: 33px;height: 35px" pattern="[A-Z a-z\s]{3,20}">
-        <br></br>
-        
-        <label for="bankname"><b>Bank Name</b></label>
-        <input type="text"  name="bankname"  required style="margin-left: 46px;height: 35px" pattern="[A-Z a-z\s]{3,18}">
-        <br></br>
-        
-          <label for="expirydate"><b>Expiry Date</b></label>
-        <input type="date"  name="expirydate" required style="margin-left: 132px;height: 35px" >
-        <br></br>
-        
-         <br></br>
+
+        <main class="container-fluid">
+		  <h3 align="center">Payment Details </h3>
+		<div align="center">
+		
+		
+		
 				
-       							<button type="Submit"><a href="FlightSearch.jsp">
+				
+					<div class="Files" id="fun">
 					
-				SUBMIT</a>	</button>
-       
+				<form action="Payment" method="Get">
+					
+				
+				
+				
+				
+				    <label for="flightid" ><b>Flight Id</b></label>
+    <input type="text" id="flightid" name="flightid" value ="<%=flightid%>"  readonly>
+<br></br>
+    <label for="ticketno"><b>Ticket No</b></label>
+    <input type="text"  name="ticketno" value="<%=ticketno%>" readonly>
+<br></br>
+    <label for="amount"><b>Amount</b></label>
+    <input type="text"  name="Amount" value="<%=amount%>" readonly>
+    <br></br>
     
-    </form>
-</div>
+        <label for="Seatno"><b>SEATNO</b></label>
+    <input type="text"  name="seatno" value="<%=str%>" readonly>
+    <br></br>
+    
+    
+		<%
+			if (loggedInAsUser.equalsIgnoreCase("Guest")) {
+			%>
+				      <label for="wallet""><b>Mode *</b></label>
+    
+    <input type="radio"  name="yesCheck" 
+				value="Creditcard" required> 
+				<label for="card" >Credit Card</label> 
+				
+				<input type="radio"  name="yesCheck" value="Debitcard" required > 
+				<label for="card" >Debitcard</label> 
+				    <br>
+				    <br>
+				         		
+				        			<button type="Submit"  required 
+					>
+				SUBMIT	</button>
+				         		
+				
+				<% }
+			else
+			{
+				%>
+				      <label for="wallet"><b>Mode *</b></label>
+    
+    <input type="radio"  name="yesCheck" value="Creditcard" required				 > 
+				<label for="card" >Credit Card</label> 
+				
+				<input type="radio"  name="yesCheck"  value="Debitcard"  required > 
+				<label for="card" >Debitcard</label> 
+				
+                    				<input type="radio"  
+				name="yesCheck" value="Wallet"  required > 
+				<label
+				for="Wallet" >Wallet</label>
+				<br>
+				<br>
+							<button type="Submit"   
+					>
+				SUBMIT	</button>
+				
+													
+				
+                    
+			<% }
+			
+			%>
+			
+    		</form>
+				
+    		</div>
+    		
+   </main>
 
 
 </body>

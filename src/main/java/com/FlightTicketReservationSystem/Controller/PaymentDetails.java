@@ -48,7 +48,9 @@ public class PaymentDetails extends HttpServlet {
 
 ArrayList<Integer> value = (ArrayList<Integer>)request.getAttribute("SeatValue");
 
+System.out.println("dkjcxhhccxggcxvcvcxvvcxvgsgdffghdsfgfgdfgdsfgdsgfsd"+value);
 
+session.setAttribute("Seatfield",value);
 
 
 			
@@ -68,12 +70,17 @@ System.out.println("cdmnbhvdgdcgcdgcdc"+request.getAttribute("SeatValue"));
 		     System.out.println("Seftgddfghdcghdcagfhcdafhdafhdcgfadcghdac");
 
 		     request.setAttribute("Flight_ID", flightid);
+		     session.setAttribute("Flight_id", flightid);
+		     
 		     System.out.println(flightid);
 		     request.setAttribute("Ticket_no", ticketno);
-		     request.setAttribute("Amount", Amount);
-		     request.setAttribute("Seatnovalue", value);
+		     session.setAttribute("Ticket_no", ticketno);
 
+		     request.setAttribute("Amount", Amount);
+		     session.setAttribute("Amont", Amount);
+		     request.setAttribute("Seatnovalue", value);
 		     
+		     session.setAttribute("Amount", Price);
 
 
 

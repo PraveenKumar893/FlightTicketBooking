@@ -159,7 +159,16 @@ String error  = (String) session.getAttribute("Error");
 			    
 		<div class="container" style="background-color:#f1f1f1">
     <button type="button"  class="cancelbtn"><a href="FlightSearch.jsp" style="text-decoration: blink;">BACK</a></button>
-     <a href="ForgetPassword.jsp?username=<%=username%>" class="btn btn-primary"  >Forget password?</a>
+    <%
+			if (error!= null) {
+			%>
+				   <a href="ForgetPassword.jsp?username=<%=username%>" class="btn btn-primary"  >Forget password?</a>
+					
+				<% }
+			
+			
+   			%>
+   
   </div>
   
   

@@ -47,27 +47,63 @@ public class WalletServlet extends HttpServlet {
 			HttpSession session = request.getSession();		
 		String Username	= (String)session.getAttribute("LOGGED_IN_USER");
 	String classvalue = (String)session.getAttribute("ClassDetails");
-
+  System.out.println(classvalue);
 		
 		System.out.println(Username);
 			String Walletamount = request.getParameter("depositamount");
 			System.out.println(Walletamount);
+
 			int wallet_amount = Integer.parseInt(Walletamount);
 			WalletDao wallet = new WalletDao();
 			int Amount = wallet.checkusername(Username);
 			System.out.println(Amount);
-			
-			if(Amount > 0)
+//			if(classvalue.equalsIgnoreCase("Economy"))
+			if(classvalue!=null)
 			{
 				int closingbalance = wallet_amount + Amount ; 
 				wallet.updatebalance(Username, closingbalance);
+				session.getAttribute("Seatvalue");
+				session.getAttribute("Flightid");
+				session.getAttribute("Ticketno");
+				session.getAttribute("Amount");
+
+
+				RequestDispatcher requestDispatcher = request.getRequestDispatcher("payment.jsp");
+				requestDispatcher.forward(request, response);
 				
 			}
+
 			
-			else
+			else			
 			{
-				wallet.insetbalance(Username, wallet_amount);
-			}
+					if(Amount>0)
+					{
+						int closingbalance = wallet_amount + Amount ; 
+						wallet.updatebalance(Username, closingbalance);
+						RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+						requestDispatcher.forward(request, response);
+					}
+				}
+			
+	
+			
+		      
+//		    	 if(closingb!=null)
+//		    	 {
+//				       if((Amount > 0))
+//				       {
+//				int closingbalance = wallet_amount + Amount ; 
+//				wallet.updatebalance(Username, closingbalance);
+//				RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
+//				requestDispatcher.forward(request, response);
+//				}
+			
+		    	 
+			
+//			else
+//			{
+//				wallet.insetbalance(Username, wallet_amount);
+//			}
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("FlightSearch.jsp");
 			requestDispatcher.forward(request, response);
 
@@ -78,5 +114,6 @@ public class WalletServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 		}
 	}
+
 
 }

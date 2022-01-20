@@ -155,11 +155,11 @@ width: 40%
 <%
 String loggedInAsUser = (String) session.getAttribute("LOGGED_IN_USER");
 String role = (String)session.getAttribute("ROLE");
-String flightid=  (String)request.getAttribute("Flight_ID");
-String ticketno	=  (String)request.getAttribute("Ticket_no");
-String amount=  (String)request.getAttribute("Amount");
+String flightid=  (String)session.getAttribute("Flight_id");
+String ticketno	=  (String)session.getAttribute("Ticket_no");
+String amount=  (String)session.getAttribute("Amont");
 
-ArrayList<Integer> seatnumeric = (ArrayList<Integer>)request.getAttribute("Seatnovalue");
+ArrayList<Integer> seatnumeric = (ArrayList<Integer>)session.getAttribute("Seatfield");
 
 String seatvaluefield =  seatnumeric.toString();
 
@@ -169,7 +169,8 @@ System.out.println("seatvaluefield     :"+seatvaluefield);
 String str = seatvaluefield.replaceAll("\\[", "").replaceAll("\\]", "");
 
 str=str.replaceAll("\\s", "");
-System.out.println(str);
+System.out.println(str); 
+
 %>
 
 

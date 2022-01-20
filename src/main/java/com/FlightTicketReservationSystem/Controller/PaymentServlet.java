@@ -65,12 +65,16 @@ public class PaymentServlet extends HttpServlet {
 		int Price = Integer.parseInt(Amount);
 		
 		
+	
+		
 	int noofflightpassengers = (int)session.getAttribute("logpass");
 	
 	System.out.println("noofpassemnehfeg"+noofflightpassengers);
 	
 	
  int splitprice =  Price/noofflightpassengers;
+ 
+
  
  System.out.println("lldjhdsjghdsgdggsdg"+splitprice);
  
@@ -82,6 +86,9 @@ public class PaymentServlet extends HttpServlet {
 		
 		String seat_no = request.getParameter("seatno");
 		System.out.println("seatno"+seat_no);
+		
+		session.setAttribute("Seatvalue", seat_no);
+
 		String str = seat_no.replaceAll("\\[", "").replaceAll("\\]", "");
 		str=str.replaceAll("\\s", "");
 		System.out.println(str);
@@ -122,7 +129,10 @@ public class PaymentServlet extends HttpServlet {
 				{
 					System.out.println("seatno integeegcfcdg"+mystr);
 					 seatstatus = Integer.parseInt(mystr);
-					 System.out.println("Seadhdhdhv"+seatstatus);
+					 System.out.println("smfhsfhvsfdfgfgdsgdffgdgdfgsgfdfgsgfd"+seatstatus);
+					 request.setAttribute("Seatvalue", seatstatus);
+
+					 System.out.println("dsjdhhsgsgfgsfgfshhfshfsghsfhgsfhghfsghghfgshfsghs"+seatstatus);
 				wallet.InserPaymentdetails(FlightId, TicketNo, splitprice, mode, Username,seatstatus);
 				
 
@@ -144,6 +154,11 @@ public class PaymentServlet extends HttpServlet {
 				requestDispatcher.forward(request, response);
 			}
 
+
+			
+			session.setAttribute("Flightid", FlightId);
+			session.setAttribute("Ticketno", TicketNo);
+			session.setAttribute("Amount", splitprice);
 
 			
 		
@@ -174,6 +189,8 @@ public class PaymentServlet extends HttpServlet {
 			System.out.println(e.getMessage());
 			System.out.println(e);
 		}
+		
+		
 		
 	}
 
